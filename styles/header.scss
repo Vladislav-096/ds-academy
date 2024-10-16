@@ -1,0 +1,65 @@
+@import "./mixin.scss";
+
+.header {
+  padding-top: 15px;
+
+  &__wrapper {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+  }
+
+  &__block {
+    &:first-child {
+      margin-right: 144px;
+    }
+
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+
+  @include logo();
+
+  &__menu-list {
+    display: flex;
+  }
+
+  &__menu-item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__menu-link {
+    padding: 9px 18px;
+    border: 1.2px solid #e8e8e8;
+    border-radius: 20px;
+    font-size: 15px;
+  }
+
+  &__search-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-button {
+    margin-right: 27px;
+  }
+
+  &__logo-abbreviation {
+    position: relative;
+    padding-right: 25px;
+    font-size: 15px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      background-image: url("../img/arrow.svg");
+      background-repeat: no-repeat;
+    }
+  }
+}

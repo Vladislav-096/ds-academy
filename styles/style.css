@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "Nunito";
+  src: local("Nunito Regular"), local("Nunito-Regular"), url("Nunito-Regular.woff2") format("woff2"), url("Nunito-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: local("Nunito Medium"), local("Nunito-Medium"), url("Nunito-Medium.woff2") format("woff2"), url("Nunito-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: local("Nunito Bold"), local("Nunito-Bold"), url("Nunito-Bold.woff2") format("woff2"), url("Nunito-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo Black";
+  src: local("Archivo Black Regular"), local("Archivo-Black-Regular"), url("ArchivoBlack-Regular.woff2") format("woff2"), url("ArchivoBlack-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  min-width: 320px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1208px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.list-reset {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header {
+  padding-top: 15px;
+}
+.header__wrapper {
+  display: flex;
+  align-items: center;
+}
+.header__block:first-child {
+  margin-right: 144px;
+}
+.header__block:last-child {
+  margin-left: auto;
+}
+.header__menu-list {
+  display: flex;
+}
+.header__menu-item:not(:last-child) {
+  margin-right: 10px;
+}
+.header__menu-link {
+  padding: 9px 18px;
+  border: 1.2px solid #e8e8e8;
+  border-radius: 20px;
+  font-size: 15px;
+}
+.header__search-wrapper {
+  display: flex;
+  align-items: center;
+}
+.header__search-button {
+  margin-right: 27px;
+}
+.header__logo-abbreviation {
+  position: relative;
+  padding-right: 25px;
+  font-size: 15px;
+}
+.header__logo-abbreviation::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url("../img/arrow.svg");
+  background-repeat: no-repeat;
+}/*# sourceMappingURL=style.css.map */
