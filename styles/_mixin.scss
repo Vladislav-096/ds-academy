@@ -1,6 +1,61 @@
-@mixin logo {
-  .logo-wrapper {
-    .logo {
+@import "./variables.scss";
+
+// @mixin logo {
+//   .logo-wrapper {
+//     .logo {
+//     }
+//   }
+// }
+
+@mixin navButton {
+  padding: 9px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+@mixin heading {
+  font-family: "Archivo Black";
+  font-weight: 400;
+  color: $secondary-text-color;
+}
+
+@mixin descr {
+  max-width: 480px;
+  color: $primary-text-color;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.05px;
+  line-height: 28.8px;
+}
+
+@mixin schedule($image) {
+  display: inline-block;
+  padding-left: 25px;
+  color: $date-text-color;
+  font-size: 15px;
+  font-weight: 400;
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+@mixin scheduleBlock($date, $duration) {
+  .schedule-date {
+    margin-right: 21px;
+    @include schedule($date);
+  }
+  .schedule-duration {
+    @include schedule($duration);
+  }
+}
+
+@mixin spin {
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
     }
   }
 }

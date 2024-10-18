@@ -1,11 +1,13 @@
+@import "./variables.scss";
 @import "./mixin.scss";
 
 .header {
-  padding-top: 15px;
+  margin-bottom: 94px;
+  padding-top: 14px;
+  color: $secondary-text-color;
 
   &__wrapper {
     display: flex;
-    // justify-content: space-between;
     align-items: center;
   }
 
@@ -19,7 +21,7 @@
     }
   }
 
-  @include logo();
+  // @include logo();
 
   &__menu-list {
     display: flex;
@@ -32,10 +34,8 @@
   }
 
   &__menu-link {
-    padding: 9px 18px;
+    @include navButton();
     border: 1.2px solid #e8e8e8;
-    border-radius: 20px;
-    font-size: 15px;
   }
 
   &__search-wrapper {

@@ -1,24 +1,24 @@
 @font-face {
   font-family: "Nunito";
-  src: local("Nunito Regular"), local("Nunito-Regular"), url("Nunito-Regular.woff2") format("woff2"), url("Nunito-Regular.woff") format("woff");
+  src: local("Nunito Regular"), local("Nunito-Regular"), url("../fonts/Nunito-Regular.woff2") format("woff2"), url("../fonts/Nunito-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Nunito";
-  src: local("Nunito Medium"), local("Nunito-Medium"), url("Nunito-Medium.woff2") format("woff2"), url("Nunito-Medium.woff") format("woff");
+  src: local("Nunito Medium"), local("Nunito-Medium"), url("../fonts/Nunito-Medium.woff2") format("woff2"), url("../fonts/Nunito-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: "Nunito";
-  src: local("Nunito Bold"), local("Nunito-Bold"), url("Nunito-Bold.woff2") format("woff2"), url("Nunito-Bold.woff") format("woff");
+  src: local("Nunito Bold"), local("Nunito-Bold"), url("../fonts/Nunito-Bold.woff2") format("woff2"), url("../fonts/Nunito-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Archivo Black";
-  src: local("Archivo Black Regular"), local("Archivo-Black-Regular"), url("ArchivoBlack-Regular.woff2") format("woff2"), url("ArchivoBlack-Regular.woff") format("woff");
+  src: local("Archivo Black Regular"), local("Archivo-Black-Regular"), url("../fonts/ArchivoBlack-Regular.woff2") format("woff2"), url("../fonts/ArchivoBlack-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -35,6 +35,10 @@ html {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+picture {
+  display: block;
 }
 
 img {
@@ -76,8 +80,33 @@ p {
   cursor: pointer;
 }
 
+.schedule-date {
+  margin-right: 21px;
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  background-image: url("../img/calendar.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.schedule-duration {
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  background-image: url("../img/watch.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
 .header {
-  padding-top: 15px;
+  margin-bottom: 94px;
+  padding-top: 14px;
+  color: #1b1f21;
 }
 .header__wrapper {
   display: flex;
@@ -97,9 +126,9 @@ p {
 }
 .header__menu-link {
   padding: 9px 18px;
-  border: 1.2px solid #e8e8e8;
   border-radius: 20px;
   font-size: 15px;
+  border: 1.2px solid #e8e8e8;
 }
 .header__search-wrapper {
   display: flex;
@@ -122,4 +151,153 @@ p {
   height: 16px;
   background-image: url("../img/arrow.svg");
   background-repeat: no-repeat;
+}
+
+.hero {
+  display: flex;
+}
+.hero__picture-wrapper {
+  position: relative;
+}
+.hero__gaming-picture {
+  width: 480px;
+  height: 560px;
+  -webkit-mask-image: url("../img/gaming-mask.png");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+.hero__gaming-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.hero__sticker {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  animation: spin 3s linear infinite;
+  animation-play-state: paused;
+}
+.hero__sticker:hover {
+  animation-play-state: running;
+}
+.hero__sticker-img {
+  width: inherit;
+  height: inherit;
+}
+.hero__descr-block {
+  position: relative;
+  padding-top: 47px;
+  padding-left: 40px;
+  padding-bottom: 130px;
+}
+.hero .chosen-option {
+  padding: 9px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+  background-color: #bedb39;
+}
+.hero__list {
+  display: flex;
+  margin-bottom: 9px;
+  align-items: center;
+}
+.hero__list-item {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.hero__list-item:not(:last-child) {
+  margin-right: 10px;
+}
+.hero__list-item:first-child {
+  margin-right: 18px;
+}
+.hero__heading {
+  margin-bottom: 16px;
+  font-size: 36px;
+  line-height: 43.2px;
+  font-family: "Archivo Black";
+  font-weight: 400;
+  color: #1b1f21;
+}
+.hero__descr {
+  margin-bottom: 18px;
+  max-width: 480px;
+  color: #757778;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.05px;
+  line-height: 28.8px;
+}
+.hero__button {
+  position: absolute;
+  padding: 20px 57px;
+  left: 40px;
+  bottom: 46px;
+  background-color: #bedb39;
+  border-radius: 40px;
+  font-size: 18px;
+}
+.hero__button::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 95%;
+  height: 82%;
+  border: 1.5px solid #1b1f21;
+  border-radius: 30px;
+}
+
+.running-line-container {
+  display: flex;
+  overflow-x: hidden;
+}
+.running-line-container div {
+  font-size: 58px;
+  font-size: sans-serif;
+  line-height: 1.3;
+  padding: 24px 0;
+  white-space: nowrap;
+  display: inline-block;
+}
+.running-line-container__first-line {
+  animation: marquee1 20s infinite linear;
+  animation-delay: -20s;
+}
+.running-line-container__second-line {
+  animation: marquee2 20s infinite linear;
+  animation-delay: -10s;
+}
+.running-line-container div::after {
+  content: "Artigos populares Artigos populares";
+}
+
+@keyframes marquee1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=style.css.map */
