@@ -11,6 +11,7 @@
   padding: 9px 18px;
   border-radius: 20px;
   font-size: 15px;
+  color: $secondary-text-color;
 }
 
 @mixin heading {
@@ -56,6 +57,56 @@
     }
     to {
       transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin marquee {
+  .marquee {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 125px;
+    width: calc(100vw + 20px);
+    height: 120px;
+    background-color: #acd6de;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: rotate(-4deg) translateX(-10px);
+
+    &__content {
+      position: absolute;
+      display: flex;
+      width: 300%;
+      top: 50%;
+      animation: marquee 15s linear infinite forwards;
+    }
+
+    &__list {
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+    }
+
+    &__list-text {
+      font-family: "Archivo Black";
+      font-size: 58px;
+      font-weight: 400;
+      line-height: 69.6px;
+      letter-spacing: 0.01em;
+      color: $secondary-text-color;
+    }
+
+    &__list-separator {
+      display: flex;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translate(0, -50%);
+    }
+    100% {
+      transform: translate(-66.6%, -50%);
     }
   }
 }
