@@ -25,9 +25,11 @@ body {
   min-width: 320px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
+  background-color: #fcfaf9;
 }
 
 .layout {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -61,6 +63,100 @@ p {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.popular-marquee,
+.webinars-marquee {
+  position: absolute;
+  z-index: 777;
+}
+
+.popular-marquee {
+  top: 838px;
+}
+.popular-marquee .marquee {
+  margin: 0 auto;
+  width: calc(100vw + 20px);
+  height: 120px;
+  background-color: #acd6de;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: rotate(-4deg) translateX(-10px);
+}
+.popular-marquee .marquee__content {
+  position: absolute;
+  display: flex;
+  width: 300%;
+  top: 50%;
+  animation: marquee 15s linear infinite forwards;
+}
+.popular-marquee .marquee__list {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+.popular-marquee .marquee__list-text {
+  font-family: "Archivo Black";
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 69.6px;
+  letter-spacing: 0.01em;
+  color: #1b1f21;
+}
+.popular-marquee .marquee__list-separator {
+  display: flex;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(0, -50%);
+  }
+  100% {
+    transform: translate(-66.6%, -50%);
+  }
+}
+
+.webinars-marquee {
+  bottom: 50%;
+}
+.webinars-marquee .marquee {
+  margin: 0 auto;
+  width: calc(100vw + 20px);
+  height: 120px;
+  background-color: #ffad20;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: rotate(-3deg) translateX(-10px);
+}
+.webinars-marquee .marquee__content {
+  position: absolute;
+  display: flex;
+  width: 300%;
+  top: 50%;
+  animation: marquee 15s linear infinite forwards;
+}
+.webinars-marquee .marquee__list {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+.webinars-marquee .marquee__list-text {
+  font-family: "Archivo Black";
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 69.6px;
+  letter-spacing: 0.01em;
+  color: #1b1f21;
+}
+.webinars-marquee .marquee__list-separator {
+  display: flex;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(0, -50%);
+  }
+  100% {
+    transform: translate(-66.6%, -50%);
+  }
 }
 
 .schedule-date {

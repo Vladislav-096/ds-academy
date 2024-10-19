@@ -1,0 +1,15 @@
+@import "./mixin.scss";
+@import "./variables.scss";
+
+// .section-webinars {
+//   position: relative;
+//   padding-top: 200px;
+//   overflow: hidden;
+//   background-color: $secondary-text-color;
+//   @include marquee(#ffad20, -3deg, 40px);
+// }
+
+.section-webinars {
+  background-color: $secondary-text-color;
+  
+}

@@ -28,9 +28,11 @@ body {
   min-width: 320px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
+  background-color: #fcfaf9;
 }
 
 .layout {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -68,4 +70,20 @@ p {
 }
 
 // common
+.popular-marquee,
+.webinars-marquee {
+  position: absolute;
+  z-index: 777;
+}
+
+.popular-marquee {
+  top: 838px;
+  @include marquee(#acd6de, -4deg);
+}
+
+.webinars-marquee {
+  bottom: 50%;
+  @include marquee(#ffad20, -3deg);
+}
+
 @include scheduleBlock($calendar-image, $watch-image);

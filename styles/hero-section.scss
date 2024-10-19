@@ -2,7 +2,7 @@
 @import "./variables.scss";
 
 .section-hero {
-  margin-bottom: 204px;
+  margin-bottom: 449px;
 
   .hero {
     display: flex;
@@ -111,4 +111,3 @@
 }
 
 @include spin();
-@include marquee();

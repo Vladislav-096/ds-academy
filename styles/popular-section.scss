@@ -1,233 +1,291 @@
 @import "./mixin.scss";
 
-.popular {
-  display: flex;
-  flex-direction: column;
+// .section-popular {
+//   position: relative;
+//   padding-top: 449px;
+//   overflow: hidden;
+//   @include marquee(#acd6de, -4deg, 126px);
+// }
 
-  &__top {
-    display: flex;
-    margin-bottom: 139px;
-    justify-content: space-between;
-  }
+.section-popular {
+  margin-bottom: 170px;
 
-  &__card-middle {
-    width: 100%;
-  }
-
-  &__card {
-    width: 584px;
-  }
-
-  &__picture-wrapper {
-    position: relative;
-    margin-bottom: 32px;
-    width: 100%;
-    height: 328px;
-  }
-
-  &__picture {
-    width: inherit;
-    height: inherit;
-    mask-repeat: no-repeat;
-  }
-
-  &__img {
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-  }
-
-  &__sticker {
-    position: absolute;
-    display: inline-block;
-    top: -49px;
-    width: 180px;
-    height: 180px;
-    animation: spin 3s linear infinite;
-    animation-play-state: paused;
-
-    &:hover {
-      animation-play-state: running;
-    }
-  }
-
-  &__sticker-img {
-    width: inherit;
-    height: inherit;
-  }
-
-  &__descr-wrapper {
+  .popular {
     display: flex;
     flex-direction: column;
-  }
 
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 17px;
-    align-items: center;
-  }
-
-  &__list-item {
-    font-size: 15px;
-
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-
-    &:first-child {
-      margin-right: 18px;
-    }
-  }
-
-  &__heading {
-    margin-bottom: 16px;
-    font-size: 30px;
-    line-height: 36px;
-    @include heading();
-  }
-
-  &__descr {
-    margin-bottom: 18px;
-    @include descr();
-  }
-
-  // fashion card
-  &__fashion-picture {
-    -webkit-mask-image: url("../img/fashion-mask.png");
-  }
-
-  &__fashion-sticker {
-    left: -40px;
-  }
-
-  &__fashion-list-item {
-    color: #22c98b;
-  }
-
-  .chosen-fashion-option {
-    @include navButton();
-    background-color: #22c98b;
-  }
-
-  // design card
-  &__design-picture {
-    -webkit-mask-image: url("../img/design-mask.png");
-  }
-
-  &__design-sticker {
-    right: -40px;
-  }
-
-  &__design-list-item {
-    color: #ec95b1;
-  }
-
-  .chosen-design-option {
-    @include navButton();
-    background-color: #ec95b1;
-  }
-
-  // design middle card
-  &__picture-wrapper-middle {
-    position: relative;
-    margin-bottom: 48px;
-    width: 100%;
-    height: 520px;
-  }
-
-  &__design-middle-picture {
-    -webkit-mask-image: url("../img/design-additional-mask.png");
-  }
-
-  &__descr-middle-block {
-    position: relative;
-    min-height: 181px;
-  }
-
-  &__descr-middle-wrapper {
-    position: absolute;
-    top: 0;
-    right: 10.33%;
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 879px;
-    justify-content: flex-end;
-  }
-
-  &__list-middle,
-  &__heading-middle,
-  &__descr-middle {
-    margin-bottom: 0;
-  }
-
-  &__list-middle,
-  &__heading-middle {
-    margin-bottom: 8px;
-  }
-
-  &__heading-middle {
-    font-size: 36px;
-    line-height: 43.2px;
-  }
-
-  &__descr-middle-element {
-    justify-content: flex-end;
-    align-items: flex-end;
-
-    &:nth-child(3n + 1) {
-      max-width: 172px;
-      margin-right: 19px;
-    }
-
-    &:not(:nth-child(3n + 1)) {
-      max-width: 688px;
-    }
-
-    &:nth-child(3) {
-      order: 4;
-    }
-
-    &:nth-child(4) {
-      order: 3;
-    }
-  }
-
-  &__design-middle-list-item {
-    font-size: 15px;
-    color: #ec95b1;
-
-    &:first-child {
+    &__top {
       display: flex;
-      margin-right: 0;
-      // margin-bottom: 14px;
-      flex-basis: 100%;
+      margin-bottom: 139px;
+      justify-content: space-between;
+    }
+
+    &__card-middle {
+      width: 100%;
+    }
+
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__card {
+      width: 584px;
+    }
+
+    &__picture-wrapper {
+      position: relative;
+      margin-bottom: 32px;
+      width: 100%;
+      height: 328px;
+    }
+
+    &__picture {
+      width: inherit;
+      height: inherit;
+      mask-repeat: no-repeat;
+    }
+
+    &__img {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+    }
+
+    &__sticker {
+      position: absolute;
+      display: inline-block;
+      top: -49px;
+      width: 180px;
+      height: 180px;
+      animation: spin 3s linear infinite;
+      animation-play-state: paused;
+
+      &:hover {
+        animation-play-state: running;
+      }
+    }
+
+    &__sticker-img {
+      width: inherit;
+      height: inherit;
+    }
+
+    &__descr-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 17px;
+      align-items: center;
+    }
+
+    &__list-item {
+      font-size: 15px;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      &:first-child {
+        margin-right: 18px;
+      }
+    }
+
+    &__heading {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 36px;
+      @include heading();
+    }
+
+    &__descr {
+      margin-bottom: 18px;
+      @include descr();
+    }
+
+    // fashion card
+    &__fashion-picture {
+      -webkit-mask-image: url("../img/fashion-mask.png");
+    }
+
+    &__fashion-sticker {
+      left: -40px;
+    }
+
+    &__fashion-list-item {
+      color: #22c98b;
+    }
+
+    .chosen-fashion-option {
+      @include navButton();
+      background-color: #22c98b;
+    }
+
+    // design card
+    &__design-picture {
+      -webkit-mask-image: url("../img/design-mask.png");
+    }
+
+    &__design-sticker {
+      right: -40px;
+    }
+
+    &__design-list-item {
+      color: #ec95b1;
+    }
+
+    .chosen-design-option {
+      @include navButton();
+      background-color: #ec95b1;
+    }
+
+    // design middle card
+    &__middle {
+      margin-bottom: 136px;
+    }
+
+    &__picture-wrapper-middle {
+      position: relative;
+      margin-bottom: 48px;
+      width: 100%;
+      height: 520px;
+    }
+
+    &__design-middle-picture {
+      -webkit-mask-image: url("../img/design-additional-mask.png");
+    }
+
+    &__descr-middle-block {
+      position: relative;
+      min-height: 181px;
+    }
+
+    &__descr-middle-wrapper {
+      position: absolute;
+      top: 0;
+      right: 10.33%;
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 879px;
       justify-content: flex-end;
     }
-  }
 
-  .date-middle {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-  }
+    &__list-middle,
+    &__heading-middle,
+    &__descr-middle {
+      margin-bottom: 0;
+    }
 
-  .schedule-date-middle,
-  .schedule-duration-middle {
-    padding: 0;
-    padding-right: 25px;
-    background-position: 100% 0px;
-  }
+    &__list-middle,
+    &__heading-middle {
+      margin-bottom: 8px;
+    }
 
-  .schedule-date-middle {
-    margin-right: 0;
-    margin-bottom: 8px;
-  }
+    &__heading-middle {
+      font-size: 36px;
+      line-height: 43.2px;
+    }
 
-  .chosen-design-middle-option {
-    background-color: #ec95b1;
-    @include navButton();
+    &__descr-middle-element {
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      &:nth-child(3n + 1) {
+        max-width: 172px;
+        margin-right: 19px;
+      }
+
+      &:not(:nth-child(3n + 1)) {
+        max-width: 688px;
+      }
+
+      &:nth-child(3) {
+        order: 4;
+      }
+
+      &:nth-child(4) {
+        order: 3;
+      }
+    }
+
+    &__design-middle-list-item {
+      font-size: 15px;
+      color: #ec95b1;
+
+      &:first-child {
+        display: flex;
+        margin-right: 0;
+        flex-basis: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    .date-middle {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .schedule-date-middle,
+    .schedule-duration-middle {
+      padding: 0;
+      padding-right: 25px;
+      background-position: 100% 0px;
+    }
+
+    .schedule-date-middle {
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
+
+    .chosen-design-middle-option {
+      background-color: #ec95b1;
+      @include navButton();
+    }
+
+    // marketing card
+    &__marketing-picture {
+      -webkit-mask-image: url("../img/marketing-mask.png");
+    }
+
+    &__marketing-sticker {
+      width: 274px;
+      height: 206px;
+      left: -57px;
+      top: -76px;
+    }
+
+    &__marketing-list-item {
+      color: #ef9700;
+    }
+
+    .chosen-marketing-option {
+      @include navButton();
+      background-color: #ef9700;
+    }
+
+    // software card
+    &__software-picture {
+      -webkit-mask-image: url("../img/software-mask.png");
+    }
+
+    &__software-sticker {
+      right: -40px;
+    }
+
+    &__software-list-item {
+      color: #57acbc;
+    }
+
+    .chosen-software-option {
+      @include navButton();
+      background-color: #57acbc;
+    }
   }
 }
 

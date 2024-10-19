@@ -61,17 +61,15 @@
   }
 }
 
-@mixin marquee {
+@mixin marquee($background-color, $deg) {
   .marquee {
-    position: relative;
     margin: 0 auto;
-    margin-top: 125px;
     width: calc(100vw + 20px);
     height: 120px;
-    background-color: #acd6de;
+    background-color: $background-color;
     white-space: nowrap;
     overflow: hidden;
-    transform: rotate(-4deg) translateX(-10px);
+    transform: rotate($deg) translateX(-10px);
 
     &__content {
       position: absolute;
