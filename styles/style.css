@@ -365,6 +365,10 @@ p {
   width: inherit;
   height: inherit;
 }
+.popular__descr-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .popular__list {
   display: flex;
   flex-wrap: wrap;
@@ -403,10 +407,6 @@ p {
 .popular__fashion-sticker {
   left: -40px;
 }
-.popular__fashion-list-header-sub-block, .popular__fashion-descr-date-sub-block {
-  display: flex;
-  flex-direction: column;
-}
 .popular__fashion-list-item {
   color: #22c98b;
 }
@@ -423,10 +423,6 @@ p {
 .popular__design-sticker {
   right: -40px;
 }
-.popular__design-list-header-sub-block, .popular__design-descr-date-sub-block {
-  display: flex;
-  flex-direction: column;
-}
 .popular__design-list-item {
   color: #ec95b1;
 }
@@ -439,70 +435,85 @@ p {
 }
 .popular__picture-wrapper-middle {
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
   width: 100%;
   height: 520px;
 }
 .popular__design-middle-picture {
   -webkit-mask-image: url("../img/design-additional-mask.png");
 }
-.popular__middle-descr-wrapper {
+.popular__descr-middle-block {
   position: relative;
-  width: 100%;
   min-height: 181px;
 }
-.popular__middle-descr-inner {
+.popular__descr-middle-wrapper {
   position: absolute;
-  top: 19px;
-  left: 196px;
-  max-width: 879px;
-}
-.popular__design-middle-list-header-sub-block, .popular__design-middle-descr-date-sub-block {
+  top: 0;
+  right: 10.33%;
   display: flex;
-}
-.popular__design-middle-list-header-sub-block {
-  flex-direction: row;
-}
-.popular__design-middle-descr-date-sub-block {
-  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  max-width: 879px;
   justify-content: flex-end;
+}
+.popular__list-middle, .popular__heading-middle, .popular__descr-middle {
+  margin-bottom: 0;
+}
+.popular__list-middle, .popular__heading-middle {
+  margin-bottom: 8px;
 }
 .popular__heading-middle {
-  margin: 0;
   font-size: 36px;
-  line-height: 40px;
+  line-height: 43.2px;
+}
+.popular__descr-middle-element {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.popular__descr-middle-element:nth-child(3n+1) {
+  max-width: 172px;
+  margin-right: 19px;
+}
+.popular__descr-middle-element:not(:nth-child(3n+1)) {
+  max-width: 688px;
+}
+.popular__descr-middle-element:nth-child(3) {
+  order: 4;
+}
+.popular__descr-middle-element:nth-child(4) {
+  order: 3;
 }
 .popular__design-middle-list-item {
+  font-size: 15px;
   color: #ec95b1;
 }
-.popular__middle-list {
-  margin: 16px 18px 0 0;
-  justify-content: flex-end;
-}
-.popular__middle-descr {
-  margin: 0;
-}
-.popular__design-middle-list-item-first-element {
+.popular__design-middle-list-item:first-child {
   display: flex;
-  margin-bottom: 14px;
+  margin-right: 0;
   flex-basis: 100%;
   justify-content: flex-end;
 }
-.popular__design-middle-list-item-first-element:first-child {
+.popular .date-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+.popular .schedule-date-middle,
+.popular .schedule-duration-middle {
+  padding: 0;
+  padding-right: 25px;
+  background-position: 100% 0px;
+}
+.popular .schedule-date-middle {
   margin-right: 0;
+  margin-bottom: 8px;
 }
 .popular .chosen-design-middle-option {
+  background-color: #ec95b1;
   padding: 9px 18px;
   border-radius: 20px;
   font-size: 15px;
   color: #1b1f21;
-  display: inline-block;
-  background-color: #ec95b1;
-}
-.popular .schedule-date-middle-card,
-.popular .schedule-duration-middle-card {
-  display: block;
-  margin: 0;
 }
 
 @keyframes spin {

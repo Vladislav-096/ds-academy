@@ -56,6 +56,11 @@
     height: inherit;
   }
 
+  &__descr-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -64,7 +69,6 @@
   }
 
   &__list-item {
-    // flex: 0 1 auto;
     font-size: 15px;
 
     &:not(:last-child) {
@@ -97,12 +101,6 @@
     left: -40px;
   }
 
-  &__fashion-list-header-sub-block,
-  &__fashion-descr-date-sub-block {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__fashion-list-item {
     color: #22c98b;
   }
@@ -121,12 +119,6 @@
     right: -40px;
   }
 
-  &__design-list-header-sub-block,
-  &__design-descr-date-sub-block {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__design-list-item {
     color: #ec95b1;
   }
@@ -136,10 +128,10 @@
     background-color: #ec95b1;
   }
 
-  // design additional card
+  // design middle card
   &__picture-wrapper-middle {
     position: relative;
-    margin-bottom: 32px;
+    margin-bottom: 48px;
     width: 100%;
     height: 520px;
   }
@@ -148,76 +140,94 @@
     -webkit-mask-image: url("../img/design-additional-mask.png");
   }
 
-  &__middle-descr-wrapper {
+  &__descr-middle-block {
     position: relative;
-    width: 100%;
     min-height: 181px;
   }
 
-  &__middle-descr-inner {
+  &__descr-middle-wrapper {
     position: absolute;
-    top: 19px;
-    left: 196px;
-    max-width: 879px;
-  }
-
-  &__design-middle-list-header-sub-block,
-  &__design-middle-descr-date-sub-block {
+    top: 0;
+    right: 10.33%;
     display: flex;
-  }
-
-  &__design-middle-list-header-sub-block {
-    flex-direction: row;
-  }
-
-  &__design-middle-descr-date-sub-block {
-    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    max-width: 879px;
     justify-content: flex-end;
+  }
+
+  &__list-middle,
+  &__heading-middle,
+  &__descr-middle {
+    margin-bottom: 0;
+  }
+
+  &__list-middle,
+  &__heading-middle {
+    margin-bottom: 8px;
   }
 
   &__heading-middle {
-    margin: 0;
     font-size: 36px;
-    line-height: 40px;
+    line-height: 43.2px;
   }
 
-  &__design-middle-list-item {
-    color: #ec95b1;
-  }
-
-  &__middle-list {
-    margin: 16px 18px 0 0;
-    // margin: 0;
-    // margin-right: 18px;
+  &__descr-middle-element {
     justify-content: flex-end;
-  }
+    align-items: flex-end;
 
-  &__middle-descr {
-    margin: 0;
-  }
+    &:nth-child(3n + 1) {
+      max-width: 172px;
+      margin-right: 19px;
+    }
 
-  &__design-middle-list-item-first-element {
-    display: flex;
-    // margin-top: 16px;
-    margin-bottom: 14px;
-    flex-basis: 100%;
-    justify-content: flex-end;
+    &:not(:nth-child(3n + 1)) {
+      max-width: 688px;
+    }
 
-    &:first-child {
-      margin-right: 0;
+    &:nth-child(3) {
+      order: 4;
+    }
+
+    &:nth-child(4) {
+      order: 3;
     }
   }
 
-  .chosen-design-middle-option {
-    @include navButton();
-    display: inline-block;
-    background-color: #ec95b1;
+  &__design-middle-list-item {
+    font-size: 15px;
+    color: #ec95b1;
+
+    &:first-child {
+      display: flex;
+      margin-right: 0;
+      // margin-bottom: 14px;
+      flex-basis: 100%;
+      justify-content: flex-end;
+    }
   }
 
-  .schedule-date-middle-card,
-  .schedule-duration-middle-card {
-    display: block;
-    margin: 0;
+  .date-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .schedule-date-middle,
+  .schedule-duration-middle {
+    padding: 0;
+    padding-right: 25px;
+    background-position: 100% 0px;
+  }
+
+  .schedule-date-middle {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .chosen-design-middle-option {
+    background-color: #ec95b1;
+    @include navButton();
   }
 }
 
