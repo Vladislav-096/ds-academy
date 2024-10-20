@@ -1,8 +1,40 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .section-hero {
   margin-bottom: 449px;
 }
 .section-hero .hero {
   display: flex;
+}
+.section-hero .hero .schedule-date {
+  margin-right: 21px;
+  max-width: 223px;
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/calendar-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
+.section-hero .hero .schedule-duration {
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/watch-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
 }
 .section-hero .hero__picture-wrapper {
   position: relative;
@@ -58,6 +90,7 @@
 .section-hero .hero__list-item {
   margin-bottom: 10px;
   font-size: 15px;
+  color: #94ac23;
 }
 .section-hero .hero__list-item:not(:last-child) {
   margin-right: 10px;
@@ -74,7 +107,7 @@
   color: #1b1f21;
 }
 .section-hero .hero__descr {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   max-width: 480px;
   color: #757778;
   font-size: 18px;
@@ -87,6 +120,7 @@
   padding: 20px 57px;
   left: 40px;
   bottom: 46px;
+  color: #1b1f21;
   background-color: #bedb39;
   border-radius: 40px;
   font-size: 18px;
@@ -100,13 +134,4 @@
   height: 82%;
   border: 1.5px solid #1b1f21;
   border-radius: 30px;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }/*# sourceMappingURL=hero-section.css.map */

@@ -1,22 +1,24 @@
 @import "./mixin.scss";
 
-// .section-popular {
-//   position: relative;
-//   padding-top: 449px;
-//   overflow: hidden;
-//   @include marquee(#acd6de, -4deg, 126px);
-// }
+@include spin();
 
 .section-popular {
-  margin-bottom: 170px;
+  margin-bottom: 215px;
 
   .popular {
+    @include scheduleBlock(
+      $calendar-image-grey,
+      $watch-image-grey,
+      400,
+      $date-text-color
+    );
+
     display: flex;
     flex-direction: column;
 
     &__top {
       display: flex;
-      margin-bottom: 139px;
+      margin-bottom: 136px;
       justify-content: space-between;
     }
 
@@ -87,7 +89,7 @@
       font-size: 15px;
 
       &:not(:last-child) {
-        margin-right: 10px;
+        margin-right: 11px;
       }
 
       &:first-child {
@@ -145,7 +147,7 @@
 
     // design middle card
     &__middle {
-      margin-bottom: 136px;
+      margin-bottom: 137px;
     }
 
     &__picture-wrapper-middle {
@@ -288,5 +290,3 @@
     }
   }
 }
-
-@include spin();

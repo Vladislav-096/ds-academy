@@ -29,24 +29,26 @@
   line-height: 28.8px;
 }
 
-@mixin schedule($image) {
+@mixin schedule($image, $fontWaight, $color) {
   display: inline-block;
   padding-left: 25px;
-  color: $date-text-color;
+  color: $color;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: $fontWaight;
+  line-height: 21px;
   background-image: url($image);
   background-repeat: no-repeat;
-  background-position: 0 0;
+  background-position: 0 3px;
 }
 
-@mixin scheduleBlock($date, $duration) {
+@mixin scheduleBlock($date, $duration, $fontWaight, $color) {
   .schedule-date {
     margin-right: 21px;
-    @include schedule($date);
+    max-width: 223px;
+    @include schedule($date, $fontWaight, $color);
   }
   .schedule-duration {
-    @include schedule($duration);
+    @include schedule($duration, $fontWaight, $color);
   }
 }
 

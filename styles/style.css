@@ -67,7 +67,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
 }
 
@@ -183,29 +184,6 @@ p {
   }
 }
 
-.schedule-date {
-  margin-right: 21px;
-  display: inline-block;
-  padding-left: 25px;
-  color: #aeaeae;
-  font-size: 15px;
-  font-weight: 400;
-  background-image: url("../img/calendar.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
-
-.schedule-duration {
-  display: inline-block;
-  padding-left: 25px;
-  color: #aeaeae;
-  font-size: 15px;
-  font-weight: 400;
-  background-image: url("../img/watch.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
-
 .header {
   margin-bottom: 94px;
   padding-top: 14px;
@@ -257,11 +235,43 @@ p {
   background-repeat: no-repeat;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .section-hero {
   margin-bottom: 449px;
 }
 .section-hero .hero {
   display: flex;
+}
+.section-hero .hero .schedule-date {
+  margin-right: 21px;
+  max-width: 223px;
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/calendar-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
+.section-hero .hero .schedule-duration {
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/watch-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
 }
 .section-hero .hero__picture-wrapper {
   position: relative;
@@ -317,6 +327,7 @@ p {
 .section-hero .hero__list-item {
   margin-bottom: 10px;
   font-size: 15px;
+  color: #94ac23;
 }
 .section-hero .hero__list-item:not(:last-child) {
   margin-right: 10px;
@@ -333,7 +344,7 @@ p {
   color: #1b1f21;
 }
 .section-hero .hero__descr {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   max-width: 480px;
   color: #757778;
   font-size: 18px;
@@ -346,6 +357,7 @@ p {
   padding: 20px 57px;
   left: 40px;
   bottom: 46px;
+  color: #1b1f21;
   background-color: #bedb39;
   border-radius: 40px;
   font-size: 18px;
@@ -370,15 +382,39 @@ p {
   }
 }
 .section-popular {
-  margin-bottom: 170px;
+  margin-bottom: 215px;
 }
 .section-popular .popular {
   display: flex;
   flex-direction: column;
 }
+.section-popular .popular .schedule-date {
+  margin-right: 21px;
+  max-width: 223px;
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/calendar-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
+.section-popular .popular .schedule-duration {
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/watch-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
 .section-popular .popular__top {
   display: flex;
-  margin-bottom: 139px;
+  margin-bottom: 136px;
   justify-content: space-between;
 }
 .section-popular .popular__card-middle {
@@ -439,7 +475,7 @@ p {
   font-size: 15px;
 }
 .section-popular .popular__list-item:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 11px;
 }
 .section-popular .popular__list-item:first-child {
   margin-right: 18px;
@@ -494,7 +530,7 @@ p {
   background-color: #ec95b1;
 }
 .section-popular .popular__middle {
-  margin-bottom: 136px;
+  margin-bottom: 137px;
 }
 .section-popular .popular__picture-wrapper-middle {
   position: relative;
@@ -614,15 +650,144 @@ p {
   background-color: #57acbc;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .section-webinars {
-  padding-top: 222px;
+  margin-bottom: 100px;
+  padding-top: 144px;
+  padding-bottom: 130px;
   background-color: #1b1f21;
+}
+.section-webinars .schedule-date {
+  margin-right: 21px;
+  max-width: 223px;
+  display: inline-block;
+  padding-left: 25px;
+  color: #fcfaf9;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  background-image: url("../img/calendar-white.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
+.section-webinars .schedule-duration {
+  display: inline-block;
+  padding-left: 25px;
+  color: #fcfaf9;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  background-image: url("../img/watch-white.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
+.section-webinars .webinars {
+  color: #fcfaf9;
+}
+.section-webinars .webinars__header-wrapper {
+  display: flex;
+  margin-bottom: 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-webinars .webinars__heading {
+  font-family: "Archivo Black";
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 55.2px;
+}
+.section-webinars .webinars__button {
+  padding: 22px 62px;
+  background-color: #9853f4;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fcfaf9;
+}
+.section-webinars .webinars__cards-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.section-webinars .webinars__card-list-item {
+  position: relative;
+  margin-bottom: 40px;
+  width: 376px;
+  min-height: 432px;
+  padding: 32px;
+  border-radius: 32px;
+}
+.section-webinars .webinars__card-list-item:not(:nth-child(3n)) {
+  margin-right: 40px;
+}
+.section-webinars .webinars__card-bio {
+  display: flex;
+  margin-bottom: 15px;
+  min-height: 93px;
+}
+.section-webinars .webinars__card-picture {
+  margin-right: 20px;
+  height: 64px;
+  -webkit-mask-image: url("../img/avatar-mask.png");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+.section-webinars .webinars__card-img {
+  min-width: 64px;
+  height: inherit;
+}
+.section-webinars .webinars__card-bio-info-block {
+  padding-top: 5px;
+}
+.section-webinars .webinars__card-bio-name {
+  margin-bottom: 6px;
+  font-family: "Archivo Black";
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 31.2px;
+}
+.section-webinars .webinars__card-bio-descr {
+  display: block;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+.section-webinars .webinars__card-descr {
+  margin-bottom: 85px;
+  font-family: "Archivo Black";
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 36px;
+}
+.section-webinars .webinars__schedule {
+  position: absolute;
+  height: 75px;
+  bottom: 32px;
+}
+.section-webinars .webinars__schedule-heading {
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+.section-webinars .webinars__schedule-heading span:first-child {
+  margin-right: 25px;
+}
+.section-webinars .webinars .schedule-date {
+  margin-right: 24px;
+  width: 223px;
+}
+.section-webinars .webinars__date-duration {
+  display: flex;
+  justify-content: space-between;
+}
+.section-webinars .webinars__line-break {
+  white-space: nowrap;
+}
+.section-webinars .webinars__card-one {
+  background-color: #57acbc;
+}
+.section-webinars .webinars__card-two {
+  background-color: #fe6d44;
+}
+.section-webinars .webinars__card-three {
+  background-color: #ef9700;
 }/*# sourceMappingURL=style.css.map */

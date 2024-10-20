@@ -47,7 +47,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
 }
 
@@ -85,5 +86,3 @@ p {
   bottom: 50%;
   @include marquee(#ffad20, -3deg);
 }
-
-@include scheduleBlock($calendar-image, $watch-image);

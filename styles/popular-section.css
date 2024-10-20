@@ -1,13 +1,45 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .section-popular {
-  margin-bottom: 170px;
+  margin-bottom: 215px;
 }
 .section-popular .popular {
   display: flex;
   flex-direction: column;
 }
+.section-popular .popular .schedule-date {
+  margin-right: 21px;
+  max-width: 223px;
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/calendar-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
+.section-popular .popular .schedule-duration {
+  display: inline-block;
+  padding-left: 25px;
+  color: #aeaeae;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  background-image: url("../img/watch-grey.svg");
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+}
 .section-popular .popular__top {
   display: flex;
-  margin-bottom: 139px;
+  margin-bottom: 136px;
   justify-content: space-between;
 }
 .section-popular .popular__card-middle {
@@ -68,7 +100,7 @@
   font-size: 15px;
 }
 .section-popular .popular__list-item:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 11px;
 }
 .section-popular .popular__list-item:first-child {
   margin-right: 18px;
@@ -123,7 +155,7 @@
   background-color: #ec95b1;
 }
 .section-popular .popular__middle {
-  margin-bottom: 136px;
+  margin-bottom: 137px;
 }
 .section-popular .popular__picture-wrapper-middle {
   position: relative;
@@ -241,13 +273,4 @@
   font-size: 15px;
   color: #1b1f21;
   background-color: #57acbc;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }/*# sourceMappingURL=popular-section.css.map */

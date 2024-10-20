@@ -1,10 +1,19 @@
 @import "./mixin.scss";
 @import "./variables.scss";
 
+@include spin();
+
 .section-hero {
   margin-bottom: 449px;
 
   .hero {
+    @include scheduleBlock(
+      $calendar-image-grey,
+      $watch-image-grey,
+      400,
+      $date-text-color
+    );
+
     display: flex;
 
     &__picture-wrapper {
@@ -65,6 +74,7 @@
     &__list-item {
       margin-bottom: 10px;
       font-size: 15px;
+      color: #94ac23;
 
       &:not(:last-child) {
         margin-right: 10px;
@@ -83,7 +93,7 @@
     }
 
     &__descr {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       @include descr();
     }
 
@@ -92,6 +102,7 @@
       padding: 20px 57px;
       left: 40px;
       bottom: 46px;
+      color: $secondary-text-color;
       background-color: #bedb39;
       border-radius: 40px;
       font-size: 18px;
@@ -109,5 +120,3 @@
     }
   }
 }
-
-@include spin();
