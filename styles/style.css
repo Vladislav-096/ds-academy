@@ -91,7 +91,8 @@ p {
 }
 
 .popular-marquee,
-.webinars-marquee {
+.webinars-marquee,
+.subscription-marquee {
   position: absolute;
   z-index: 777;
 }
@@ -173,6 +174,50 @@ p {
   color: #1b1f21;
 }
 .webinars-marquee .marquee__list-separator {
+  display: flex;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(0, -50%);
+  }
+  100% {
+    transform: translate(-66.6%, -50%);
+  }
+}
+
+.subscription-marquee {
+  bottom: 40%;
+}
+.subscription-marquee .marquee {
+  margin: 0 auto;
+  width: calc(100vw + 20px);
+  height: 120px;
+  background-color: #fe6d44;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: rotate(-2deg) translateX(-10px);
+}
+.subscription-marquee .marquee__content {
+  position: absolute;
+  display: flex;
+  width: 300%;
+  top: 50%;
+  animation: marquee 15s linear infinite forwards;
+}
+.subscription-marquee .marquee__list {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+.subscription-marquee .marquee__list-text {
+  font-family: "Archivo Black";
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 69.6px;
+  letter-spacing: 0.01em;
+  color: #1b1f21;
+}
+.subscription-marquee .marquee__list-separator {
   display: flex;
 }
 @keyframes marquee {
@@ -651,7 +696,6 @@ p {
 }
 
 .section-webinars {
-  margin-bottom: 100px;
   padding-top: 144px;
   padding-bottom: 130px;
   background-color: #1b1f21;
@@ -790,4 +834,29 @@ p {
 }
 .section-webinars .webinars__card-three {
   background-color: #ef9700;
+}
+
+.section-subscription {
+  padding-top: 188px;
+  padding-bottom: 135px;
+  background-color: #f2f2f2;
+}
+.section-subscription .subscription {
+  position: relative;
+  padding: 64px 0 64px 104px;
+  color: #fcfaf9;
+  -webkit-mask-image: url("../img/subscription-mask.png");
+  -webkit-mask-repeat: no-repeat;
+  background-color: #57acbc;
+}
+.section-subscription .subscription__descr-block {
+  width: 624px;
+}
+.section-subscription .subscription__picture {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.section-subscription .subscription__img {
+  height: 518px;
 }/*# sourceMappingURL=style.css.map */

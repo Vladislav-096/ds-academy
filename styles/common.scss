@@ -72,7 +72,8 @@ p {
 
 // common
 .popular-marquee,
-.webinars-marquee {
+.webinars-marquee,
+.subscription-marquee {
   position: absolute;
   z-index: 777;
 }
@@ -85,4 +86,9 @@ p {
 .webinars-marquee {
   bottom: 50%;
   @include marquee(#ffad20, -3deg);
+}
+
+.subscription-marquee {
+  bottom: 40%;
+  @include marquee(#fe6d44, -2deg);
 }
