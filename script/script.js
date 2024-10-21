@@ -66,6 +66,4 @@ submitButton.addEventListener("click", (e) => {
   errorMarker.classList.remove("state-picture-active");
   successMarker.classList.add("state-picture-active");
   emainInput.classList.add("input-success");
-
-  // а если все норм, то добавить другую картинку
 });
