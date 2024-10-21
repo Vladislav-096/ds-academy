@@ -7,6 +7,7 @@
 
   .subscription {
     position: relative;
+    min-height: 518px;
     padding: 64px 0 64px 104px;
     color: $tertiary-text-color;
     -webkit-mask-image: url("../img/subscription-mask.png");
@@ -14,7 +15,174 @@
     background-color: #57acbc;
 
     &__descr-block {
-      width: 624px;
+      width: 600px;
+    }
+
+    &__heading {
+      margin-bottom: 8px;
+      font-family: "Archivo Black";
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 43.2px;
+    }
+
+    &__descr {
+      margin-bottom: 88px;
+      max-height: 90px;
+      // white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box; /* Для поддержки многострочного текста */
+      -webkit-box-orient: vertical; /* Вертикальная ориентация для flex-контейнера */
+      -webkit-line-clamp: 3; /* Максимальное количество строк */
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 28.8px;
+      letter-spacing: 0.07px;
+    }
+
+    &__form {
+      display: flex;
+      width: 576px;
+      flex-wrap: wrap;
+    }
+
+    &__form-input-submin-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    &__input-wrapper {
+      position: relative;
+    }
+
+    &__input {
+      margin-bottom: 8px;
+      width: 280px;
+      padding: 14px 24px;
+      border: 1.5px solid #fcfaf9;
+      background-color: transparent;
+      border-radius: 88px;
+      color: #e8e8e8;
+    }
+
+    .input-error {
+      border-color: #ffad20;
+    }
+
+    .input-success {
+      border-color: #bedb39;
+    }
+
+    &__form-submit {
+      padding: 14px 113px;
+      height: 49px;
+      border-radius: 40px;
+      background-color: #fe6d44;
+      color: $tertiary-text-color;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    &__checkbox-wrapper {
+      user-select: none;
+      cursor: pointer;
+    }
+
+    &__checkbox {
+      position: absolute;
+      appearance: none;
+
+      &:checked + .subscription__checkbox-descr {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__checkbox-descr {
+      position: relative;
+      display: block;
+      width: 565px;
+      padding-left: 40px;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 21px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 29%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background-color: #fcfaf9;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 29%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background-image: url("../img/check-mark.svg");
+        background-position: center;
+        background-size: 70%;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 0.1s;
+      }
+    }
+
+    .error-message {
+      margin: 0 auto;
+      width: 230px;
+      color: #fff;
+      font-size: 13px;
+      line-height: 18.2px;
+      text-align: center;
+    }
+
+    &__state-picture {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      transform: translateY(-64%);
+      width: 26.6px;
+      height: 26.6px;
+    }
+
+    &__input-placeholder {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-65%);
+      left: 24px;
+      pointer-events: none;
+      color: #e8e8e8;
+      font-size: 18px;
+    }
+
+    .input-placeholder-hedden {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .state-picture-active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &__state-img {
+      width: inherit;
+      height: inherit;
     }
 
     &__picture {

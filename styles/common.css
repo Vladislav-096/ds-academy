@@ -68,7 +68,8 @@ p {
 
 .popular-marquee,
 .webinars-marquee,
-.subscription-marquee {
+.subscription-marquee,
+.discount-marquee {
   position: absolute;
   z-index: 777;
 }
@@ -194,6 +195,50 @@ p {
   color: #1b1f21;
 }
 .subscription-marquee .marquee__list-separator {
+  display: flex;
+}
+@keyframes marquee {
+  0% {
+    transform: translate(0, -50%);
+  }
+  100% {
+    transform: translate(-66.6%, -50%);
+  }
+}
+
+.discount-marquee {
+  bottom: 30%;
+}
+.discount-marquee .marquee {
+  margin: 0 auto;
+  width: calc(100vw + 20px);
+  height: 120px;
+  background-color: #da3369;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: rotate(0deg) translateX(-10px);
+}
+.discount-marquee .marquee__content {
+  position: absolute;
+  display: flex;
+  width: 300%;
+  top: 50%;
+  animation: marquee 15s linear infinite forwards;
+}
+.discount-marquee .marquee__list {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+.discount-marquee .marquee__list-text {
+  font-family: "Archivo Black";
+  font-size: 58px;
+  font-weight: 400;
+  line-height: 69.6px;
+  letter-spacing: 0.01em;
+  color: #f2f2f2;
+}
+.discount-marquee .marquee__list-separator {
   display: flex;
 }
 @keyframes marquee {

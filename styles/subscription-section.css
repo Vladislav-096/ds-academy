@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .section-subscription {
   padding-top: 188px;
   padding-bottom: 135px;
@@ -5,6 +6,7 @@
 }
 .section-subscription .subscription {
   position: relative;
+  min-height: 518px;
   padding: 64px 0 64px 104px;
   color: #fcfaf9;
   -webkit-mask-image: url("../img/subscription-mask.png");
@@ -12,7 +14,154 @@
   background-color: #57acbc;
 }
 .section-subscription .subscription__descr-block {
-  width: 624px;
+  width: 600px;
+}
+.section-subscription .subscription__heading {
+  margin-bottom: 8px;
+  font-family: "Archivo Black";
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 43.2px;
+}
+.section-subscription .subscription__descr {
+  margin-bottom: 88px;
+  max-height: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; /* Для поддержки многострочного текста */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация для flex-контейнера */
+  -webkit-line-clamp: 3; /* Максимальное количество строк */
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28.8px;
+  letter-spacing: 0.07px;
+}
+.section-subscription .subscription__form {
+  display: flex;
+  width: 576px;
+  flex-wrap: wrap;
+}
+.section-subscription .subscription__form-input-submin-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.section-subscription .subscription__input-wrapper {
+  position: relative;
+}
+.section-subscription .subscription__input {
+  margin-bottom: 8px;
+  width: 280px;
+  padding: 14px 24px;
+  border: 1.5px solid #fcfaf9;
+  background-color: transparent;
+  border-radius: 88px;
+  color: #e8e8e8;
+}
+.section-subscription .subscription .input-error {
+  border-color: #ffad20;
+}
+.section-subscription .subscription .input-success {
+  border-color: #bedb39;
+}
+.section-subscription .subscription__form-submit {
+  padding: 14px 113px;
+  height: 49px;
+  border-radius: 40px;
+  background-color: #fe6d44;
+  color: #fcfaf9;
+  font-size: 18px;
+  font-weight: 700;
+}
+.section-subscription .subscription__checkbox-wrapper {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.section-subscription .subscription__checkbox {
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.section-subscription .subscription__checkbox:checked + .subscription__checkbox-descr::after {
+  opacity: 1;
+}
+.section-subscription .subscription__checkbox-descr {
+  position: relative;
+  display: block;
+  width: 565px;
+  padding-left: 40px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+}
+.section-subscription .subscription__checkbox-descr::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 29%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: #fcfaf9;
+}
+.section-subscription .subscription__checkbox-descr::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 29%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url("../img/check-mark.svg");
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.section-subscription .subscription .error-message {
+  margin: 0 auto;
+  width: 230px;
+  color: #fff;
+  font-size: 13px;
+  line-height: 18.2px;
+  text-align: center;
+}
+.section-subscription .subscription__state-picture {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  transform: translateY(-64%);
+  width: 26.6px;
+  height: 26.6px;
+}
+.section-subscription .subscription__input-placeholder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-65%);
+  left: 24px;
+  pointer-events: none;
+  color: #e8e8e8;
+  font-size: 18px;
+}
+.section-subscription .subscription .input-placeholder-hedden {
+  visibility: hidden;
+  opacity: 0;
+}
+.section-subscription .subscription .state-picture-active {
+  visibility: visible;
+  opacity: 1;
+}
+.section-subscription .subscription__state-img {
+  width: inherit;
+  height: inherit;
 }
 .section-subscription .subscription__picture {
   position: absolute;

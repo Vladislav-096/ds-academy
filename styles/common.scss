@@ -73,22 +73,28 @@ p {
 // common
 .popular-marquee,
 .webinars-marquee,
-.subscription-marquee {
+.subscription-marquee,
+.discount-marquee {
   position: absolute;
   z-index: 777;
 }
 
 .popular-marquee {
   top: 838px;
-  @include marquee(#acd6de, -4deg);
+  @include marquee(#acd6de, -4deg, $secondary-text-color);
 }
 
 .webinars-marquee {
   bottom: 50%;
-  @include marquee(#ffad20, -3deg);
+  @include marquee(#ffad20, -3deg, $secondary-text-color);
 }
 
 .subscription-marquee {
   bottom: 40%;
-  @include marquee(#fe6d44, -2deg);
+  @include marquee(#fe6d44, -2deg, $secondary-text-color);
+}
+
+.discount-marquee {
+  bottom: 30%;
+  @include marquee(#da3369, 0deg, #f2f2f2);
 }
