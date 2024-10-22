@@ -40,6 +40,31 @@ body {
   margin: 0 auto;
   max-width: 1208px;
 }
+@media (max-width: 1366px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+@media (max-width: 1140px) {
+  .container {
+    max-width: 850px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 704px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: 500px;
+  }
+}
+@media (max-width: 577px) {
+  .container {
+    max-width: 304px;
+  }
+}
 
 h1,
 h2,

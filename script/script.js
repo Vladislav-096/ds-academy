@@ -8,7 +8,10 @@ const successMarker = document.getElementById(
 );
 const termsValidation = document.getElementById("subscription-checkbox");
 const placeholder = document.getElementById("subscription-input-placeholder");
+const dropdownBtn = document.querySelectorAll(".footer__nav-button");
+const dropdownMenu = document.querySelectorAll(".footer__nav-list");
 
+// form validation
 const createErrorMessage = () => {
   const errorMessage = document.createElement("p");
   errorMessage.classList.add("error-message");
@@ -66,4 +69,24 @@ submitButton.addEventListener("click", (e) => {
   errorMarker.classList.remove("state-picture-active");
   successMarker.classList.add("state-picture-active");
   emainInput.classList.add("input-success");
+});
+
+// dropdown menu
+dropdownBtn.forEach((btn, index) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.forEach((dropdown, i) => {
+      if (i === index) {
+        dropdown.classList.toggle("show-dropdown");
+      } else {
+        dropdown.classList.remove("show-dropdown");
+      }
+    });
+  });
+});
+
+document.documentElement.addEventListener("click", function () {
+  dropdowns.forEach((dropdown) => {
+    dropdown.classList.remove("show-dropdown");
+  });
 });
