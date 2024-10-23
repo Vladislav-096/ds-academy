@@ -14,9 +14,13 @@
         <div class="container">
           <div class="header__wrapper">
             <div class="header__block">
-              <div class="logo-wrapper">
-                <img class="logo" src="./img/logo-ebac-header.svg" alt="Logo" />
-              </div>
+              <picture class="header__logo-picture">
+                <img
+                  class="header__logo-img"
+                  src="./img/logo-ebac-header.svg"
+                  alt="Logo"
+                />
+              </picture>
             </div>
             <nav class="header__block">
               <ul class="list-reset header__menu-list">
@@ -41,18 +45,16 @@
               </ul>
             </nav>
             <div class="header__block">
-              <div class="header__search-wrapper">
-                <button class="btn-reset header__search-button">
-                  <img src="./img/search-icon.svg" alt="Search icon" />
-                </button>
-                <span class="header__logo-abbreviation">EBAC</span>
-              </div>
+              <button class="btn-reset header__search-button">
+                <img src="./img/search-icon.svg" alt="Search icon" />
+              </button>
+              <span class="header__logo-abbreviation">EBAC</span>
             </div>
           </div>
         </div>
       </header>
       <main>
-        <div class="popular-marquee">
+        <!-- <div class="popular-marquee">
           <div class="marquee">
             <div class="marquee__content">
               <ul class="list-reset marquee__list">
@@ -87,7 +89,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="webinars-marquee">
           <div class="marquee">
             <div class="marquee__content">
@@ -235,7 +237,9 @@
               </div>
               <div class="hero__descr-block">
                 <ul class="list-reset hero__list">
-                  <li class="hero__list-item chosen-option">Gaming</li>
+                  <li class="hero__list-item">
+                    <div class="chosen-hero-option">Gaming</div>
+                  </li>
                   <li class="hero__list-item">Artículo</li>
                   <li class="hero__list-item">Niños</li>
                   <li class="hero__list-item">Proyecto</li>
@@ -249,7 +253,7 @@
                   escuchado este término antes? Si no te suena de nada, no te
                   sientas mal, el concepto es nuevo. ¡Nosotros te lo explicamos!
                 </p>
-                <div>
+                <div class="date-hero">
                   <span class="schedule-date">2 de junio de 2022</span>
                   <span class="schedule-duration">10 min</span>
                 </div>

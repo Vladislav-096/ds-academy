@@ -2,13 +2,17 @@
 @import "./mixin.scss";
 
 .header {
-  margin-bottom: 94px;
-  padding-top: 14px;
+  margin-bottom: 96px;
+  padding-top: 16px;
   color: $secondary-text-color;
 
   &__wrapper {
     display: flex;
     align-items: center;
+
+    @media (max-width: 1366px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__block {
@@ -17,49 +21,123 @@
     }
 
     &:last-child {
+      display: flex;
       margin-left: auto;
     }
+
+    @media (max-width: 1366px) {
+      &:nth-child(1) {
+        margin-right: 0;
+      }
+
+      &:nth-child(2) {
+        padding-top: 23px;
+        order: 3;
+        flex-basis: 100%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      &:nth-child(2) {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 577px) {
+      &:nth-child(2) {
+        padding-top: 15px;
+      }
+    }
+  }
+
+  &__logo-picture {
+    width: 108px;
+    height: 40px;
+
+    @media (max-width: 577px) {
+      width: 130px;
+      height: 48px;
+    }
+  }
+
+  &__logo-img {
+    width: inherit;
+    height: inherit;
   }
 
   // @include logo();
 
   &__menu-list {
     display: flex;
+
+    @media (max-width: 1366px) {
+      justify-content: space-between;
+    }
+
+    @media (max-width: 767px) {
+      overflow-x: scroll;
+      justify-content: flex-start;
+    }
   }
 
   &__menu-item {
     &:not(:last-child) {
       margin-right: 10px;
     }
+
+    @media (max-width: 1366px) {
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
+
+    @media (max-width: 767px) {
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
   }
 
   &__menu-link {
-    @include navButton();
+    display: block;
+    white-space: nowrap;
     border: 1.2px solid #e8e8e8;
-  }
-
-  &__search-wrapper {
-    display: flex;
-    align-items: center;
+    @include navButton();
   }
 
   &__search-button {
     margin-right: 27px;
+
+    @media (max-width: 577px) {
+      margin-right: 23px;
+    }
   }
 
   &__logo-abbreviation {
     position: relative;
+    display: flex;
+    align-items: center;
     padding-right: 25px;
     font-size: 15px;
     &::after {
       content: "";
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 2px;
+      right: 1px;
       width: 16px;
       height: 16px;
       background-image: url("../img/arrow.svg");
       background-repeat: no-repeat;
     }
+  }
+
+  @media (max-width: 992px) {
+    margin-bottom: 63px;
+    padding-top: 17px;
+  }
+
+  @media (max-width: 577px) {
+    padding-top: 12px;
+    margin-bottom: 37px;
   }
 }
