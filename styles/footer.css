@@ -24,6 +24,12 @@
     margin-bottom: 93px;
   }
 }
+@media (max-width: 577px) {
+  .footer__logo-nav-block {
+    flex-direction: column;
+    margin-bottom: 48px;
+  }
+}
 .footer__logo-block {
   width: 352px;
   flex-wrap: wrap;
@@ -165,13 +171,14 @@
 }
 @media (max-width: 577px) {
   .footer__nav-list-block {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     width: 100% !important;
     align-items: flex-start;
   }
 }
 .footer .show-dropdown {
   max-height: 200px;
+  margin-bottom: 14px;
 }
 .footer__nav-button {
   margin-bottom: 36px;
@@ -181,8 +188,26 @@
 }
 @media (max-width: 577px) {
   .footer__nav-button {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     margin-bottom: 0;
   }
+  .footer__nav-button::after {
+    content: "";
+    position: absolute;
+    top: 43%;
+    right: 6px;
+    width: 13px;
+    height: 7px;
+    background-image: url("../img/dropdown-menu-arrow.svg");
+    background-repeat: no-repeat;
+    transition: transform 0.5s;
+  }
+}
+.footer .turn-dropdow-button-arrow::after {
+  transform: rotate(180deg);
 }
 @media (max-width: 767px) {
   .footer__nav-list {
@@ -221,12 +246,26 @@
     flex-wrap: wrap;
   }
 }
+@media (max-width: 577px) {
+  .footer__contacts-block {
+    margin-bottom: 68px;
+  }
+}
 .footer__contact-wrapper:not(:last-child) {
   margin-right: 40px;
 }
 @media (max-width: 767px) {
   .footer__contact-wrapper {
     margin-bottom: 40px;
+  }
+}
+@media (max-width: 577px) {
+  .footer__contact-wrapper {
+    margin: 0;
+  }
+  .footer__contact-wrapper:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 34px;
   }
 }
 .footer__contact-name {
@@ -295,6 +334,12 @@
     margin-bottom: 17px;
   }
 }
+@media (max-width: 577px) {
+  .footer__button-email {
+    width: 100%;
+    margin-bottom: 9px;
+  }
+}
 .footer__button-subscribe {
   width: 280px;
   padding: 13px 24px;
@@ -304,6 +349,11 @@
   font-size: 18px;
   color: #fcfaf9;
   font-weight: 700;
+}
+@media (max-width: 577px) {
+  .footer__button-subscribe {
+    width: 100%;
+  }
 }
 .footer__terms-block {
   position: relative;
@@ -325,6 +375,18 @@
   }
   .footer__terms-block::before {
     top: 27px;
+  }
+}
+@media (max-width: 577px) {
+  .footer__terms-block::before {
+    width: 0;
+    height: 0;
+  }
+}
+@media (max-width: 577px) {
+  .footer__terms-block {
+    flex-direction: column;
+    padding-top: 69px;
   }
 }
 .footer__terms-list-item {
@@ -350,5 +412,15 @@
 @media (max-width: 1366px) {
   .footer__terms-list-item:not(:last-child) {
     margin-right: 26px;
+  }
+}
+@media (max-width: 577px) {
+  .footer__terms-list-item:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 23px;
+  }
+  .footer__terms-list-item:not(:last-child)::after {
+    width: 0;
+    height: 0;
   }
 }/*# sourceMappingURL=footer.css.map */

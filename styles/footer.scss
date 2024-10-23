@@ -24,6 +24,11 @@
       flex-direction: column;
       margin-bottom: 93px;
     }
+
+    @media (max-width: 577px) {
+      flex-direction: column;
+      margin-bottom: 48px;
+    }
   }
 
   &__logo-block {
@@ -166,7 +171,7 @@
     }
 
     @media (max-width: 577px) {
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       width: 100% !important;
       align-items: flex-start;
     }
@@ -174,6 +179,7 @@
 
   .show-dropdown {
     max-height: 200px;
+    margin-bottom: 14px;
   }
 
   &__nav-button {
@@ -183,7 +189,29 @@
     color: $primary-text-color;
 
     @media (max-width: 577px) {
+      position: relative;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
       margin-bottom: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 43%;
+        right: 6px;
+        width: 13px;
+        height: 7px;
+        background-image: url("../img/dropdown-menu-arrow.svg");
+        background-repeat: no-repeat;
+        transition: transform 0.5s;
+      }
+    }
+  }
+
+  .turn-dropdow-button-arrow {
+    &::after {
+      transform: rotate(180deg);
     }
   }
 
@@ -226,6 +254,10 @@
     @media (max-width: 767px) {
       flex-wrap: wrap;
     }
+
+    @media (max-width: 577px) {
+      margin-bottom: 68px;
+    }
   }
 
   &__contact-wrapper {
@@ -235,6 +267,15 @@
 
     @media (max-width: 767px) {
       margin-bottom: 40px;
+    }
+
+    @media (max-width: 577px) {
+      margin: 0;
+
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 34px;
+      }
     }
   }
 
@@ -312,6 +353,11 @@
     @media (max-width: 1366px) {
       margin-bottom: 17px;
     }
+
+    @media (max-width: 577px) {
+      width: 100%;
+      margin-bottom: 9px;
+    }
   }
 
   &__button-subscribe {
@@ -323,6 +369,10 @@
     font-size: 18px;
     color: $tertiary-text-color;
     font-weight: 700;
+
+    @media (max-width: 577px) {
+      width: 100%;
+    }
   }
 
   &__terms-block {
@@ -346,6 +396,18 @@
       &::before {
         top: 27px;
       }
+    }
+
+    @media (max-width: 577px) {
+      &::before {
+        width: 0;
+        height: 0;
+      }
+    }
+
+    @media (max-width: 577px) {
+      flex-direction: column;
+      padding-top: 69px;
     }
   }
 
@@ -374,6 +436,18 @@
     @media (max-width: 1366px) {
       &:not(:last-child) {
         margin-right: 26px;
+      }
+    }
+
+    @media (max-width: 577px) {
+      &:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 23px;
+
+        &::after {
+          width: 0;
+          height: 0;
+        }
       }
     }
   }

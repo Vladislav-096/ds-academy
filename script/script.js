@@ -75,18 +75,27 @@ submitButton.addEventListener("click", (e) => {
 dropdownBtn.forEach((btn, index) => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
+    const isActive = dropdownMenu[index].classList.contains("show-dropdown");
+
     dropdownMenu.forEach((dropdown, i) => {
-      if (i === index) {
-        dropdown.classList.toggle("show-dropdown");
-      } else {
-        dropdown.classList.remove("show-dropdown");
-      }
+      dropdown.classList.remove("show-dropdown");
+      dropdownBtn[i].classList.remove("turn-dropdow-button-arrow");
     });
+
+    // Если текущий дропдаун не активен, открываем его
+    if (!isActive) {
+      dropdownMenu[index].classList.add("show-dropdown");
+      btn.classList.add("turn-dropdow-button-arrow");
+    }
   });
 });
 
 document.documentElement.addEventListener("click", function () {
-  dropdowns.forEach((dropdown) => {
+  dropdownMenu.forEach((dropdown) => {
     dropdown.classList.remove("show-dropdown");
+  });
+
+  dropdownBtn.forEach((btn) => {
+    btn.classList.remove("turn-dropdow-button-arrow");
   });
 });
