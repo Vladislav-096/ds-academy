@@ -330,4 +330,9 @@
   .section-hero .hero {
     flex-direction: column;
   }
+}
+@media (max-width: 1366px) {
+  .section-hero {
+    margin-bottom: 298px;
+  }
 }/*# sourceMappingURL=hero-section.css.map */
