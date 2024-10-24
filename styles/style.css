@@ -767,6 +767,11 @@ p {
     margin-bottom: 298px;
   }
 }
+@media (max-width: 767px) {
+  .section-hero {
+    margin-bottom: 265px;
+  }
+}
 
 @keyframes spin {
   from {
@@ -827,6 +832,7 @@ p {
   .section-popular .popular__top {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
   }
 }
 .section-popular .popular__card-middle {
@@ -873,6 +879,7 @@ p {
 @media (max-width: 767px) {
   .section-popular .popular__card {
     width: 304px;
+    margin-bottom: 103px;
   }
 }
 .section-popular .popular__picture-wrapper {
@@ -890,6 +897,7 @@ p {
 @media (max-width: 767px) {
   .section-popular .popular__picture-wrapper {
     height: 352px;
+    margin-bottom: 18px;
   }
 }
 .section-popular .popular__picture {
@@ -921,6 +929,12 @@ p {
     width: 104px;
     height: 104px;
     top: 8px;
+  }
+}
+@media (max-width: 767px) {
+  .section-popular .popular__sticker {
+    width: 120px;
+    height: 120px;
   }
 }
 .section-popular .popular__sticker-img {
@@ -961,6 +975,11 @@ p {
     line-height: 28.8px;
   }
 }
+@media (max-width: 767px) {
+  .section-popular .popular__heading {
+    margin-bottom: 17px;
+  }
+}
 .section-popular .popular__descr {
   margin-bottom: 18px;
   max-width: 480px;
@@ -989,6 +1008,11 @@ p {
 @media (max-width: 1366px) {
   .section-popular .popular__fashion-sticker {
     left: 67%;
+  }
+}
+@media (max-width: 767px) {
+  .section-popular .popular__fashion-sticker {
+    left: 8px;
   }
 }
 .section-popular .popular__fashion-list-item {
@@ -1033,7 +1057,7 @@ p {
   background-color: #ec95b1;
 }
 .section-popular .popular__middle {
-  margin-bottom: 137px;
+  margin-bottom: 120px;
 }
 @media (max-width: 1366px) {
   .section-popular .popular__middle .popular__design-sticker {
@@ -1041,9 +1065,19 @@ p {
     height: 120px;
   }
 }
+@media (max-width: 767px) {
+  .section-popular .popular__middle .popular__design-sticker {
+    right: 58%;
+  }
+}
 @media (max-width: 1366px) {
   .section-popular .popular__middle {
     margin: 0 auto;
+    margin-bottom: 87px;
+  }
+}
+@media (max-width: 767px) {
+  .section-popular .popular__middle {
     margin-bottom: 104px;
   }
 }
@@ -1057,6 +1091,12 @@ p {
   .section-popular .popular__picture-wrapper-middle {
     margin-bottom: 23px;
     height: 320px;
+  }
+}
+@media (max-width: 767px) {
+  .section-popular .popular__picture-wrapper-middle {
+    height: 352px;
+    margin-bottom: 19px;
   }
 }
 .section-popular .popular__design-middle-picture {
@@ -1106,6 +1146,11 @@ p {
     margin-bottom: 4px;
   }
 }
+@media (max-width: 767px) {
+  .section-popular .popular__list-middle {
+    margin-bottom: 17px;
+  }
+}
 .section-popular .popular__heading-middle {
   font-size: 36px;
   line-height: 43.2px;
@@ -1114,6 +1159,18 @@ p {
   .section-popular .popular__heading-middle {
     font-size: 26px;
     line-height: 31.2px;
+  }
+}
+@media (max-width: 767px) {
+  .section-popular .popular__heading-middle {
+    font-size: 24px;
+    line-height: 28.8px;
+    margin-bottom: 17px;
+  }
+}
+@media (max-width: 577px) {
+  .section-popular .popular__heading-middle {
+    width: 275px;
   }
 }
 .section-popular .popular__descr-middle-element {
@@ -1142,6 +1199,9 @@ p {
   }
 }
 @media (max-width: 767px) {
+  .section-popular .popular__descr-middle-element {
+    align-items: center;
+  }
   .section-popular .popular__descr-middle-element:nth-child(3n+1) {
     max-width: 100%;
     margin-right: 0;
@@ -1152,6 +1212,9 @@ p {
   .section-popular .popular__descr-middle-element:nth-child(4) {
     order: 4;
   }
+}
+.section-popular .popular__descr-middle {
+  margin-bottom: 17px;
 }
 .section-popular .popular__design-middle-list-item {
   font-size: 15px;
@@ -1177,12 +1240,14 @@ p {
 }
 .section-popular .popular .date-middle {
   display: flex;
+  padding-bottom: 16px;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
 }
 @media (max-width: 1366px) {
   .section-popular .popular .date-middle {
+    padding-bottom: 0;
     padding-top: 24px;
     justify-content: flex-start;
   }
@@ -1214,7 +1279,7 @@ p {
 @media (max-width: 767px) {
   .section-popular .popular .schedule-date-middle {
     margin-bottom: 0px;
-    margin-right: 21px;
+    margin-right: 25px;
   }
 }
 .section-popular .popular .chosen-design-middle-option {
@@ -1251,6 +1316,13 @@ p {
     top: -11px;
   }
 }
+@media (max-width: 767px) {
+  .section-popular .popular__marketing-sticker {
+    width: 183px;
+    height: 137px;
+    left: 41%;
+  }
+}
 .section-popular .popular__marketing-list-item {
   color: #ef9700;
 }
@@ -1282,6 +1354,11 @@ p {
     right: 8px;
   }
 }
+@media (max-width: 767px) {
+  .section-popular .popular__software-sticker {
+    right: 58%;
+  }
+}
 .section-popular .popular__software-list-item {
   color: #57acbc;
 }
@@ -1291,6 +1368,11 @@ p {
   font-size: 15px;
   color: #1b1f21;
   background-color: #57acbc;
+}
+@media (max-width: 767px) {
+  .section-popular {
+    margin-bottom: 30px;
+  }
 }
 
 .section-webinars {

@@ -335,4 +335,9 @@
   .section-hero {
     margin-bottom: 298px;
   }
+}
+@media (max-width: 767px) {
+  .section-hero {
+    margin-bottom: 265px;
+  }
 }/*# sourceMappingURL=hero-section.css.map */
