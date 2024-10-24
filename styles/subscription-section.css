@@ -170,4 +170,9 @@
 }
 .section-subscription .subscription__img {
   height: 518px;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription {
+    -webkit-mask-image: none;
+  }
 }/*# sourceMappingURL=subscription-section.css.map */

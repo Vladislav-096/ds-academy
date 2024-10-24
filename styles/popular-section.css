@@ -594,6 +594,11 @@
   color: #1b1f21;
   background-color: #57acbc;
 }
+@media (max-width: 1366px) {
+  .section-popular {
+    margin-bottom: 255px;
+  }
+}
 @media (max-width: 767px) {
   .section-popular {
     margin-bottom: 30px;

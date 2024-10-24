@@ -29,7 +29,6 @@
     &__descr {
       margin-bottom: 88px;
       max-height: 90px;
-      // white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box; /* Для поддержки многострочного текста */
@@ -193,6 +192,10 @@
 
     &__img {
       height: 518px;
+    }
+
+    @media (max-width: 1366px) {
+      -webkit-mask-image: none;
     }
   }
 }
