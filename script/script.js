@@ -1,6 +1,6 @@
 const form = document.getElementById("subscription-form");
 const submitButton = document.getElementById("btn-submit");
-const emainInput = document.getElementById("email-input");
+const emailInput = document.getElementById("email-input");
 const errorMessageWrapper = document.getElementById("error-message-wrapper");
 const errorMarker = document.getElementById("subscription-state-picture-error");
 const successMarker = document.getElementById(
@@ -10,65 +10,69 @@ const termsValidation = document.getElementById("subscription-checkbox");
 const placeholder = document.getElementById("subscription-input-placeholder");
 const dropdownBtn = document.querySelectorAll(".footer__nav-button");
 const dropdownMenu = document.querySelectorAll(".footer__nav-list");
+const successNotification = document.getElementById(
+  "subscription-success-notification"
+);
 
-// form validation
-const createErrorMessage = () => {
-  const errorMessage = document.createElement("p");
-  errorMessage.classList.add("error-message");
-
-  return errorMessage;
+const validation = () => {
+  if (
+    /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(emailInput.value) &&
+    termsValidation.checked
+  ) {
+    errorMessageWrapper.textContent = "";
+    errorMarker.classList.remove("state-picture-active");
+    successMarker.classList.add("state-picture-active");
+    emailInput.classList.add("input-success");
+    emailInput.classList.remove("input-error");
+    submitButton.classList.add("submit-active");
+    submitButton.disabled = false;
+  } else {
+    if (errorMessageWrapper.textContent === "") {
+      errorMessageWrapper.textContent =
+        "Formato de email inválido, verifique a ortografia";
+    }
+    errorMarker.classList.add("state-picture-active");
+    successMarker.classList.remove("state-picture-active");
+    emailInput.classList.remove("input-success");
+    emailInput.classList.add("input-error");
+    submitButton.classList.remove("submit-active");
+    submitButton.disabled = true;
+  }
 };
 
-emainInput.addEventListener("focus", (e) => {
+emailInput.addEventListener("focus", (e) => {
   if (e.target.value === "") {
-    placeholder.classList.add("input-placeholder-hedden");
+    placeholder.classList.add("input-placeholder-hidden");
   }
 });
 
-emainInput.addEventListener("blur", (e) => {
+emailInput.addEventListener("blur", (e) => {
   if (e.target.value === "") {
-    placeholder.classList.remove("input-placeholder-hedden");
+    placeholder.classList.remove("input-placeholder-hidden");
   }
 });
 
-emainInput.addEventListener("input", (e) => {
+emailInput.addEventListener("input", (e) => {
   if (e.target.value !== "") {
-    placeholder.classList.add("input-placeholder-hedden");
+    placeholder.classList.add("input-placeholder-hidden");
   } else {
-    placeholder.classList.remove("input-placeholder-hedden");
+    placeholder.classList.remove("input-placeholder-hidden");
   }
 
-  errorMessageWrapper.innerHTML = "";
-  errorMarker.classList.remove("state-picture-active");
-  successMarker.classList.remove("state-picture-active");
-  emainInput.classList.remove("input-success");
-  emainInput.classList.remove("input-error");
+  validation();
+});
+
+termsValidation.addEventListener("change", () => {
+  validation();
 });
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-submitButton.addEventListener("click", (e) => {
-  errorMessageWrapper.innerHTML = "";
-
-  if (
-    !/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(emainInput.value) ||
-    !termsValidation.checked
-  ) {
-    const errorText = createErrorMessage();
-    errorText.textContent = "Formato de email inválido, verifique a ortografia";
-    errorMessageWrapper.append(errorText);
-    successMarker.classList.remove("state-picture-active");
-    errorMarker.classList.add("state-picture-active");
-    emainInput.classList.remove("input-success");
-    emainInput.classList.add("input-error");
-    return;
-  }
-
-  errorMarker.classList.remove("state-picture-active");
-  successMarker.classList.add("state-picture-active");
-  emainInput.classList.add("input-success");
+submitButton.addEventListener("click", () => {
+  form.classList.add("hide-form");
+  successNotification.classList.add("success-notification-show");
 });
 
 // dropdown menu

@@ -669,76 +669,101 @@
           <div class="container">
             <div class="subscription">
               <div class="subscription__descr-block">
-                <h3 class="subscription__heading">
-                  Suscríbete a nuestra newsletter para no perderte nada nuevo
-                </h3>
-                <p class="subscription__descr">
-                  Tendencia en el mercado laboral: conozca esta profesión que
-                  transforma la experiencia del Usuario a través de elementos
-                  textuales.
-                </p>
-                <form id="subscription-form" class="subscription__form">
-                  <div class="subscription__form-input-submin-wrapper">
-                    <div class="subscription__email-input-wrapper">
-                      <div class="subscription__input-wrapper">
-                        <input
-                          id="email-input"
-                          name="email"
-                          required
-                          class="subscription__input"
-                        />
-                        <span
-                          id="subscription-input-placeholder"
-                          class="subscription__input-placeholder"
-                          >Su correo electrónico</span
-                        >
-                        <picture
-                          id="subscription-state-picture-error"
-                          class="subscription__state-picture"
-                        >
-                          <img
-                            src="./img/error.svg"
-                            alt="Error marker image"
-                            class="subscription__state-img"
+                <div class="subscription__descr-content">
+                  <h3 class="subscription__heading">
+                    Suscríbete a&nbsp;nuestra newsletter para no perderte
+                    nada&nbsp;nuevo
+                  </h3>
+                  <p class="subscription__descr">
+                    Tendencia en el mercado laboral: conozca esta profesión que
+                    transforma la experiencia del Usuario a través de elementos
+                    textuales.
+                  </p>
+                  <form id="subscription-form" class="subscription__form">
+                    <div class="subscription__form-input-submin-wrapper">
+                      <div class="subscription__email-input-wrapper">
+                        <div class="subscription__input-wrapper">
+                          <input
+                            id="email-input"
+                            name="email"
+                            required
+                            class="subscription__input"
                           />
-                        </picture>
-                        <picture
-                          id="subscription-state-picture-success"
-                          class="subscription__state-picture"
-                        >
-                          <img
-                            src="./img/correct.svg"
-                            alt="Success marker image"
-                            class="subscription__state-img"
-                          />
-                        </picture>
+                          <span
+                            id="subscription-input-placeholder"
+                            class="subscription__input-placeholder"
+                            >Su correo electrónico</span
+                          >
+                          <picture
+                            id="subscription-state-picture-error"
+                            class="subscription__state-picture"
+                          >
+                            <img
+                              src="./img/error.svg"
+                              alt="Error marker image"
+                              class="subscription__state-img"
+                            />
+                          </picture>
+                          <picture
+                            id="subscription-state-picture-success"
+                            class="subscription__state-picture"
+                          >
+                            <img
+                              src="./img/correct.svg"
+                              alt="Success marker image"
+                              class="subscription__state-img"
+                            />
+                          </picture>
+                        </div>
+                        <p id="error-message-wrapper" class="error-message"></p>
                       </div>
-                      <div id="error-message-wrapper"></div>
+                      <button
+                        id="btn-submit"
+                        type="button"
+                        class="btn-reset subscription__form-submit"
+                        disabled
+                      >
+                        Enviar
+                      </button>
                     </div>
-                    <button
-                      id="btn-submit"
-                      type="button"
-                      class="btn-reset subscription__form-submit"
-                    >
-                      Enviar
-                    </button>
+                    <label class="subscription__checkbox-wrapper">
+                      <input
+                        id="subscription-checkbox"
+                        class="subscription__checkbox"
+                        type="checkbox"
+                        name="terms"
+                        required
+                      />
+                      <span class="subscription__checkbox-descr">
+                        Confirmo que he leído, acepto y entiendo los términos y
+                        condiciones, así como el aviso de privacidad
+                      </span>
+                    </label>
+                  </form>
+                  <div
+                    id="subscription-success-notification"
+                    class="subscription__success-notification"
+                  >
+                    <p>Fantástico! Espera La primera carta</p>
+                    <picture class="subscription__success-notification-picture">
+                      <img
+                        class="subscription__success-notification-img"
+                        src="/img/email-success-sticker.svg"
+                        alt="Email notification sticker"
+                      />
+                    </picture>
                   </div>
-                  <label class="subscription__checkbox-wrapper">
-                    <input
-                      id="subscription-checkbox"
-                      class="subscription__checkbox"
-                      type="checkbox"
-                      name="terms"
-                      required
-                    />
-                    <span class="subscription__checkbox-descr">
-                      Confirmo que he leído, acepto y entiendo los términos y
-                      condiciones, así como el aviso de privacidad
-                    </span>
-                  </label>
-                </form>
+                </div>
               </div>
               <picture class="subscription__picture">
+                <source
+                  media="(max-width: 577px)"
+                  srcset="./img/email-320-resolution.png"
+                />
+                <source
+                  media="(max-width: 992px)"
+                  srcset="./img/email-768-resolution.png"
+                />
                 <img
                   src="./img/email.png"
                   alt="Email picture"

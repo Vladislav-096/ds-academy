@@ -1655,8 +1655,63 @@ p {
   -webkit-mask-repeat: no-repeat;
   background-color: #57acbc;
 }
-.section-subscription .subscription__descr-block {
+@media (max-width: 1366px) {
+  .section-subscription .subscription__descr-block {
+    width: 750px;
+    background-color: #57acbc;
+    padding: 40px 24px;
+    border-radius: 32px 0 0 32px;
+  }
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__descr-block {
+    padding-bottom: 10px;
+  }
+}
+@media (max-width: 1140px) {
+  .section-subscription .subscription__descr-block {
+    border-radius: 32px;
+  }
+}
+@media (max-width: 992px) {
+  .section-subscription .subscription__descr-block {
+    padding-bottom: 4px;
+    width: 510px;
+  }
+}
+@media (max-width: 767px) {
+  .section-subscription .subscription__descr-block {
+    padding-bottom: 4px;
+    width: 100%;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__descr-block {
+    padding: 65px 24px;
+  }
+}
+.section-subscription .subscription__descr-content {
   width: 600px;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__descr-content {
+    width: 450px;
+  }
+}
+@media (max-width: 1140px) {
+  .section-subscription .subscription__descr-content {
+    width: 368px;
+  }
+}
+@media (max-width: 767px) {
+  .section-subscription .subscription__descr-content {
+    margin: 0 auto;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__descr-content {
+    width: 100%;
+  }
 }
 .section-subscription .subscription__heading {
   margin-bottom: 8px;
@@ -1664,6 +1719,12 @@ p {
   font-size: 36px;
   font-weight: 400;
   line-height: 43.2px;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__heading {
+    font-size: 26px;
+    line-height: 31.2px;
+  }
 }
 .section-subscription .subscription__descr {
   margin-bottom: 88px;
@@ -1678,16 +1739,50 @@ p {
   line-height: 28.8px;
   letter-spacing: 0.07px;
 }
+@media (max-width: 1366px) {
+  .section-subscription .subscription__descr {
+    text-overflow: clip;
+    display: block;
+    max-height: initial;
+    margin-bottom: 64px;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__descr {
+    margin-bottom: 80px;
+  }
+}
 .section-subscription .subscription__form {
   display: flex;
   width: 576px;
   flex-wrap: wrap;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__form {
+    width: 100%;
+  }
+}
+.section-subscription .subscription .hide-form {
+  display: none;
 }
 .section-subscription .subscription__form-input-submin-wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 10px;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__form-input-submin-wrapper {
+    flex-direction: column;
+    width: initial;
+    margin-bottom: 17px;
+  }
+}
+@media (max-width: 767px) {
+  .section-subscription .subscription__form-input-submin-wrapper {
+    width: inherit;
+    margin-bottom: 9px;
+  }
 }
 .section-subscription .subscription__input-wrapper {
   position: relative;
@@ -1701,6 +1796,20 @@ p {
   border-radius: 88px;
   color: #e8e8e8;
 }
+.section-subscription .subscription__input:focus {
+  outline: none;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__input {
+    width: 100%;
+    margin-bottom: 17px;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__input {
+    margin-bottom: 8px;
+  }
+}
 .section-subscription .subscription .input-error {
   border-color: #ffad20;
 }
@@ -1711,10 +1820,20 @@ p {
   padding: 14px 113px;
   height: 49px;
   border-radius: 40px;
-  background-color: #fe6d44;
+  background-color: rgba(254, 109, 68, 0.6);
   color: #fcfaf9;
   font-size: 18px;
   font-weight: 700;
+  cursor: not-allowed;
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__form-submit {
+    padding: 10px 101px;
+  }
+}
+.section-subscription .subscription .submit-active {
+  background-color: #fe6d44;
+  cursor: pointer;
 }
 .section-subscription .subscription__checkbox-wrapper {
   -webkit-user-select: none;
@@ -1766,6 +1885,31 @@ p {
   opacity: 0;
   transition: opacity 0.1s;
 }
+@media (max-width: 1366px) {
+  .section-subscription .subscription__checkbox-descr {
+    width: 97%;
+    font-size: 13px;
+    line-height: 18.2px;
+  }
+}
+@media (max-width: 767px) {
+  .section-subscription .subscription__checkbox-descr {
+    width: 97%;
+    font-size: 13px;
+    line-height: 18.2px;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__checkbox-descr {
+    width: 100%;
+  }
+  .section-subscription .subscription__checkbox-descr::before {
+    top: 19%;
+  }
+  .section-subscription .subscription__checkbox-descr::after {
+    top: 19%;
+  }
+}
 .section-subscription .subscription .error-message {
   margin: 0 auto;
   width: 230px;
@@ -1784,6 +1928,16 @@ p {
   width: 26.6px;
   height: 26.6px;
 }
+@media (max-width: 1366px) {
+  .section-subscription .subscription__state-picture {
+    transform: translateY(-80%);
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__state-picture {
+    transform: translateY(-65%);
+  }
+}
 .section-subscription .subscription__input-placeholder {
   position: absolute;
   top: 50%;
@@ -1793,7 +1947,17 @@ p {
   color: #e8e8e8;
   font-size: 18px;
 }
-.section-subscription .subscription .input-placeholder-hedden {
+@media (max-width: 1366px) {
+  .section-subscription .subscription__input-placeholder {
+    transform: translateY(-87%);
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__input-placeholder {
+    transform: translateY(-68%);
+  }
+}
+.section-subscription .subscription .input-placeholder-hidden {
   visibility: hidden;
   opacity: 0;
 }
@@ -1809,13 +1973,108 @@ p {
   position: absolute;
   top: 0;
   right: 0;
+  height: 518px;
+}
+@media (max-width: 992px) {
+  .section-subscription .subscription__picture {
+    width: 288px;
+    height: 500px;
+  }
+}
+@media (max-width: 767px) {
+  .section-subscription .subscription__picture {
+    display: none;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription__picture {
+    display: block;
+    width: 304px;
+    height: 400px;
+    top: 100%;
+    transform: translateY(-100%);
+  }
 }
 .section-subscription .subscription__img {
-  height: 518px;
+  width: inherit;
+  height: inherit;
+}
+.section-subscription .subscription__success-notification {
+  display: none;
+  position: relative;
+  padding: 10px 24px;
+  background-color: #fcfaf9;
+  border-radius: 88px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28.8px;
+  color: #57acbc;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__success-notification {
+    max-width: 280px;
+    border-radius: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .section-subscription .subscription__success-notification {
+    margin: 0 auto;
+    padding: 28px 16px;
+  }
+}
+.section-subscription .subscription__success-notification-picture {
+  position: absolute;
+  top: -60px;
+  right: 70px;
+  width: 120px;
+  height: 120px;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__success-notification-picture {
+    width: 104px;
+    height: 104px;
+    top: -50px;
+    right: -25px;
+  }
+}
+.section-subscription .subscription__success-notification-img {
+  width: inherit;
+  height: inherit;
+}
+.section-subscription .subscription .success-notification-show {
+  display: block;
 }
 @media (max-width: 1366px) {
   .section-subscription .subscription {
+    padding: 0;
+    display: flex;
     -webkit-mask-image: none;
+    background-color: transparent;
+  }
+}
+@media (max-width: 992px) {
+  .section-subscription .subscription {
+    min-height: 500px;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription .subscription {
+    -webkit-mask-image: url("../img/subscription-mask-320-resolution.png");
+    -webkit-mask-size: 100% 1101px;
+            mask-size: 100% 1101px;
+    min-height: 1101px;
+  }
+}
+@media (max-width: 1366px) {
+  .section-subscription {
+    justify-content: flex-start;
+    padding-top: 150px;
+  }
+}
+@media (max-width: 577px) {
+  .section-subscription {
+    padding-top: 117px;
+    padding-bottom: 179px;
   }
 }
 
