@@ -10,17 +10,19 @@
   </head>
   <body>
     <div class="layout">
-      <header class="header">
+      <header id="header" class="header">
         <div class="container">
           <div class="header__wrapper">
             <div class="header__block">
-              <picture class="header__logo-picture">
-                <img
-                  class="header__logo-img"
-                  src="./img/logo-ebac-header.svg"
-                  alt="Logo"
-                />
-              </picture>
+              <a href="#">
+                <picture class="header__logo-picture">
+                  <!-- <img
+                    class="header__logo-img"
+                    src="./img/logo-ebac-header.svg"
+                    alt="Logo"
+                  /> -->
+                </picture>
+              </a>
             </div>
             <nav class="header__block">
               <ul class="list-reset header__menu-list">
@@ -48,13 +50,13 @@
               <button class="btn-reset header__search-button">
                 <img src="./img/search-icon.svg" alt="Search icon" />
               </button>
-              <span class="header__logo-abbreviation">EBAC</span>
+              <a href="#" class="header__logo-abbreviation">EBAC</a>
             </div>
           </div>
         </div>
       </header>
-      <main>
-        <!-- <div class="popular-marquee">
+      <main class="main">
+        <div class="popular-marquee">
           <div class="marquee">
             <div class="marquee__content">
               <ul class="list-reset marquee__list">
@@ -89,8 +91,8 @@
               </ul>
             </div>
           </div>
-        </div> -->
-        <!-- <div class="webinars-marquee">
+        </div>
+        <div class="webinars-marquee">
           <div class="marquee">
             <div class="marquee__content">
               <ul class="list-reset marquee__list">
@@ -137,8 +139,8 @@
               </ul>
             </div>
           </div>
-        </div> -->
-        <!-- <div class="subscription-marquee">
+        </div>
+        <div class="subscription-marquee">
           <div class="marquee">
             <div class="marquee__content">
               <ul class="list-reset marquee__list">
@@ -185,8 +187,8 @@
               </ul>
             </div>
           </div>
-        </div> -->
-        <!-- <div class="discount-marquee">
+        </div>
+        <div class="discount-marquee">
           <div class="marquee">
             <div class="marquee__content">
               <ul class="list-reset marquee__list">
@@ -215,8 +217,16 @@
               </ul>
             </div>
           </div>
-        </div> -->
-        <section class="section-hero">
+        </div>
+        <picture class="line-bg-picture line-bg-first-picture">
+          <source media="(max-width: 577px)" srcset="./img/line-bg-1.2.svg" />
+          <img class="line-bg-image" src="./img/line-bg-1.svg" alt="" />
+        </picture>
+        <picture class="line-bg-picture line-bg-second-picture">
+          <source media="(max-width: 992px)" srcset="./img/line-bg-2.1.svg" />
+          <img class="line-bg-image" src="./img/line-bg-2.svg" alt="" />
+        </picture>
+        <section id="gaming" class="section-hero">
           <div class="container">
             <div class="hero">
               <div class="hero__picture-wrapper">
@@ -364,7 +374,7 @@
                   </div>
                 </div>
               </div>
-              <div class="popular__middle">
+              <div id="design" class="popular__middle">
                 <div class="popular__card-middle">
                   <div class="popular__picture-wrapper-middle">
                     <picture
@@ -437,7 +447,7 @@
                 </div>
               </div>
               <div class="popular__bottom">
-                <div class="popular__card">
+                <div id="marketing" class="popular__card">
                   <div class="popular__picture-wrapper">
                     <picture
                       class="popular__picture popular__marketing-picture"
@@ -494,7 +504,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="popular__card">
+                <div id="software" class="popular__card">
                   <div class="popular__picture-wrapper">
                     <picture class="popular__picture popular__software-picture">
                       <img
@@ -553,16 +563,25 @@
           </div>
         </section>
         <section class="section-webinars">
+          <picture class="line-bg-picture line-bg-third-picture">
+            <source media="(max-width: 992px)" srcset="./img/line-bg-3.1.svg" />
+            <img class="line-bg-image" src="./img/line-bg-3.svg" alt="" />
+          </picture>
           <div class="container">
             <div class="webinars">
-              <!-- <div class="webinars__header-wrapper"> -->
               <h3 class="webinars__heading">Webinars gratuitos</h3>
               <button class="btn-reset webinars__button">
                 Todos os webinars
               </button>
-              <!-- </div> -->
               <ul class="list-reset webinars__cards-list">
                 <li class="webinars__card-list-item">
+                  <picture class="line-bg-picture line-bg-fourth-picture">
+                    <img
+                      class="line-bg-image"
+                      src="./img/line-bg-4.svg"
+                      alt=""
+                    />
+                  </picture>
                   <div class="webinars__card-bio">
                     <picture class="webinars__card-picture">
                       <img
@@ -595,6 +614,17 @@
                   </div>
                 </li>
                 <li class="webinars__card-list-item">
+                  <picture class="line-bg-picture line-bg-fifth-picture">
+                    <source
+                      media="(max-width: 992px)"
+                      srcset="./img/line-bg-5.1.svg"
+                    />
+                    <img
+                      class="line-bg-image"
+                      src="./img/line-bg-5.svg"
+                      alt=""
+                    />
+                  </picture>
                   <div class="webinars__card-bio">
                     <picture class="webinars__card-picture">
                       <img
@@ -628,6 +658,17 @@
                   </div>
                 </li>
                 <li class="webinars__card-list-item">
+                  <picture class="line-bg-picture line-bg-sixth-picture">
+                    <source
+                      media="(max-width: 992px)"
+                      srcset="./img/line-bg-6.1.svg"
+                    />
+                    <img
+                      class="line-bg-sixth-image"
+                      src="./img/line-bg-6.svg"
+                      alt=""
+                    />
+                  </picture>
                   <div class="webinars__card-bio">
                     <picture class="webinars__card-picture">
                       <img
@@ -668,6 +709,9 @@
         <section class="section-subscription">
           <div class="container">
             <div class="subscription">
+              <picture class="line-bg-picture line-bg-seventh-picture">
+                <img class="line-bg-image" src="./img/line-bg-7.svg" alt="" />
+              </picture>
               <div class="subscription__descr-block">
                 <div class="subscription__descr-content">
                   <h3 class="subscription__heading">
@@ -735,8 +779,13 @@
                         required
                       />
                       <span class="subscription__checkbox-descr">
-                        Confirmo que he leído, acepto y entiendo los términos y
-                        condiciones, así como el aviso de privacidad
+                        Confirmo que he leído, acepto y entiendo los
+                        <a class="subscription__terms-link" href="#"
+                          >términos y condiciones</a
+                        >, así como el
+                        <a class="subscription__terms-link" href="#"
+                          >aviso de privacidad</a
+                        >
                       </span>
                     </label>
                   </form>
@@ -780,13 +829,15 @@
             <div class="footer__logo-nav-block">
               <div class="footer__logo-block">
                 <div class="footer__pictures">
-                  <picture class="footer__logo-picture">
-                    <img
-                      class="footer__logo-img"
-                      src="./img/logo-ebac-footer.svg"
-                      alt="Logo image"
-                    />
-                  </picture>
+                  <a href="#">
+                    <picture class="footer__logo-picture">
+                      <img
+                        class="footer__logo-img"
+                        src="./img/logo-ebac-footer.svg"
+                        alt="Logo image"
+                      />
+                    </picture>
+                  </a>
                   <picture class="footer__reward-picture">
                     <img
                       class="footer__reward-img"
@@ -857,19 +908,29 @@
                   <button class="btn-reset footer__nav-button">CURSOS</button>
                   <ul class="list-reset footer__nav-list">
                     <li class="footer__nav-list-item">
-                      <a href="#"> Diseño </a>
+                      <a class="footer__nav-list-item-link" href="#design">
+                        Diseño
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Programación & Data </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Programación & Data
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Gaming </a>
+                      <a class="footer__nav-list-item-link" href="#gaming">
+                        Gaming
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Marketing </a>
+                      <a class="footer__nav-list-item-link" href="#marketing">
+                        Marketing
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Software </a>
+                      <a class="footer__nav-list-item-link" href="#software">
+                        Software
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -877,10 +938,14 @@
                   <button class="btn-reset footer__nav-button">WEBINARS</button>
                   <ul class="list-reset footer__nav-list">
                     <li class="footer__nav-list-item">
-                      <a href="#"> Próximamente </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Próximamente
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Anteriores </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Anteriores
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -888,13 +953,19 @@
                   <button class="btn-reset footer__nav-button">SOBRE</button>
                   <ul class="list-reset footer__nav-list">
                     <li class="footer__nav-list-item">
-                      <a href="#"> Sobre nostros </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Sobre nostros
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Centro de carreras </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Centro de carreras
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Vacantes </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Vacantes
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -902,19 +973,29 @@
                   <button class="btn-reset footer__nav-button">BLOG</button>
                   <ul class="list-reset footer__nav-list">
                     <li class="footer__nav-list-item">
-                      <a href="#"> Diseño </a>
+                      <a class="footer__nav-list-item-link" href="#design">
+                        Diseño
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Programación & Data </a>
+                      <a class="footer__nav-list-item-link" href="#">
+                        Programación & Data
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Gaming </a>
+                      <a class="footer__nav-list-item-link" href="#gaming">
+                        Gaming
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Marketing </a>
+                      <a class="footer__nav-list-item-link" href="#marketing">
+                        Marketing
+                      </a>
                     </li>
                     <li class="footer__nav-list-item">
-                      <a href="#"> Software </a>
+                      <a class="footer__nav-list-item-link" href="#software">
+                        Software
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -923,21 +1004,31 @@
             <div class="footer__contacts-block">
               <div class="footer__contact-wrapper">
                 <p class="footer__contact-name">WHATSAPP</p>
-                <p class="footer__contact">+52 55 9225-2629</p>
+                <a href="tel:+525592252629" class="footer__contact"
+                  >+52 55 9225-2629</a
+                >
               </div>
               <div class="footer__contact-wrapper">
                 <p class="footer__contact-name">TELEFONE</p>
-                <p class="footer__contact">+52 55 9225-2629</p>
+                <a href="tel:+525592252629" class="footer__contact"
+                  >+52 55 9225-2629</a
+                >
               </div>
               <div class="footer__contact-wrapper">
                 <p class="footer__contact-name">EMAIL</p>
-                <p class="footer__contact">Ebac.mx@gmail.com</p>
+                <p class="footer__contact"></p>
+                <a href="mailto:Ebac.mx@gmail.com" class="footer__contact"
+                  >Ebac.mx@gmail.com</a
+                >
               </div>
             </div>
             <!-- Это блок показывать сначала, но скрыть при первом сжатии -->
             <ul class="list-reset footer__sotial-block">
               <li class="footer__sotial-list-item">
-                <a href="#" class="footer__sotial-link">
+                <a
+                  href="https://www.instagram.com/reel/DBGAhIhOuQY/?igsh=aWFhM25vdGV1Yzg2"
+                  class="footer__sotial-link"
+                >
                   <picture class="footer__sotial-picture">
                     <img
                       class="footer__sotial-img"
@@ -959,7 +1050,10 @@
                 </a>
               </li>
               <li class="footer__sotial-list-item">
-                <a href="#" class="footer__sotial-link">
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  class="footer__sotial-link"
+                >
                   <picture class="footer__sotial-picture">
                     <img
                       class="footer__sotial-img"

@@ -1,8 +1,10 @@
 @charset "UTF-8";
 .section-subscription {
+  position: relative;
   padding-top: 188px;
   padding-bottom: 135px;
   background-color: #f2f2f2;
+  overflow: hidden;
 }
 .section-subscription .subscription {
   position: relative;
@@ -155,7 +157,7 @@
   color: #e8e8e8;
 }
 .section-subscription .subscription__input:focus {
-  outline: none;
+  outline: 2px solid #1b1f21;
 }
 @media (max-width: 1366px) {
   .section-subscription .subscription__input {
@@ -167,6 +169,12 @@
   .section-subscription .subscription__input {
     margin-bottom: 8px;
   }
+}
+.section-subscription .subscription .subscription__input-wrapper .subscription__input-placeholder {
+  transition: color 0.2s;
+}
+.section-subscription .subscription .subscription__input-wrapper:hover .subscription__input-placeholder {
+  color: #fcfaf9;
 }
 .section-subscription .subscription .input-error {
   border-color: #ffad20;
@@ -183,6 +191,7 @@
   font-size: 18px;
   font-weight: 700;
   cursor: not-allowed;
+  transition: background-color 0.2s;
 }
 @media (max-width: 577px) {
   .section-subscription .subscription__form-submit {
@@ -192,6 +201,15 @@
 .section-subscription .subscription .submit-active {
   background-color: #fe6d44;
   cursor: pointer;
+}
+.section-subscription .subscription .submit-active:hover {
+  background-color: #1b1f21;
+}
+.section-subscription .subscription .submit-active:active {
+  background-color: #1b1f21;
+}
+.section-subscription .subscription .submit-active:focus {
+  outline: 2px solid #1b1f21;
 }
 .section-subscription .subscription__checkbox-wrapper {
   -webkit-user-select: none;
@@ -422,6 +440,18 @@
             mask-size: 100% 1101px;
     min-height: 1101px;
   }
+}
+.section-subscription .subscription__terms-link {
+  position: relative;
+}
+.section-subscription .subscription__terms-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #fcfaf9;
 }
 @media (max-width: 1366px) {
   .section-subscription {

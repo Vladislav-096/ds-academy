@@ -107,6 +107,30 @@
     margin-bottom: 103px;
   }
 }
+.section-popular .popular .popular__card .popular__sticker {
+  animation: spin 3s linear infinite;
+  animation-play-state: paused;
+}
+.section-popular .popular .popular__card:hover .popular__sticker {
+  animation-play-state: running;
+}
+@media (max-width: 1366px) {
+  .section-popular .popular .popular__card:hover .popular__sticker {
+    animation-play-state: paused;
+  }
+}
+.section-popular .popular .popular__card-middle .popular__design-sticker {
+  animation: spin 3s linear infinite;
+  animation-play-state: paused;
+}
+.section-popular .popular .popular__card-middle:hover .popular__sticker {
+  animation-play-state: running;
+}
+@media (max-width: 1366px) {
+  .section-popular .popular .popular__card-middle:hover .popular__sticker {
+    animation-play-state: paused;
+  }
+}
 .section-popular .popular__picture-wrapper {
   position: relative;
   margin-bottom: 32px;
@@ -143,11 +167,6 @@
   top: -49px;
   width: 180px;
   height: 180px;
-  animation: spin 3s linear infinite;
-  animation-play-state: paused;
-}
-.section-popular .popular__sticker:hover {
-  animation-play-state: running;
 }
 @media (max-width: 1366px) {
   .section-popular .popular__sticker {

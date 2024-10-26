@@ -237,6 +237,27 @@
     margin-top: 27px;
   }
 }
+.footer__nav-list-item-link {
+  position: relative;
+}
+.footer__nav-list-item-link::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #fcfaf9;
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition: transform 0.2s;
+}
+.footer__nav-list-item-link:hover::before {
+  transform: scaleX(100%);
+}
+.footer__nav-list-item-link:active::before {
+  transform: scaleX(100%);
+}
 .footer__contacts-block {
   display: flex;
   width: 569px;
@@ -274,8 +295,24 @@
   color: #aeaeae;
 }
 .footer__contact {
+  position: relative;
   font-size: 18px;
   font-weight: 700;
+}
+.footer__contact::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #fcfaf9;
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition: transform 0.2s;
+}
+.footer__contact:hover::before {
+  transform: scaleX(100%);
 }
 .footer__sotial-block {
   display: flex;
@@ -328,6 +365,7 @@
   font-size: 18px;
   color: #e8e8e8;
   text-align: left;
+  transition: color 0.2s, background-color 0.2s;
 }
 @media (max-width: 1366px) {
   .footer__button-email {
@@ -340,6 +378,10 @@
     margin-bottom: 9px;
   }
 }
+.footer__button-email:hover {
+  background-color: #fcfaf9;
+  color: #1b1f21;
+}
 .footer__button-subscribe {
   width: 280px;
   padding: 13px 24px;
@@ -349,11 +391,22 @@
   font-size: 18px;
   color: #fcfaf9;
   font-weight: 700;
+  transition: background-color 0.2s;
 }
 @media (max-width: 577px) {
   .footer__button-subscribe {
     width: 100%;
   }
+}
+.footer__button-subscribe:hover {
+  background-color: #da3369;
+  border-color: #da3369;
+}
+.footer__button-subscribe:active {
+  background-color: #da3369;
+}
+.footer__button-subscribe:focus {
+  outline: 2px solid #fcfaf9;
 }
 .footer__terms-block {
   position: relative;

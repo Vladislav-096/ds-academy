@@ -13,6 +13,7 @@ const dropdownMenu = document.querySelectorAll(".footer__nav-list");
 const successNotification = document.getElementById(
   "subscription-success-notification"
 );
+const header = document.getElementById("header");
 
 const validation = () => {
   if (
@@ -102,4 +103,19 @@ document.documentElement.addEventListener("click", function () {
   dropdownBtn.forEach((btn) => {
     btn.classList.remove("turn-dropdow-button-arrow");
   });
+});
+
+// header
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", function () {
+  const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop && currentScroll > header.offsetHeight) {
+    header.classList.add("header-visible");
+  } else {
+    header.classList.remove("header-visible");
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Mobile or negative scrolling
 });

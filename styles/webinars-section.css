@@ -1,4 +1,6 @@
 .section-webinars {
+  position: relative;
+  overflow: hidden;
   padding-top: 145px;
   padding-bottom: 130px;
   background-color: #1b1f21;
@@ -28,11 +30,13 @@
   background-position: 0 3px;
 }
 .section-webinars .webinars {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   color: #fcfaf9;
+  z-index: 2;
 }
 .section-webinars .webinars__heading {
   margin-bottom: 79px;
@@ -64,6 +68,7 @@
   font-size: 18px;
   font-weight: 700;
   color: #fcfaf9;
+  transition: background-color 0.2s;
 }
 @media (max-width: 1366px) {
   .section-webinars .webinars__button {
@@ -76,6 +81,15 @@
     order: 3;
     flex-basis: 100%;
   }
+}
+.section-webinars .webinars__button:hover {
+  background-color: #da3369;
+}
+.section-webinars .webinars__button:active {
+  background-color: #da3369;
+}
+.section-webinars .webinars__button:focus {
+  outline: 2px solid #fcfaf9;
 }
 .section-webinars .webinars__cards-list {
   display: flex;
@@ -95,6 +109,7 @@
   }
 }
 .section-webinars .webinars__card-list-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
@@ -102,6 +117,7 @@
   min-height: 432px;
   padding: 32px;
   border-radius: 32px;
+  overflow: hidden;
 }
 .section-webinars .webinars__card-list-item:not(:nth-child(3n)) {
   margin-right: 40px;

@@ -36,7 +36,6 @@
     flex-wrap: wrap;
 
     .footer__sotial-block {
-      // Развернуть при первом сжатии
       display: none;
 
       @media (max-width: 1366px) {
@@ -54,7 +53,6 @@
     }
 
     .footer__buttons {
-      // Скрыть для мобилки
       display: block;
 
       @media (max-width: 1366px) {
@@ -247,6 +245,35 @@
     }
   }
 
+  &__nav-list-item-link {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: $tertiary-text-color;
+      transform: scaleX(0);
+      transform-origin: 0;
+      transition: transform 0.2s;
+    }
+
+    &:hover {
+      &::before {
+        transform: scaleX(100%);
+      }
+    }
+
+    &:active {
+      &::before {
+        transform: scaleX(100%);
+      }
+    }
+  }
+
   &__contacts-block {
     display: flex;
     width: 569px;
@@ -286,12 +313,31 @@
   }
 
   &__contact {
+    position: relative;
     font-size: 18px;
     font-weight: 700;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: $tertiary-text-color;
+      transform: scaleX(0);
+      transform-origin: 0;
+      transition: transform 0.2s;
+    }
+
+    &:hover {
+      &::before {
+        transform: scaleX(100%);
+      }
+    }
   }
 
   &__sotial-block {
-    // скрыть при первом сжатии
     display: flex;
     align-items: center;
     margin-left: auto;
@@ -331,7 +377,6 @@
   }
 
   &__buttons {
-    // Достать при первом сжатии
     display: none;
 
     @media (max-width: 767px) {
@@ -349,6 +394,7 @@
     font-size: 18px;
     color: #e8e8e8;
     text-align: left;
+    transition: color 0.2s, background-color 0.2s;
 
     @media (max-width: 1366px) {
       margin-bottom: 17px;
@@ -357,6 +403,11 @@
     @media (max-width: 577px) {
       width: 100%;
       margin-bottom: 9px;
+    }
+
+    &:hover {
+      background-color: $tertiary-text-color;
+      color: $secondary-text-color;
     }
   }
 
@@ -369,9 +420,23 @@
     font-size: 18px;
     color: $tertiary-text-color;
     font-weight: 700;
+    transition: background-color 0.2s;
 
     @media (max-width: 577px) {
       width: 100%;
+    }
+
+    &:hover {
+      background-color: #da3369;
+      border-color: #da3369;
+    }
+
+    &:active {
+      background-color: #da3369;
+    }
+
+    &:focus {
+      outline: 2px solid $tertiary-text-color;
     }
   }
 

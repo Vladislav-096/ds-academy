@@ -2,6 +2,9 @@
 @import "./variables.scss";
 
 .section-webinars {
+  position: relative;
+  overflow: hidden;
+
   @include scheduleBlock(
     $calendar-image-white,
     $watch-image-white,
@@ -15,11 +18,13 @@
   background-color: $secondary-text-color;
 
   .webinars {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     color: $tertiary-text-color;
+    z-index: 2;
 
     &__heading {
       margin-bottom: 79px;
@@ -49,6 +54,7 @@
       font-size: 18px;
       font-weight: 700;
       color: $tertiary-text-color;
+      transition: background-color 0.2s;
 
       @media (max-width: 1366px) {
         margin-bottom: 63px;
@@ -58,6 +64,18 @@
         margin-top: 69px;
         order: 3;
         flex-basis: 100%;
+      }
+
+      &:hover {
+        background-color: #da3369;
+      }
+
+      &:active {
+        background-color: #da3369;
+      }
+
+      &:focus {
+        outline: 2px solid $tertiary-text-color;
       }
     }
 
@@ -78,7 +96,7 @@
     }
 
     &__card-list-item {
-      // position: relative;
+      position: relative;
       display: flex;
       flex-direction: column;
       margin-bottom: 40px;
@@ -86,6 +104,7 @@
       min-height: 432px;
       padding: 32px;
       border-radius: 32px;
+      overflow: hidden;
 
       &:not(:nth-child(3n)) {
         margin-right: 40px;
@@ -216,8 +235,6 @@
     }
 
     &__schedule {
-      // position: absolute;
-      // height: 75px;
       margin-top: auto;
       bottom: 30px;
     }

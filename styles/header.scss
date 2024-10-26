@@ -1,10 +1,19 @@
 @import "./variables.scss";
 @import "./mixin.scss";
 
+.header-visible {
+  transform: translateY(-100%);
+}
+
 .header {
-  margin-bottom: 96px;
+  position: fixed;
+  width: 100%;
   padding-top: 16px;
+  padding-bottom: 16px;
   color: $secondary-text-color;
+  background-color: $tertiary-text-color;
+  z-index: 2222;
+  transition: transform 0.2s ease;
 
   &__wrapper {
     display: flex;
@@ -53,19 +62,24 @@
   &__logo-picture {
     width: 108px;
     height: 40px;
+    background-image: url("../img/logo-ebac-header.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: background-image 0.2s;
+
+    &:hover {
+      background-image: url("../img/logo-hovered.svg");
+    }
+
+    &:active {
+      background-image: url("../img/logo-hovered.svg");
+    }
 
     @media (max-width: 577px) {
       width: 130px;
       height: 48px;
     }
   }
-
-  &__logo-img {
-    width: inherit;
-    height: inherit;
-  }
-
-  // @include logo();
 
   &__menu-list {
     display: flex;
@@ -119,6 +133,20 @@
     align-items: center;
     padding-right: 25px;
     font-size: 15px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: #bedb39;
+      transform: scaleX(0);
+      transform-origin: 0%;
+      transition: transform 0.2s;
+    }
+
     &::after {
       content: "";
       position: absolute;
@@ -129,15 +157,25 @@
       background-image: url("../img/arrow.svg");
       background-repeat: no-repeat;
     }
+
+    &:hover {
+      &::before {
+        transform: scaleX(100%);
+      }
+    }
+
+    &:active {
+      &::before {
+        transform: scaleX(100%);
+      }
+    }
   }
 
   @media (max-width: 992px) {
-    margin-bottom: 63px;
     padding-top: 17px;
   }
 
   @media (max-width: 577px) {
     padding-top: 12px;
-    margin-bottom: 37px;
   }
 }

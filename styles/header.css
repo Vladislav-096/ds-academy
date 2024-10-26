@@ -1,7 +1,16 @@
+.header-visible {
+  transform: translateY(-100%);
+}
+
 .header {
-  margin-bottom: 96px;
+  position: fixed;
+  width: 100%;
   padding-top: 16px;
+  padding-bottom: 16px;
   color: #1b1f21;
+  background-color: #fcfaf9;
+  z-index: 2222;
+  transition: transform 0.2s ease;
 }
 .header__wrapper {
   display: flex;
@@ -42,16 +51,22 @@
 .header__logo-picture {
   width: 108px;
   height: 40px;
+  background-image: url("../img/logo-ebac-header.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: background-image 0.2s;
+}
+.header__logo-picture:hover {
+  background-image: url("../img/logo-hovered.svg");
+}
+.header__logo-picture:active {
+  background-image: url("../img/logo-hovered.svg");
 }
 @media (max-width: 577px) {
   .header__logo-picture {
     width: 130px;
     height: 48px;
   }
-}
-.header__logo-img {
-  width: inherit;
-  height: inherit;
 }
 .header__menu-list {
   display: flex;
@@ -104,6 +119,18 @@
   padding-right: 25px;
   font-size: 15px;
 }
+.header__logo-abbreviation::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #bedb39;
+  transform: scaleX(0);
+  transform-origin: 0%;
+  transition: transform 0.2s;
+}
 .header__logo-abbreviation::after {
   content: "";
   position: absolute;
@@ -114,15 +141,19 @@
   background-image: url("../img/arrow.svg");
   background-repeat: no-repeat;
 }
+.header__logo-abbreviation:hover::before {
+  transform: scaleX(100%);
+}
+.header__logo-abbreviation:active::before {
+  transform: scaleX(100%);
+}
 @media (max-width: 992px) {
   .header {
-    margin-bottom: 63px;
     padding-top: 17px;
   }
 }
 @media (max-width: 577px) {
   .header {
     padding-top: 12px;
-    margin-bottom: 37px;
   }
 }/*# sourceMappingURL=header.css.map */

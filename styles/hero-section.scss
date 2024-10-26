@@ -265,6 +265,7 @@
       background-color: #bedb39;
       border-radius: 40px;
       font-size: 18px;
+      transition: color 0.2s, background-color 0.2s;
 
       &::before {
         content: "";
@@ -292,6 +293,19 @@
       @media (max-width: 577px) {
         width: 100%;
         bottom: 15px;
+      }
+
+      &:hover {
+        background-color: $secondary-text-color;
+        color: $tertiary-text-color;
+      }
+
+      &:focus {
+        outline: 2px solid $secondary-text-color;
+
+        &::before {
+          border: none;
+        }
       }
     }
 
