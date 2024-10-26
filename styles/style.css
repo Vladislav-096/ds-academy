@@ -2629,6 +2629,9 @@ p {
   -webkit-mask-repeat: no-repeat;
   background-color: #57acbc;
 }
+.section-subscription .subscription__descr-block {
+  position: relative;
+}
 @media (max-width: 1366px) {
   .section-subscription .subscription__descr-block {
     width: 750px;
@@ -2662,6 +2665,15 @@ p {
 @media (max-width: 577px) {
   .section-subscription .subscription__descr-block {
     padding: 65px 24px;
+  }
+}
+.section-subscription .subscription__descr-block .line-bg-seventh-picture {
+  display: none;
+}
+@media (max-width: 1366px) {
+  .section-subscription .subscription__descr-block .line-bg-seventh-picture {
+    display: block;
+    z-index: 1;
   }
 }
 .section-subscription .subscription__descr-content {
@@ -2964,6 +2976,7 @@ p {
   top: 0;
   right: 0;
   height: 518px;
+  z-index: 2;
 }
 @media (max-width: 992px) {
   .section-subscription .subscription__picture {

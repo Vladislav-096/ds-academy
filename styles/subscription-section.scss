@@ -17,6 +17,7 @@
     background-color: #57acbc;
 
     &__descr-block {
+      position: relative;
       @media (max-width: 1366px) {
         width: 750px;
         background-color: #57acbc;
@@ -44,6 +45,15 @@
 
       @media (max-width: 577px) {
         padding: 65px 24px;
+      }
+
+      .line-bg-seventh-picture {
+        display: none;
+
+        @media (max-width: 1366px) {
+          display: block;
+          z-index: 1;
+        }
       }
     }
 
@@ -357,6 +367,7 @@
       top: 0;
       right: 0;
       height: 518px;
+      z-index: 2;
 
       @media (max-width: 992px) {
         width: 288px;
