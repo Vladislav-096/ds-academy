@@ -17,7 +17,7 @@ const header = document.getElementById("header");
 
 const validation = () => {
   if (
-    /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i.test(emailInput.value) &&
+    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(emailInput.value) &&
     termsValidation.checked
   ) {
     errorMessageWrapper.textContent = "";
@@ -111,7 +111,10 @@ let lastScrollTop = 0;
 window.addEventListener("scroll", function () {
   const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-  if (currentScroll > lastScrollTop && currentScroll > header.offsetHeight) {
+  const isScrollingDown = currentScroll > lastScrollTop;
+  const isPastHeaderHeight = currentScroll > header.offsetHeight;
+
+  if (isScrollingDown && isPastHeaderHeight) {
     header.classList.add("header-visible");
   } else {
     header.classList.remove("header-visible");

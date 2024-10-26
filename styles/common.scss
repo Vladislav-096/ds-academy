@@ -129,9 +129,9 @@ p {
   top: 58.2%;
   @include marquee(#ffad20, -1deg, $secondary-text-color, 58px);
 
-  @media(max-width: 1920px) {
+  @media (max-width: 1920px) {
     @include marquee(#ffad20, -3deg, $secondary-text-color, 58px);
-  } 
+  }
 
   @media (max-width: 1366px) {
     top: 51%;
@@ -162,7 +162,11 @@ p {
 
 .subscription-marquee {
   top: 72.7%;
-  @include marquee(#fe6d44, 2deg, $secondary-text-color, 58px);
+  @include marquee(#fe6d44, 0deg, $secondary-text-color, 58px);
+
+  @media (max-width: 1920px) {
+    @include marquee(#fe6d44, 2deg, $secondary-text-color, 58px);
+  }
 
   @media (max-width: 1366px) {
     top: 69.7%;
@@ -255,16 +259,43 @@ p {
 }
 
 .line-bg-third-picture {
-  width: 1443px;
-  height: 1169px;
-  top: -167.63px;
-  left: -1.18px;
+  width: 1563px;
+  height: 1589px;
 
-  @media (max-width: 992px) {
-    width: 1695.97px;
-    height: 1411.01px;
-    top: -124px;
-    left: -422px;
+  &:nth-child(1) {
+    top: 120px;
+    left: -440px;
+
+    @media (max-width: 1920px) {
+      width: 1563px;
+      height: 1569px;
+      top: -306.63px;
+      left: -113.18px;
+      transform: rotate(-6deg);
+    }
+
+    @media (max-width: 992px) {
+      width: 1695.97px;
+      height: 1361.01px;
+      top: -113px;
+      left: -424px;
+      transform: rotate(-1deg);
+    }
+  }
+
+  &:nth-child(2) {
+    top: -222.63px;
+    left: 1235px;
+
+    @media (max-width: 1920px) {
+      width: 0;
+    }
+  }
+
+  &:nth-child(3) {
+    top: -522.63px;
+    left: 3075px;
+    transform: rotate(180deg);
   }
 }
 
