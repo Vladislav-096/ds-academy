@@ -556,12 +556,12 @@ p {
 }
 @media (max-width: 577px) {
   .webinars-marquee {
-    top: 56%;
+    top: 5269px;
   }
 }
 @media (max-width: 320px) {
   .webinars-marquee {
-    top: 55.9%;
+    top: 5249px;
   }
 }
 
@@ -817,7 +817,12 @@ p {
 }
 @media (max-width: 577px) {
   .subscription-marquee {
-    top: 73.13%;
+    top: 6862px;
+  }
+}
+@media (max-width: 320px) {
+  .subscription-marquee {
+    top: 6871px;
   }
 }
 
@@ -1013,7 +1018,7 @@ p {
 }
 @media (max-width: 577px) {
   .discount-marquee {
-    top: 87.47%;
+    top: 8218px;
   }
 }
 
