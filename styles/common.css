@@ -77,21 +77,32 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   flex-direction: column;
-  width: 400px;
-  border: 1px solid black;
+  width: 420px;
+  outline: 1px solid black;
   padding: 10px;
 }
 .form .label {
   margin-bottom: 10px;
 }
 .form .input {
+  display: none;
+}
+.form .input-label {
+  display: inline-block;
+  width: 100px;
   margin-bottom: 5px;
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
 }
 .form .error {
   display: none;
   margin-bottom: 10px;
 }
 .form .files-container {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 5px;
   margin-bottom: 10px;
 }
@@ -101,4 +112,37 @@ p {
   width: 100px;
   padding: 10px;
   border: 1px solid black;
+}
+.form .card {
+  position: relative;
+  width: 120px;
+}
+.form .card:not(:nth-child(3n)) {
+  margin-right: 20px;
+}
+.form .btn-remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.form .picture {
+  margin-bottom: 7px;
+  width: inherit;
+  height: 90px;
+}
+.form .img-preview {
+  width: inherit;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 7px;
+}
+.form .img-name {
+  margin-bottom: 7px;
+}
+.form .img-format {
+  margin-bottom: 7px;
+}
+.form .img-size {
+  margin-bottom: 7px;
 }/*# sourceMappingURL=common.css.map */

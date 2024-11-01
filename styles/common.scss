@@ -80,8 +80,8 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   flex-direction: column;
-  width: 400px;
-  border: 1px solid black;
+  width: 420px;
+  outline: 1px solid black;
   padding: 10px;
 
   .label {
@@ -89,7 +89,17 @@ p {
   }
 
   .input {
+    display: none;
+  }
+
+  .input-label {
+    display: inline-block;
+    width: 100px;
     margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
   }
 
   .error {
@@ -98,6 +108,8 @@ p {
   }
 
   .files-container {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 5px;
     margin-bottom: 10px;
   }
@@ -108,5 +120,45 @@ p {
     width: 100px;
     padding: 10px;
     border: 1px solid black;
+  }
+
+  .card {
+    position: relative;
+    width: 120px;
+
+    &:not(:nth-child(3n)) {
+      margin-right: 20px;
+    }
+  }
+
+  .btn-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  .picture {
+    margin-bottom: 7px;
+    width: inherit;
+    height: 90px;
+  }
+
+  .img-preview {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    margin-bottom: 7px;
+  }
+
+  .img-name {
+    margin-bottom: 7px;
+  }
+
+  .img-format {
+    margin-bottom: 7px;
+  }
+
+  .img-size {
+    margin-bottom: 7px;
   }
 }
