@@ -1,152 +1,167 @@
 const app = document.getElementById("app");
-let formData = [];
-console.log("formData", formData);
 
-const handlers = {
-  onDelete({ obj, element }) {
-    element.remove();
-
-    formData = formData.filter((item) => item.id !== obj.id);
+function createFileUploader() {
+  let formData = [];
+  
+  function render() {
+    app.innerHTML = "";
+    const form = createForm();
+    app.append(form);
     console.log("formData", formData);
-  },
-};
 
-function createContainer() {
-  const container = document.createElement("div");
-  const header = document.createElement("h1");
 
-  container.classList.add("container");
-  header.classList.add("header");
+    const filesContainer = form.querySelector(".files-container");
+    formData.forEach((fileData) => {
+      const fileCard = createFileCard(fileData);
+      filesContainer.append(fileCard);
+    });
+  }
+  render();
 
-  header.textContent = "The input multiple attribute";
+  function handleFileDelete(fileData) {
+    formData = formData.filter((item) => item.id !== fileData.id);
+    render();
+  }
 
-  container.append(header);
-  app.append(container);
+  function createContainer() {
+    const container = document.createElement("div");
+    const header = document.createElement("h1");
 
-  return container;
-}
+    container.classList.add("container");
+    header.classList.add("header");
 
-function createForm({ onDelete }) {
-  const form = document.createElement("form");
-  const label = document.createElement("label");
-  const inputLabel = document.createElement("label");
-  const input = document.createElement("input");
-  const errorMessage = document.createElement("p");
-  const filesContainer = document.createElement("ul");
-  const button = document.createElement("button");
+    header.textContent = "The input multiple attribute";
 
-  form.classList.add("form");
-  label.classList.add("label");
-  input.classList.add("input");
-  input.id = "input";
-  inputLabel.classList.add("input-label");
-  inputLabel.setAttribute("for", input.id);
-  errorMessage.classList.add("error");
-  filesContainer.classList.add("list-reset", "files-container");
-  button.classList.add("btn-reset", "submit");
+    container.append(header);
+    app.append(container);
 
-  // form.action = "https://jsonplaceholder.typicode.com/posts";
-  // form.method = "POST";
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
-  input.type = "file";
-  input.name = "file";
-  input.multiple = true;
-  button.type = "submit";
-  button.addEventListener("click", () => postData(formData));
+    return container;
+  }
 
-  label.textContent =
-    "Вы можете загрузить до 5 файлов JPG, JPEG, PNG, размер одного — до 10 МБ";
-  inputLabel.textContent = "Add file";
-  button.textContent = "Submit";
+  function createForm() {
+    const form = document.createElement("form");
+    const label = document.createElement("label");
+    const inputLabel = document.createElement("label");
+    const input = document.createElement("input");
+    const errorMessage = document.createElement("p");
+    const filesContainer = document.createElement("ul");
+    const button = document.createElement("button");
 
-  input.addEventListener("change", (e) =>
-    showFiles(e, errorMessage, filesContainer, { onDelete })
-  );
+    form.classList.add("form");
+    label.classList.add("label");
+    input.classList.add("input");
+    input.id = "input";
+    inputLabel.classList.add("input-label");
+    inputLabel.setAttribute("for", input.id);
+    errorMessage.classList.add("error");
+    filesContainer.classList.add("list-reset", "files-container");
+    button.classList.add("btn-reset", "submit");
 
-  form.append(label, input, inputLabel, errorMessage, filesContainer, button);
-  createContainer().append(form);
+    // form.action = "https://jsonplaceholder.typicode.com/posts";
+    // form.method = "POST";
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+    input.type = "file";
+    input.name = "file";
+    input.multiple = true;
+    button.type = "submit";
+    button.addEventListener("click", () => postData(formData));
 
-  return form;
-}
-createForm(handlers);
+    label.textContent =
+      "Вы можете загрузить до 5 файлов JPG, JPEG, PNG, размер одного — до 10 МБ";
+    inputLabel.textContent = "Add file";
+    button.textContent = "Submit";
 
-function showFiles(event, errorMessage, filesContainer, { onDelete }) {
-  const files = event.target.files;
-  console.log("event.target.files", files);
-  for (let i = 0; i < files.length; i++) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      console.log("reader", e);
-      const card = document.createElement("li");
-      const button = document.createElement("button");
-      const picture = document.createElement("picture");
-      const imgPreview = document.createElement("img");
-      const imgName = document.createElement("h2");
-      const imgFormat = document.createElement("p");
-      const imgSize = document.createElement("p");
+    input.addEventListener("change", (event) => {
+      const files = event.target.files;
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = e.target.result;
+          const name = formatFileName(file.name);
+          const format = formatFileFormat(file.name);
+          const size = formatFileSize(file.size);
 
-      card.classList.add("card");
-      button.classList.add("btn-remove");
-      picture.classList.add("picture");
-      imgPreview.classList.add("img-preview");
-      imgName.classList.add("img-name");
-      imgFormat.classList.add("img-format");
-      imgSize.classList.add("img-size");
+          let formDataObj = {
+            id: file.lastModified,
+            img,
+            name,
+            format,
+            size,
+          };
+          formData.push(formDataObj);
+          render();
+        };
+        reader.readAsDataURL(file);
+      });
+    });
 
-      const img = e.target.result;
-      const name = formatFileName(files[i].name);
-      const format = formatFileFormat(files[i].name);
-      const size = formatFileSize(files[i].size);
+    form.append(label, input, inputLabel, errorMessage, filesContainer, button);
+    createContainer().append(form);
 
-      imgPreview.src = img;
-      button.textContent = "Remove";
-      imgName.textContent = name;
-      imgFormat.textContent = format;
-      imgSize.textContent = size;
+    return form;
+  }
 
-      let formDataObj = { id: files[i].lastModified, img, name, format, size };
-      formData.push(formDataObj);
-      console.log("formData", formData);
+  function createFileCard(fileData) {
+    const card = document.createElement("li");
+    const button = document.createElement("button");
+    const picture = document.createElement("picture");
+    const imgPreview = document.createElement("img");
+    const imgName = document.createElement("h2");
+    const imgFormat = document.createElement("p");
+    const imgSize = document.createElement("p");
 
-      button.addEventListener("click", () =>
-        onDelete({ obj: formDataObj, element: card })
-      );
+    card.classList.add("card");
+    button.classList.add("btn-remove");
+    picture.classList.add("picture");
+    imgPreview.classList.add("img-preview");
+    imgName.classList.add("img-name");
+    imgFormat.classList.add("img-format");
+    imgSize.classList.add("img-size");
 
-      picture.append(imgPreview);
-      card.append(button, picture, imgName, imgFormat, imgSize);
-      filesContainer.append(card);
-    };
-    reader.readAsDataURL(files[i]);
+    imgPreview.src = fileData.img;
+    button.textContent = "Remove";
+    imgName.textContent = fileData.name;
+    imgFormat.textContent = fileData.format;
+    imgSize.textContent = fileData.size;
+
+    button.addEventListener("click", () => handleFileDelete(fileData));
+
+    picture.append(imgPreview);
+    card.append(button, picture, imgName, imgFormat, imgSize);
+
+    return card;
+  }
+
+  function formatFileName(str) {
+    let result = str.split(".");
+    result.splice(result.length - 1, 1);
+    return result.join(".");
+  }
+
+  function formatFileFormat(str) {
+    let result = str.split(".");
+    result.splice(0, result.length - 1);
+    return result.join("");
+  }
+
+  function formatFileSize(num) {
+    const BYTE_IN_MB = 1048576;
+    let result = Number(num) / BYTE_IN_MB;
+    return result.toFixed(1);
+  }
+
+  // api
+  async function postData(data) {
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
   }
 }
 
-function formatFileName(str) {
-  let result = str.split(".");
-  result.splice(result.length - 1, 1);
-  return result.join(".");
-}
-
-function formatFileFormat(str) {
-  let result = str.split(".");
-  result.splice(0, result.length - 1);
-  return result.join("");
-}
-
-function formatFileSize(num) {
-  const BYTE_IN_MB = 1048576;
-  let result = Number(num) / BYTE_IN_MB;
-  return result.toFixed(1);
-}
-
-// api
-async function postData(data) {
-  fetch("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-}
+createFileUploader();

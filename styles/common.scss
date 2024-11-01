@@ -76,9 +76,9 @@ p {
 .form {
   display: flex;
   position: absolute;
-  top: 40%;
+  top: 20%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   flex-direction: column;
   width: 420px;
   outline: 1px solid black;
