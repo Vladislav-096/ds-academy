@@ -102,15 +102,22 @@ p {
     cursor: pointer;
   }
 
-  .error {
-    display: none;
+  .error-warning-list {
+    // display: none;
     margin-bottom: 10px;
+  }
+
+  .error {
     color: red;
   }
 
-  .show-error {
-    display: block;
+  .warning {
+    color: rgb(255, 166, 0);
   }
+
+  // .show-error {
+  //   display: block;
+  // }
 
   .files-container {
     display: flex;

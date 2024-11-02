@@ -96,13 +96,14 @@ p {
   text-align: center;
   cursor: pointer;
 }
-.form .error {
-  display: none;
+.form .error-warning-list {
   margin-bottom: 10px;
+}
+.form .error {
   color: red;
 }
-.form .show-error {
-  display: block;
+.form .warning {
+  color: rgb(255, 166, 0);
 }
 .form .files-container {
   display: flex;

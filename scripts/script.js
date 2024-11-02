@@ -1,4 +1,5 @@
 const app = document.getElementById("app");
+const errorsList = document.createElement("ul");
 
 function createFileUploader() {
   let formData = [];
@@ -7,28 +8,53 @@ function createFileUploader() {
     app.innerHTML = "";
     const form = createForm();
     app.append(form);
-    console.log("formData", formData);
 
     const filesContainer = form.querySelector(".files-container");
+    form.insertBefore(errorsList, filesContainer);
+    errorsList.classList.add("error-warning-list");
+
     formData.forEach((fileData, index) => {
-      if (index > 4) {
-        const errorMessage = form.querySelector(".error");
-        errorMessage.classList.add("show-error");
-        errorMessage.textContent = "Превышено допустимое количество файлов: 5";
-        formData = formData.slice(0, 5);
-      } else {
-        const fileCard = createFileCard(fileData);
-        filesContainer.append(fileCard);
-      }
+      formValidation(filesContainer, fileData, index);
     });
+    console.log("formData", formData);
   }
   render();
 
+  function formValidation(filesContainer, fileData, index) {
+    if (index <= 4 && formatValidation(fileData.format)) {
+      const warningItem = document.createElement("li");
+      warningItem.classList.add("warning");
+      warningItem.textContent = `Неверный формат '${fileData.name}' файла`;
+      errorsList.append(warningItem);
+      formData.splice(index, 1);
+    } else if (index > 4) {
+      const hasLimitLi = errorsList.querySelector("li#limit") !== null;
+      if (hasLimitLi) {
+        formData = formData.slice(0, 5);
+        return;
+      } else {
+        const errorItem = document.createElement("li");
+        errorItem.classList.add("error");
+        errorItem.id = "limit";
+        errorItem.textContent = "Превышено допустимое количество файлов: 5";
+        errorsList.append(errorItem);
+        formData = formData.slice(0, 5);
+      }
+    } else {
+      const fileCard = createFileCard(fileData);
+      filesContainer.append(fileCard);
+    }
+  }
+
+  function formatValidation(format) {
+    return format !== "PNG" && format !== "jpeg" && format !== "jpg";
+  }
+
   function handleFileDelete(fileData) {
     formData = formData.filter((item) => item.id !== fileData.id);
-    if (formData.length < 5) {
-      const errorMessage = document.querySelector(".error");
-      errorMessage.classList.remove("show-error");
+    const error = document.querySelector("#limit");
+    if (error !== null) {
+      error.remove();
     }
     render();
   }
@@ -53,7 +79,6 @@ function createFileUploader() {
     const label = document.createElement("label");
     const inputLabel = document.createElement("label");
     const input = document.createElement("input");
-    const errorMessage = document.createElement("p");
     const filesContainer = document.createElement("ul");
     const button = document.createElement("button");
 
@@ -63,7 +88,6 @@ function createFileUploader() {
     input.id = "input";
     inputLabel.classList.add("input-label");
     inputLabel.setAttribute("for", input.id);
-    errorMessage.classList.add("error");
     filesContainer.classList.add("list-reset", "files-container");
     button.classList.add("btn-reset", "submit");
 
@@ -86,6 +110,8 @@ function createFileUploader() {
     input.addEventListener("change", (event) => {
       const files = event.target.files;
       Array.from(files).forEach((file) => {
+        errorsList.innerHTML = "";
+        // console.log("file", file);
         const reader = new FileReader();
         reader.onload = (e) => {
           const img = e.target.result;
@@ -108,7 +134,7 @@ function createFileUploader() {
       });
     });
 
-    form.append(label, input, inputLabel, errorMessage, filesContainer, button);
+    form.append(label, input, inputLabel, filesContainer, button);
     createContainer().append(form);
 
     return form;
