@@ -124,9 +124,15 @@ p {
 .form .card {
   position: relative;
   width: 120px;
+  height: 183px;
+  cursor: move;
+  outline: 1px solid black;
 }
 .form .card:not(:nth-child(3n)) {
   margin-right: 20px;
+}
+.form .selected {
+  opacity: 0.6;
 }
 .form .btn-remove {
   position: absolute;

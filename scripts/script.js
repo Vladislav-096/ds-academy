@@ -63,8 +63,43 @@ function createFileUploader() {
     filesContainer.classList.add("list-reset", "files-container");
     button.classList.add("btn-reset", "submit");
 
-    // form.action = "https://jsonplaceholder.typicode.com/posts";
-    // form.method = "POST";
+    filesContainer.addEventListener("dragstart", (e) => {
+      // Проверяем, является ли целевой элемент карточкой
+      if (e.target.closest(".card")) {
+        e.target.closest(".card").classList.add("selected");
+      }
+    });
+
+    filesContainer.addEventListener("dragend", (e) => {
+      if (e.target.closest(".card")) {
+        e.target.closest(".card").classList.remove("selected");
+      }
+    });
+
+    filesContainer.addEventListener("dragover", (e) => {
+      e.preventDefault();
+
+      const activeElement = document.querySelector(`.selected`);
+      const currentElement = e.target.closest(".card");
+      // Проверяю не являются ли выбранный элемент и элемент с классом selected одним и тем же элементом
+      // Еще проверяю является ли выбранный элемент элементом списка
+      const isMoveable =
+        activeElement !== currentElement &&
+        currentElement.classList.contains("card");
+
+      // Если условие не выполняется, прерываю выполнение функции, отменив все дальнейшие действия
+      if (!isMoveable) {
+        return;
+      }
+
+      const nextElement =
+        currentElement === activeElement.nextElementSibling
+          ? currentElement.nextElementSibling
+          : currentElement;
+
+      filesContainer.insertBefore(activeElement, nextElement);
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
     });
@@ -104,7 +139,9 @@ function createFileUploader() {
     imgFormat.classList.add("img-format");
     imgSize.classList.add("img-size");
 
+    card.draggable = true;
     imgPreview.src = fileData.img;
+    imgPreview.draggable = false;
     button.textContent = "Remove";
     imgName.textContent = fileData.name;
     imgFormat.textContent = fileData.format;

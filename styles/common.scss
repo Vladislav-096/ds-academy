@@ -140,10 +140,17 @@ p {
   .card {
     position: relative;
     width: 120px;
+    height: 183px;
+    cursor: move;
+    outline: 1px solid black;
 
     &:not(:nth-child(3n)) {
       margin-right: 20px;
     }
+  }
+
+  .selected {
+    opacity: 0.6;
   }
 
   .btn-remove {
