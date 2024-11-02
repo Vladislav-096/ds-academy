@@ -2,24 +2,34 @@ const app = document.getElementById("app");
 
 function createFileUploader() {
   let formData = [];
-  
+
   function render() {
     app.innerHTML = "";
     const form = createForm();
     app.append(form);
     console.log("formData", formData);
 
-
     const filesContainer = form.querySelector(".files-container");
-    formData.forEach((fileData) => {
-      const fileCard = createFileCard(fileData);
-      filesContainer.append(fileCard);
+    formData.forEach((fileData, index) => {
+      if (index > 4) {
+        const errorMessage = form.querySelector(".error");
+        errorMessage.classList.add("show-error");
+        errorMessage.textContent = "Превышено допустимое количество файлов: 5";
+        formData = formData.slice(0, 5);
+      } else {
+        const fileCard = createFileCard(fileData);
+        filesContainer.append(fileCard);
+      }
     });
   }
   render();
 
   function handleFileDelete(fileData) {
     formData = formData.filter((item) => item.id !== fileData.id);
+    if (formData.length < 5) {
+      const errorMessage = document.querySelector(".error");
+      errorMessage.classList.remove("show-error");
+    }
     render();
   }
 
@@ -90,6 +100,7 @@ function createFileUploader() {
             format,
             size,
           };
+
           formData.push(formDataObj);
           render();
         };

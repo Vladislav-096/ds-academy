@@ -99,6 +99,10 @@ p {
 .form .error {
   display: none;
   margin-bottom: 10px;
+  color: red;
+}
+.form .show-error {
+  display: block;
 }
 .form .files-container {
   display: flex;
