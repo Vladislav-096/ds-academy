@@ -1,4 +1,5 @@
 const app = document.getElementById("app");
+const BYTE_IN_MB = 1048576;
 const errorsList = document.createElement("ul");
 
 function createFileUploader() {
@@ -86,84 +87,6 @@ function createFileUploader() {
     return form;
   }
 
-  function onChange(event) {
-    const files = event.target.files;
-    errorsList.innerHTML = "";
-    let filesArray = Array.from(files);
-
-    filesArray = filesArray.filter((item) => {
-      if (formatValidation(item)) {
-        formatWarningCreator(item);
-        return false;
-      } else {
-        return true;
-      }
-    });
-
-    if (filesArray.length === 0) {
-      return;
-    }
-
-    if (formData.length >= 5 || filesArray.length + formData.length > 5) {
-      limitErrorCreator();
-    }
-
-    const validFilesCount = Math.min(filesArray.length, 5 - formData.length);
-    for (let i = 0; i < validFilesCount; i++) {
-      createFileObject(filesArray[i]);
-    }
-  }
-
-  function formatValidation(item) {
-    return (
-      findFormat(item.name) !== "PNG" &&
-      findFormat(item.name) !== "jpeg" &&
-      findFormat(item.name) !== "jpg"
-    );
-  }
-
-  function createFileObject(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = e.target.result;
-      const name = formatFileName(file.name);
-      const format = formatFileFormat(file.name);
-      const size = formatFileSize(file.size);
-
-      let formDataObj = {
-        id: file.lastModified,
-        img,
-        name,
-        format,
-        size,
-      };
-
-      formData.push(formDataObj);
-      render();
-    };
-    reader.readAsDataURL(file);
-  }
-
-  function findFormat(str) {
-    let result = str.split(".");
-    return result[result.length - 1];
-  }
-
-  function formatWarningCreator(item) {
-    const warningItem = document.createElement("li");
-    warningItem.classList.add("warning");
-    warningItem.textContent = `Неверный формат '${item.name} 'файла`;
-    errorsList.append(warningItem);
-  }
-
-  function limitErrorCreator() {
-    const errorItem = document.createElement("li");
-    errorItem.classList.add("error");
-    errorItem.id = "limit";
-    errorItem.textContent = "Превышено допустимое количество файлов: 5";
-    errorsList.append(errorItem);
-  }
-
   function createFileCard(fileData) {
     const card = document.createElement("li");
     const button = document.createElement("button");
@@ -195,6 +118,99 @@ function createFileUploader() {
     return card;
   }
 
+  function createFileObject(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = e.target.result;
+      const name = formatFileName(file.name);
+      const format = formatFileFormat(file.name);
+      const size = formatFileSize(file.size);
+
+      let formDataObj = {
+        id: file.lastModified,
+        img,
+        name,
+        format,
+        size,
+      };
+
+      formData.push(formDataObj);
+      render();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function warningCreator(text) {
+    const warningItem = document.createElement("li");
+    warningItem.classList.add("warning");
+    warningItem.textContent = text;
+    errorsList.append(warningItem);
+  }
+
+  function limitErrorCreator() {
+    const errorItem = document.createElement("li");
+    errorItem.classList.add("error");
+    errorItem.id = "limit";
+    errorItem.textContent = "Превышено допустимое количество файлов: 5";
+    errorsList.append(errorItem);
+  }
+
+  function onChange(event) {
+    const files = event.target.files;
+    errorsList.innerHTML = "";
+    let filesArray = Array.from(files);
+
+    filesArray = filesArray.filter((item) => {
+      console.log("item", item);
+      if (formatValidation(item)) {
+        warningCreator(`Неверный формат '${item.name}' файла`);
+        return false;
+      }
+
+      if (item.size >= BYTE_IN_MB) {
+        warningCreator(`Привышен максимальный размер '${item.name}' файла`);
+        return false;
+      }
+
+      const isFileAdded = formData.some(
+        (elem) => elem.id === item.lastModified
+      );
+      console.log("isFileAdded", isFileAdded);
+      if (isFileAdded) {
+        warningCreator(`Файл '${item.name}' уже добавлен`);
+        return false;
+      }
+
+      return true;
+    });
+
+    if (filesArray.length === 0) {
+      return;
+    }
+
+    if (formData.length >= 5 || filesArray.length + formData.length > 5) {
+      limitErrorCreator();
+    }
+
+    const validFilesCount = Math.min(filesArray.length, 5 - formData.length);
+    for (let i = 0; i < validFilesCount; i++) {
+      createFileObject(filesArray[i]);
+    }
+  }
+
+  function formatValidation(item) {
+    return (
+      findFormat(item.name) !== "PNG" &&
+      findFormat(item.name) !== "jpeg" &&
+      findFormat(item.name) !== "jpg"
+    );
+  }
+
+  function findFormat(str) {
+    let result = str.split(".");
+    return result[result.length - 1];
+  }
+
   function formatFileName(str) {
     let result = str.split(".");
     result.splice(result.length - 1, 1);
@@ -208,7 +224,6 @@ function createFileUploader() {
   }
 
   function formatFileSize(num) {
-    const BYTE_IN_MB = 1048576;
     let result = Number(num) / BYTE_IN_MB;
     return result.toFixed(1);
   }
