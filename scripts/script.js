@@ -15,10 +15,12 @@ function createFileUploader() {
     errorsList.classList.add("error-warning-list");
 
     formData.forEach((fileData) => {
+      // const loadingCard = createLoadingCard();
+      // filesContainer.append(loadingCard);
       const fileCard = createFileCard(fileData);
+      // loadingCard.remove();
       filesContainer.append(fileCard);
     });
-    console.log("formData", formData);
   }
   render();
 
@@ -175,19 +177,20 @@ function createFileUploader() {
 
     button.addEventListener("click", () => handleFileDelete(fileData));
 
-    card.textContent = "Загрузочка...";
-
-    setTimeout(() => {
-      card.textContent = "";
-      picture.append(imgPreview);
-      card.append(button, picture, imgName, imgFormat, imgSize);
-    }, 2000);
+    card.textContent = "";
+    picture.append(imgPreview);
+    card.append(button, picture, imgName, imgFormat, imgSize);
 
     return card;
   }
 
   function createFileObject(file) {
     const reader = new FileReader();
+
+    const loadingCard = createLoadingCard();
+    const filesContainer = document.querySelector(".files-container");
+    filesContainer.append(loadingCard);
+
     reader.onload = (e) => {
       const img = e.target.result;
       const name = formatFileName(file.name);
@@ -206,6 +209,22 @@ function createFileUploader() {
       render();
     };
     reader.readAsDataURL(file);
+  }
+
+  function createLoadingCard() {
+    const card = document.createElement("li");
+    const loaderWrapper = document.createElement("div");
+
+    card.classList.add("card");
+    loaderWrapper.classList.add("loader-wrapper");
+    for (let i = 0; i < 12; i++) {
+      const loaderElement = document.createElement("div");
+      loaderElement.classList.add("line");
+      loaderWrapper.append(loaderElement);
+    }
+
+    card.append(loaderWrapper);
+    return card;
   }
 
   function warningCreator(text) {
