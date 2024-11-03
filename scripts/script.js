@@ -187,10 +187,6 @@ function createFileUploader() {
   function createFileObject(file) {
     const reader = new FileReader();
 
-    const loadingCard = createLoadingCard();
-    const filesContainer = document.querySelector(".files-container");
-    filesContainer.append(loadingCard);
-
     reader.onload = (e) => {
       const img = e.target.result;
       const name = formatFileName(file.name);
@@ -206,6 +202,9 @@ function createFileUploader() {
       };
 
       formData.push(formDataObj);
+      const loadingCard = createLoadingCard();
+      const filesContainer = document.querySelector(".files-container");
+      filesContainer.append(loadingCard);
       render();
     };
     reader.readAsDataURL(file);
