@@ -175,8 +175,13 @@ function createFileUploader() {
 
     button.addEventListener("click", () => handleFileDelete(fileData));
 
-    picture.append(imgPreview);
-    card.append(button, picture, imgName, imgFormat, imgSize);
+    card.textContent = "Загрузочка...";
+
+    setTimeout(() => {
+      card.textContent = "";
+      picture.append(imgPreview);
+      card.append(button, picture, imgName, imgFormat, imgSize);
+    }, 2000);
 
     return card;
   }
