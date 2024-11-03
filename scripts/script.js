@@ -64,7 +64,7 @@ function createFileUploader() {
     button.classList.add("btn-reset", "submit");
 
     filesContainer.addEventListener("dragstart", (e) => {
-      // Проверяем, является ли целевой элемент карточкой
+      // Проверяем, является ли целевой (родительский) элемент карточкой
       if (e.target.closest(".card")) {
         e.target.closest(".card").classList.add("selected");
       }
@@ -76,15 +76,38 @@ function createFileUploader() {
       }
     });
 
+    filesContainer.addEventListener("drop", (e) => {
+      e.preventDefault();
+
+      // Убираю класс у активного элемента
+      const activeElement = document.querySelector(`.selected`);
+      if (activeElement) {
+        activeElement.classList.remove("selected");
+      }
+
+      // Обновляю массив
+      const cards = Array.from(filesContainer.querySelectorAll(".card"));
+      console.log("cards", cards);
+      formData = cards.map((card) => {
+        const id = parseInt(card.dataset.id);
+        return formData.find((file) => file.id === id);
+      });
+    });
+
     filesContainer.addEventListener("dragover", (e) => {
       e.preventDefault();
 
+      // Какой элемент сейчас перетаскивается
       const activeElement = document.querySelector(`.selected`);
+      // Какой элемент под курсором пока я тащу activeElement. Элемент, на который указывает событие dragover (потому что e.target).
       const currentElement = e.target.closest(".card");
-      // Проверяю не являются ли выбранный элемент и элемент с классом selected одним и тем же элементом
+
+      // Проверяю не являются ли activeElement и currentElement одним и тем же элементом. Чтобы избежать попытки
+      // перемещения элемента самого на себя.
       // Еще проверяю является ли выбранный элемент элементом списка
       const isMoveable =
         activeElement !== currentElement &&
+        currentElement && // Проверка на null. Если не сделаю, то когда над пустой областью перетаскиваю карточку - будет ошибка
         currentElement.classList.contains("card");
 
       // Если условие не выполняется, прерываю выполнение функции, отменив все дальнейшие действия
@@ -92,6 +115,7 @@ function createFileUploader() {
         return;
       }
 
+      // Для правильного позиционирования при перетаскивании
       const nextElement =
         currentElement === activeElement.nextElementSibling
           ? currentElement.nextElementSibling
@@ -103,6 +127,7 @@ function createFileUploader() {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
     });
+
     input.type = "file";
     input.name = "file";
     input.multiple = true;
@@ -140,6 +165,7 @@ function createFileUploader() {
     imgSize.classList.add("img-size");
 
     card.draggable = true;
+    card.dataset.id = fileData.id;
     imgPreview.src = fileData.img;
     imgPreview.draggable = false;
     button.textContent = "Remove";
