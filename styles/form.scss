@@ -32,14 +32,14 @@
     margin-bottom: 10px;
     max-height: 100px;
     overflow-y: auto;
-  }
 
-  .error {
-    color: red;
-  }
+    .error {
+      color: red;
+    }
 
-  .warning {
-    color: rgb(255, 166, 0);
+    .warning {
+      color: rgb(255, 166, 0);
+    }
   }
 
   .files-container {
@@ -68,40 +68,46 @@
     &:not(:nth-child(3n)) {
       margin-right: 20px;
     }
+
+    .card-data {
+      width: inherit;
+      height: inherit;
+      position: relative;
+
+      .btn-remove {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+
+      .picture {
+        margin-bottom: 7px;
+        width: inherit;
+        height: 90px;
+
+        .img-preview {
+          width: inherit;
+          height: inherit;
+          object-fit: cover;
+          margin-bottom: 7px;
+        }
+      }
+
+      .img-name {
+        margin-bottom: 7px;
+      }
+
+      .img-format {
+        margin-bottom: 7px;
+      }
+
+      .img-size {
+        margin-bottom: 7px;
+      }
+    }
   }
 
   .selected {
     opacity: 0.6;
-  }
-
-  .btn-remove {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-
-  .picture {
-    margin-bottom: 7px;
-    width: inherit;
-    height: 90px;
-  }
-
-  .img-preview {
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-    margin-bottom: 7px;
-  }
-
-  .img-name {
-    margin-bottom: 7px;
-  }
-
-  .img-format {
-    margin-bottom: 7px;
-  }
-
-  .img-size {
-    margin-bottom: 7px;
   }
 }

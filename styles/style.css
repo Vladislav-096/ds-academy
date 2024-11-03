@@ -102,10 +102,10 @@ p {
   max-height: 100px;
   overflow-y: auto;
 }
-.form .error {
+.form .error-warning-list .error {
   color: red;
 }
-.form .warning {
+.form .error-warning-list .warning {
   color: rgb(255, 166, 0);
 }
 .form .files-container {
@@ -132,34 +132,39 @@ p {
 .form .card:not(:nth-child(3n)) {
   margin-right: 20px;
 }
-.form .selected {
-  opacity: 0.6;
+.form .card .card-data {
+  width: inherit;
+  height: inherit;
+  position: relative;
 }
-.form .btn-remove {
+.form .card .card-data .btn-remove {
   position: absolute;
   top: 5px;
   right: 5px;
 }
-.form .picture {
+.form .card .card-data .picture {
   margin-bottom: 7px;
   width: inherit;
   height: 90px;
 }
-.form .img-preview {
+.form .card .card-data .picture .img-preview {
   width: inherit;
   height: inherit;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 7px;
 }
-.form .img-name {
+.form .card .card-data .img-name {
   margin-bottom: 7px;
 }
-.form .img-format {
+.form .card .card-data .img-format {
   margin-bottom: 7px;
 }
-.form .img-size {
+.form .card .card-data .img-size {
   margin-bottom: 7px;
+}
+.form .selected {
+  opacity: 0.6;
 }
 
 .loader-wrapper {

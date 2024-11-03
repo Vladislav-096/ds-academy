@@ -15,12 +15,13 @@ function createFileUploader() {
     errorsList.classList.add("error-warning-list");
 
     formData.forEach((fileData) => {
-      // const loadingCard = createLoadingCard();
-      // filesContainer.append(loadingCard);
+      const card = createCard(fileData.id);
       const fileCard = createFileCard(fileData);
-      // loadingCard.remove();
-      filesContainer.append(fileCard);
+      card.append(fileCard);
+      filesContainer.append(card);
     });
+
+    console.log(formData);
   }
   render();
 
@@ -89,7 +90,6 @@ function createFileUploader() {
 
       // Обновляю массив
       const cards = Array.from(filesContainer.querySelectorAll(".card"));
-      console.log("cards", cards);
       formData = cards.map((card) => {
         const id = parseInt(card.dataset.id);
         return formData.find((file) => file.id === id);
@@ -149,8 +149,17 @@ function createFileUploader() {
     return form;
   }
 
-  function createFileCard(fileData) {
+  function createCard(id) {
     const card = document.createElement("li");
+    card.classList.add("card");
+    card.draggable = true;
+    card.dataset.id = id;
+
+    return card;
+  }
+
+  function createFileCard(fileData) {
+    const cardWrapper = document.createElement("div");
     const button = document.createElement("button");
     const picture = document.createElement("picture");
     const imgPreview = document.createElement("img");
@@ -158,7 +167,7 @@ function createFileUploader() {
     const imgFormat = document.createElement("p");
     const imgSize = document.createElement("p");
 
-    card.classList.add("card");
+    cardWrapper.classList.add("card-data");
     button.classList.add("btn-remove");
     picture.classList.add("picture");
     imgPreview.classList.add("img-preview");
@@ -166,8 +175,6 @@ function createFileUploader() {
     imgFormat.classList.add("img-format");
     imgSize.classList.add("img-size");
 
-    card.draggable = true;
-    card.dataset.id = fileData.id;
     imgPreview.src = fileData.img;
     imgPreview.draggable = false;
     button.textContent = "Remove";
@@ -177,15 +184,21 @@ function createFileUploader() {
 
     button.addEventListener("click", () => handleFileDelete(fileData));
 
-    card.textContent = "";
     picture.append(imgPreview);
-    card.append(button, picture, imgName, imgFormat, imgSize);
+    cardWrapper.append(button, picture, imgName, imgFormat, imgSize);
 
-    return card;
+    return cardWrapper;
   }
 
   function createFileObject(file) {
     const reader = new FileReader();
+
+    const card = createCard(file.lastModified);
+    const loadingCard = createLoadingCard();
+    const filesContainer = document.querySelector(".files-container");
+
+    card.append(loadingCard);
+    filesContainer.append(card);
 
     reader.onload = (e) => {
       const img = e.target.result;
@@ -202,19 +215,16 @@ function createFileUploader() {
       };
 
       formData.push(formDataObj);
-      const loadingCard = createLoadingCard();
-      const filesContainer = document.querySelector(".files-container");
-      filesContainer.append(loadingCard);
-      render();
+      const fileCard = createFileCard(formDataObj);
+      loadingCard.remove();
+      card.append(fileCard);
     };
     reader.readAsDataURL(file);
   }
 
   function createLoadingCard() {
-    const card = document.createElement("li");
     const loaderWrapper = document.createElement("div");
 
-    card.classList.add("card");
     loaderWrapper.classList.add("loader-wrapper");
     for (let i = 0; i < 12; i++) {
       const loaderElement = document.createElement("div");
@@ -222,8 +232,7 @@ function createFileUploader() {
       loaderWrapper.append(loaderElement);
     }
 
-    card.append(loaderWrapper);
-    return card;
+    return loaderWrapper;
   }
 
   function warningCreator(text) {
@@ -247,7 +256,6 @@ function createFileUploader() {
     let filesArray = Array.from(files);
 
     filesArray = filesArray.filter((item) => {
-      console.log("item", item);
       if (formatValidation(item)) {
         warningCreator(`Неверный формат '${item.name}' файла`);
         return false;
@@ -261,7 +269,6 @@ function createFileUploader() {
       const isFileAdded = formData.some(
         (elem) => elem.id === item.lastModified
       );
-      console.log("isFileAdded", isFileAdded);
       if (isFileAdded) {
         warningCreator(`Файл '${item.name}' уже добавлен`);
         return false;
@@ -316,6 +323,8 @@ function createFileUploader() {
 
   // api
   async function postData(data) {
+    console.log(formData);
+
     fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body: JSON.stringify(data),
