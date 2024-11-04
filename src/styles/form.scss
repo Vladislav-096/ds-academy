@@ -179,4 +179,57 @@
   .selected {
     opacity: 0.6;
   }
+
+  .response-success-message,
+  .response-error-message {
+    position: absolute;
+    display: none;
+    font-size: 15px;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .response-success-message {
+    color: #2ec500;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url("../assets/check-mark.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 22px;
+      height: 22px;
+      right: -28px;
+      top: 0px;
+    }
+  }
+
+  .response-error-message {
+    color: #ff2a2a;
+
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 2px;
+      top: 50%;
+      right: -27px;
+      background-color: #ff2a2a;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .show-response-message {
+    display: block;
+  }
 }

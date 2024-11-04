@@ -1,5 +1,6 @@
 import { postData } from "../../api/PostData.js";
 import { validations } from "../Validations/Validations.js";
+import { FILES_LIMIT } from "../../Constants/Constants.js";
 import {
   formatFileName,
   formatFileFormat,
@@ -59,6 +60,8 @@ export function createFileUploader(app) {
     const input = document.createElement("input");
     const filesContainer = document.createElement("ul");
     const button = document.createElement("button");
+    const successMessage = document.createElement("p");
+    const errorMessage = document.createElement("p");
 
     form.classList.add("form");
     label.classList.add("label");
@@ -68,6 +71,8 @@ export function createFileUploader(app) {
     inputLabel.setAttribute("for", input.id);
     filesContainer.classList.add("list-reset", "files-container");
     button.classList.add("btn-reset", "submit");
+    successMessage.classList.add("response-success-message");
+    errorMessage.classList.add("response-error-message");
 
     filesContainer.addEventListener("dragstart", (e) => {
       // Проверяем, является ли целевой (родительский) элемент карточкой
@@ -137,19 +142,47 @@ export function createFileUploader(app) {
     input.name = "file";
     input.multiple = true;
     button.type = "submit";
-    button.addEventListener("click", () => postData(formData));
+    button.addEventListener("click", async () => await sendData());
 
-    label.textContent =
-      "Вы можете загрузить до 5 файлов JPG, JPEG, PNG, размер одного — до 10 МБ";
+    label.textContent = `Вы можете загрузить до ${FILES_LIMIT} файлов JPG, JPEG, PNG, размер одного — до 10 МБ`;
     inputLabel.textContent = "Add file";
     button.textContent = "Submit";
+    successMessage.textContent = "Данные успешно отправлены";
+    errorMessage.textContent = "Ошибка при отправке данных";
 
     input.addEventListener("change", (event) => onChange(event));
 
-    form.append(label, input, inputLabel, filesContainer, button);
+    form.append(
+      label,
+      input,
+      inputLabel,
+      filesContainer,
+      button,
+      successMessage,
+      errorMessage
+    );
     createContainer().append(form);
 
     return form;
+  }
+
+  async function sendData() {
+    const errorMessage = document.querySelector(".response-error-message");
+    const successMessage = document.querySelector(".response-success-message");
+    try {
+      let result = await postData(formData);
+      if (result.ok) {
+        errorMessage.classList.remove("show-response-message");
+        successMessage.classList.add("show-response-message");
+      } else {
+        successMessage.classList.remove("show-response-message");
+        errorMessage.classList.add("show-response-message");
+      }
+    } catch (error) {
+      successMessage.classList.remove("show-response-message");
+      errorMessage.classList.add("show-response-message");
+      throw error;
+    }
   }
 
   function createCard(id) {

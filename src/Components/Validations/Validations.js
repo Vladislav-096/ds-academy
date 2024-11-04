@@ -1,4 +1,4 @@
-import { BYTE_IN_MB } from "../../Constants/Constants.js";
+import { BYTE_IN_MB, FILES_LIMIT } from "../../Constants/Constants.js";
 import { errorsList, formData } from "../../Components/Form/Form.js";
 
 export function validations(filesArray) {
@@ -26,7 +26,10 @@ export function validations(filesArray) {
     return [];
   }
 
-  if (formData.length >= 5 || filesArray.length + formData.length > 5) {
+  if (
+    formData.length >= FILES_LIMIT ||
+    filesArray.length + formData.length > FILES_LIMIT
+  ) {
     limitErrorCreator();
   }
 
@@ -57,6 +60,6 @@ function limitErrorCreator() {
   const errorItem = document.createElement("li");
   errorItem.classList.add("error");
   errorItem.id = "limit";
-  errorItem.textContent = "Превышено допустимое количество файлов: 5";
+  errorItem.textContent = `Превышено допустимое количество файлов: ${FILES_LIMIT}`;
   errorsList.append(errorItem);
 }
