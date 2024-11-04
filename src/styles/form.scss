@@ -1,0 +1,180 @@
+@use "./_variables.scss" as *;
+@use "./_mixin.scss" as *;
+
+.form {
+  display: flex;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  flex-direction: column;
+  width: 420px;
+  outline: 1px solid black;
+  padding: 10px;
+  background-color: $secondaryBackground;
+  outline: 1px solid $borderColor;
+
+  @media (max-width: 440px) {
+    width: 297px;
+  }
+
+  .label {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .input {
+    display: none;
+  }
+
+  .input-label {
+    @include button(100px);
+    margin-bottom: 20px;
+  }
+
+  .error-warning-list {
+    margin: 0;
+    max-height: 100px;
+    overflow-y: auto;
+
+    .error {
+      color: red;
+    }
+
+    .warning {
+      color: rgb(255, 166, 0);
+      margin-bottom: 10px;
+    }
+  }
+
+  .files-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .submit {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    @include button(100px);
+  }
+
+  .card {
+    position: relative;
+    margin-bottom: 20px;
+    width: 120px;
+    min-height: 180px;
+    cursor: move;
+    background-color: $tertaryBackground;
+    border-radius: 5px;
+    outline: 1px solid $borderColor;
+
+    @media (max-width: 440px) {
+      width: 85px;
+      min-height: 165px;
+    }
+
+    &:not(:nth-child(3n)) {
+      margin-right: 20px;
+
+      @media (max-width: 440px) {
+        margin-right: 10px;
+      }
+    }
+
+    .card-data {
+      width: inherit;
+      min-height: inherit;
+      position: relative;
+
+      .btn-remove {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        top: 5px;
+        right: 5px;
+        outline: 1px solid #fff;
+        background-color: #ff2a2a;
+        transition: background-color 0.2s;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: 75%;
+          height: 2px;
+          background-color: #fff;
+        }
+
+        &::before {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:hover {
+          background-color: #7c0000;
+        }
+      }
+
+      .picture {
+        width: inherit;
+        height: 90px;
+        border-radius: 5px 5px 0 0;
+        outline: 1px solid $borderColor;
+
+        .img-preview {
+          width: inherit;
+          height: inherit;
+          border-radius: 5px 5px 0 0;
+          object-fit: cover;
+          margin-bottom: 7px;
+        }
+      }
+
+      .descr-block {
+        padding: 7px;
+
+        .img-name {
+          margin-bottom: 7px;
+          max-width: inherit;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-size: 20px;
+          font-weight: 700;
+
+          @media(max-width: 440px) {
+            font-size: 18px;
+          }
+        }
+
+        .img-format {
+          margin-bottom: 7px;
+          font-size: 16px;
+
+          @media(max-width: 440px) {
+            font-size: 13px;
+          }
+        }
+
+        .img-size {
+          font-size: 16px;
+
+          @media(max-width: 440px) {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+
+  .selected {
+    opacity: 0.6;
+  }
+}

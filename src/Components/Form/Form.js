@@ -1,10 +1,15 @@
-const app = document.getElementById("app");
-const BYTE_IN_MB = 1048576;
-const errorsList = document.createElement("ul");
+import { postData } from "../../api/PostData.js";
+import { validations } from "../Validations/Validations.js";
+import {
+  formatFileName,
+  formatFileFormat,
+  formatFileSize,
+} from "../Formats/Formats.js";
 
-function createFileUploader() {
-  let formData = [];
+export let formData = [];
+export const errorsList = document.createElement("ul");
 
+export function createFileUploader(app) {
   function render() {
     app.innerHTML = "";
     const form = createForm();
@@ -20,8 +25,6 @@ function createFileUploader() {
       card.append(fileCard);
       filesContainer.append(card);
     });
-
-    console.log(formData);
   }
   render();
 
@@ -163,13 +166,15 @@ function createFileUploader() {
     const button = document.createElement("button");
     const picture = document.createElement("picture");
     const imgPreview = document.createElement("img");
+    const descrBlock = document.createElement("div");
     const imgName = document.createElement("h2");
     const imgFormat = document.createElement("p");
     const imgSize = document.createElement("p");
 
     cardWrapper.classList.add("card-data");
-    button.classList.add("btn-remove");
+    button.classList.add("btn-reset", "btn-remove");
     picture.classList.add("picture");
+    descrBlock.classList.add("descr-block");
     imgPreview.classList.add("img-preview");
     imgName.classList.add("img-name");
     imgFormat.classList.add("img-format");
@@ -177,15 +182,15 @@ function createFileUploader() {
 
     imgPreview.src = fileData.img;
     imgPreview.draggable = false;
-    button.textContent = "Remove";
     imgName.textContent = fileData.name;
     imgFormat.textContent = fileData.format;
-    imgSize.textContent = fileData.size;
+    imgSize.textContent = `${fileData.size} MB`;
 
     button.addEventListener("click", () => handleFileDelete(fileData));
 
     picture.append(imgPreview);
-    cardWrapper.append(button, picture, imgName, imgFormat, imgSize);
+    descrBlock.append(imgName, imgFormat, imgSize);
+    cardWrapper.append(button, picture, descrBlock);
 
     return cardWrapper;
   }
@@ -235,104 +240,20 @@ function createFileUploader() {
     return loaderWrapper;
   }
 
-  function warningCreator(text) {
-    const warningItem = document.createElement("li");
-    warningItem.classList.add("warning");
-    warningItem.textContent = text;
-    errorsList.append(warningItem);
-  }
-
-  function limitErrorCreator() {
-    const errorItem = document.createElement("li");
-    errorItem.classList.add("error");
-    errorItem.id = "limit";
-    errorItem.textContent = "Превышено допустимое количество файлов: 5";
-    errorsList.append(errorItem);
-  }
-
   function onChange(event) {
     const files = event.target.files;
     errorsList.innerHTML = "";
     let filesArray = Array.from(files);
+    const validatedFilesArray = validations(filesArray);
 
-    filesArray = filesArray.filter((item) => {
-      if (formatValidation(item)) {
-        warningCreator(`Неверный формат '${item.name}' файла`);
-        return false;
-      }
-
-      if (item.size >= BYTE_IN_MB) {
-        warningCreator(`Привышен максимальный размер '${item.name}' файла`);
-        return false;
-      }
-
-      const isFileAdded = formData.some(
-        (elem) => elem.id === item.lastModified
-      );
-      if (isFileAdded) {
-        warningCreator(`Файл '${item.name}' уже добавлен`);
-        return false;
-      }
-
-      return true;
-    });
-
-    if (filesArray.length === 0) {
-      return;
-    }
-
-    if (formData.length >= 5 || filesArray.length + formData.length > 5) {
-      limitErrorCreator();
-    }
-
-    const validFilesCount = Math.min(filesArray.length, 5 - formData.length);
-    for (let i = 0; i < validFilesCount; i++) {
-      createFileObject(filesArray[i]);
-    }
-  }
-
-  function formatValidation(item) {
-    return (
-      findFormat(item.name) !== "PNG" &&
-      findFormat(item.name) !== "jpeg" &&
-      findFormat(item.name) !== "jpg"
+    const validFilesCount = Math.min(
+      validatedFilesArray.length,
+      5 - formData.length
     );
-  }
+    for (let i = 0; i < validFilesCount; i++) {
+      createFileObject(validatedFilesArray[i]);
+    }
 
-  function findFormat(str) {
-    let result = str.split(".");
-    return result[result.length - 1];
-  }
-
-  function formatFileName(str) {
-    let result = str.split(".");
-    result.splice(result.length - 1, 1);
-    return result.join(".");
-  }
-
-  function formatFileFormat(str) {
-    let result = str.split(".");
-    result.splice(0, result.length - 1);
-    return result.join("");
-  }
-
-  function formatFileSize(num) {
-    let result = Number(num) / BYTE_IN_MB;
-    return result.toFixed(1);
-  }
-
-  // api
-  async function postData(data) {
-    console.log(formData);
-
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
+    event.target.value = "";
   }
 }
-
-createFileUploader();
