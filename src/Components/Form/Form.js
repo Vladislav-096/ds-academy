@@ -195,7 +195,7 @@ export function createFileUploader(app) {
     return cardWrapper;
   }
 
-  function createFileObject(file) {
+  async function createFileObject(file) {
     const reader = new FileReader();
 
     const card = createCard(file.lastModified);
@@ -204,6 +204,8 @@ export function createFileUploader(app) {
 
     card.append(loadingCard);
     filesContainer.append(card);
+
+    await new Promise((resolve) => setTimeout(() => resolve(), 1000));
 
     reader.onload = (e) => {
       const img = e.target.result;

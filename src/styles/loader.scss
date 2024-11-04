@@ -1,10 +1,12 @@
+@use "./variables.scss" as *;
+
 .loader-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   --uib-size: 40px;
-  --uib-color: black;
+  --uib-color: #f0f6fc;
   --uib-speed: 1s;
   --uib-stroke: 3px;
   display: flex;
