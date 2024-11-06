@@ -1,6 +1,6 @@
 {
   "menu": {
-    "logo": "/img/logo.jpg",
+    "logo": "/src/assets/logo-ebac-header.svg",
     "header": [
       {
         "label": "Diseño",
@@ -124,7 +124,7 @@
           }
         }
       ],
-      "ticker": { "text": "Artículos populares", "color:": "#acd6de" }
+      "ticker": { "text": "Artículos populares", "color": "#acd6de" }
     },
     "content": {
       "items": [
