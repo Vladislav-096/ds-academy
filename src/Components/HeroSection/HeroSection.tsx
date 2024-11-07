@@ -4,7 +4,7 @@ import "./heroSection.scss";
 import { useFormatDate } from "../../hooks/useFormatDate";
 
 interface HeroSection {
-  hero: sectionsMain | undefined;
+  hero?: sectionsMain;
 }
 
 export const HeroSection = ({ hero }: HeroSection) => {

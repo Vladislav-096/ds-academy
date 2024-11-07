@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { GetSections } from "../../api/GetSections";
 import { GetMenu } from "../../api/GetMenu";
 import { HeroSection } from "../HeroSection/HeroSection";
+import { PopularSection } from "../PopularSection/PopularSection";
 
 interface sectionItemsImg {
   url: string;
@@ -40,7 +41,7 @@ interface sectionsContenItems {
   stamp: sectionItemsStamp;
 }
 
-interface sectionsConten {
+export interface sectionsConten {
   items: sectionsContenItems[];
   ticker: sectionTicker;
 }
@@ -130,6 +131,7 @@ export const Main = () => {
         />
       </picture>
       <HeroSection hero={sections?.main} />
+      <PopularSection popular={sections?.content} />
     </main>
   );
 };

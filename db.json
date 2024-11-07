@@ -137,7 +137,7 @@
           "size": "compact",
           "tags": ["Fashion", "Artículo", "Niños", "Proyecto"],
           "img": {
-            "url": "/img/sections/content/1.jpg",
+            "url": "./src/assets/fashion.jpg",
             "shape": "semi-squared-rounded"
           },
           "stamp": {
@@ -155,7 +155,7 @@
           "size": "compact",
           "tags": ["Diseño", "Artículo", "Niños", "Proyecto"],
           "img": {
-            "url": "/img/sections/content/2.jpg",
+            "url": "./src/assets/design.jpg",
             "shape": "semi-squared-cloud"
           },
           "stamp": {
@@ -173,7 +173,7 @@
           "size": "full-image",
           "tags": ["Diseño", "Artículo", "Niños", "Proyecto"],
           "img": {
-            "url": "/img/content-3.jpg",
+            "url": "./src/assets/design-additional.jpg",
             "shape": "cloud"
           },
           "stamp": {
@@ -191,7 +191,7 @@
           "size": "compact",
           "tags": ["Marketing", "Artículo", "Niños", "Proyecto"],
           "img": {
-            "url": "/img/sections/content/4.jpg",
+            "url": "./src/assets/marketing.jpg",
             "shape": "corner-squared-cloud"
           },
           "stamp": {
@@ -209,7 +209,7 @@
           "size": "compact",
           "tags": ["Software", "Artículo", "Niños", "Proyecto"],
           "img": {
-            "url": "/img/sections/content/5.jpg",
+            "url": "./src/assets/software.jpg",
             "shape": "corner-squared-rounded"
           },
           "stamp": {
