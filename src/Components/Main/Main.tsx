@@ -4,6 +4,7 @@ import { GetMenu } from "../../api/GetMenu";
 import { HeroSection } from "../HeroSection/HeroSection";
 import { PopularSection } from "../PopularSection/PopularSection";
 import { WebinarsSection } from "../WebinarsSection/WebinarsSection";
+import { SubscriptionSection } from "../SubscriptionSection/SubscriptionSection";
 
 interface sectionItemsImg {
   url: string;
@@ -70,7 +71,7 @@ export interface sectionsProposals {
   ticker: sectionTicker;
 }
 
-interface sectionsSubscription {
+export interface sectionsSubscription {
   title: string;
   text: string;
   "email-placeholder": string;
@@ -132,6 +133,7 @@ export const Main = () => {
       <HeroSection hero={sections?.main} />
       <PopularSection popular={sections?.content} />
       <WebinarsSection webinars={sections?.proposals} />
+      <SubscriptionSection subscription={sections?.subscription} />
     </main>
   );
 };
