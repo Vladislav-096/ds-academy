@@ -3,6 +3,7 @@ import { GetSections } from "../../api/GetSections";
 import { GetMenu } from "../../api/GetMenu";
 import { HeroSection } from "../HeroSection/HeroSection";
 import { PopularSection } from "../PopularSection/PopularSection";
+import { WebinarsSection } from "../WebinarsSection/WebinarsSection";
 
 interface sectionItemsImg {
   url: string;
@@ -62,10 +63,10 @@ interface sectionsProposalsItems {
   time: string;
 }
 
-interface sectionsProposals {
+export interface sectionsProposals {
   title: string;
   "browse-all-text": string;
-  items: sectionsProposalsItems;
+  items: sectionsProposalsItems[];
   ticker: sectionTicker;
 }
 
@@ -104,8 +105,6 @@ export const Main = () => {
     }
   };
 
-  // console.log("sections", sections?.main);
-
   return (
     <main className="main">
       <picture className="line-bg-picture line-bg-first-picture">
@@ -132,6 +131,7 @@ export const Main = () => {
       </picture>
       <HeroSection hero={sections?.main} />
       <PopularSection popular={sections?.content} />
+      <WebinarsSection webinars={sections?.proposals} />
     </main>
   );
 };

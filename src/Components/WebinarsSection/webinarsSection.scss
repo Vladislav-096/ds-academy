@@ -1,0 +1,275 @@
+@use "../../styles/_variables.scss" as *;
+@use "../../styles/_mixin.scss" as *;
+
+.section-webinars {
+  position: relative;
+  overflow: hidden;
+
+  @include scheduleBlock(
+    $calendar-image-white,
+    $watch-image-white,
+    500,
+    $tertiary-text-color
+  );
+
+  padding-top: 145px;
+  padding-bottom: 130px;
+
+  background-color: $secondary-text-color;
+
+  .webinars {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: $tertiary-text-color;
+    z-index: 2;
+
+    &__heading {
+      margin-bottom: 79px;
+      font-family: "Archivo Black";
+      font-size: 46px;
+      font-weight: 400;
+      line-height: 55.2px;
+
+      @media (max-width: 1366px) {
+        margin-bottom: 63px;
+      }
+
+      @media (max-width: 992px) {
+        font-size: 28px;
+      }
+
+      @media (max-width: 767px) {
+        margin-bottom: 29px;
+      }
+    }
+
+    &__button {
+      margin-bottom: 79px;
+      padding: 22px 62px;
+      background-color: $button-color;
+      border-radius: 40px;
+      font-size: 18px;
+      font-weight: 700;
+      color: $tertiary-text-color;
+      transition: background-color 0.2s;
+
+      @media (max-width: 1366px) {
+        margin-bottom: 63px;
+      }
+
+      @media (max-width: 767px) {
+        margin-top: 69px;
+        order: 3;
+        flex-basis: 100%;
+      }
+
+      &:hover {
+        background-color: #da3369;
+      }
+
+      &:active {
+        background-color: #da3369;
+      }
+
+      &:focus {
+        outline: 2px solid $tertiary-text-color;
+      }
+    }
+
+    &__cards-list {
+      display: flex;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+
+      @media (max-width: 1366px) {
+        justify-content: space-between;
+      }
+
+      @media (max-width: 767px) {
+        width: 100%;
+        flex-direction: column;
+        order: 2;
+      }
+    }
+
+    &__card-list-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+      width: 376px;
+      min-height: 432px;
+      padding: 32px;
+      border-radius: 32px;
+      overflow: hidden;
+
+      &:not(:nth-child(3n)) {
+        margin-right: 40px;
+      }
+
+      &:nth-child(3n + 1) {
+        background-color: #57acbc;
+      }
+
+      &:nth-child(3n + 2) {
+        background-color: #fe6d44;
+      }
+
+      &:nth-child(3n + 3) {
+        background-color: #ef9700;
+        min-height: 272px;
+      }
+
+      @media (max-width: 1366px) {
+        display: flex;
+        flex-direction: column;
+        padding: 25px;
+        min-height: 401px;
+        margin-bottom: 24px;
+
+        &:not(:nth-child(3n)) {
+          margin-right: 0;
+        }
+
+        &:nth-child(3n + 1) {
+          width: 48.5%;
+        }
+
+        &:nth-child(3n + 2) {
+          width: 48.5%;
+        }
+
+        &:nth-child(3n + 3) {
+          width: 100%;
+
+          .schedule-date {
+            width: 200px;
+          }
+        }
+      }
+
+      @media (max-width: 767px) {
+        margin-bottom: 15px;
+        width: 100% !important;
+        min-height: 352px !important;
+      }
+    }
+
+    &__card-bio {
+      display: flex;
+      margin-bottom: 15px;
+      min-height: 93px;
+
+      @media (max-width: 1366px) {
+        min-height: 0;
+        margin-bottom: 16px;
+      }
+    }
+
+    &__card-picture {
+      margin-right: 20px;
+      height: 64px;
+      -webkit-mask-image: url("./src/assets/avatar-mask.png");
+      mask-repeat: no-repeat;
+    }
+
+    &__card-img {
+      min-width: 64px;
+      height: inherit;
+    }
+
+    &__card-bio-info-block {
+      padding-top: 5px;
+    }
+
+    &__card-bio-name {
+      margin-bottom: 6px;
+      font-family: "Archivo Black";
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 31.2px;
+
+      @media (max-width: 767px) {
+        font-size: 22px;
+        line-height: 26.4px;
+      }
+    }
+
+    &__card-bio-descr {
+      display: block;
+      white-space: nowrap;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 15px;
+
+      @media (max-width: 1366px) {
+        white-space: wrap;
+        max-width: 100%;
+        overflow: visible;
+        text-overflow: clip;
+      }
+
+      @media (max-width: 767px) {
+        white-space: nowrap;
+        max-width: 172px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &__card-descr {
+      margin-bottom: 30px;
+      font-family: "Archivo Black";
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 36px;
+
+      @media (max-width: 1366px) {
+        font-size: 24px;
+        line-height: 29.9px;
+      }
+    }
+
+    &__schedule {
+      margin-top: auto;
+      bottom: 30px;
+    }
+
+    &__schedule-heading {
+      margin-bottom: 14px;
+      font-size: 15px;
+
+      span:first-child {
+        margin-right: 25px;
+      }
+    }
+
+    .schedule-date {
+      margin-right: 24px;
+      width: 223px;
+
+      @media (max-width: 1366px) {
+        width: 176px;
+        margin-right: 0;
+      }
+    }
+
+    &__date-duration {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 1366px) {
+    padding-top: 127px;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 81px;
+    padding-bottom: 74px;
+  }
+}
