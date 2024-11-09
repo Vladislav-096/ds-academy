@@ -3,6 +3,7 @@ import { Main } from "../Main/Main";
 import { Footer } from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { GetMenu } from "../../api/GetMenu";
+import { GetContacts } from "../../api/GetContacts";
 
 // menu
 export interface menuHeader {
@@ -15,7 +16,7 @@ interface menuFooterItems {
   url: string;
 }
 
-interface menuFooter {
+export interface menuFooter {
   label: string;
   items: menuFooterItems[];
 }
@@ -26,8 +27,31 @@ interface menu {
   footer: menuFooter[];
 }
 
+interface contactsLinks {
+  label: string;
+  url: string;
+}
+
+interface contactsSubmitText {
+  "email-placeholder": string;
+  "submit-text": string;
+}
+
+export interface contacts {
+  whatsapp: string;
+  phone: string;
+  email: string;
+  instagram: string;
+  facebook: string;
+  youtube: string;
+  linkedin: string;
+  links: contactsLinks[];
+  subscription: contactsSubmitText;
+}
+
 export const Layout = () => {
   const [menu, setMenu] = useState<menu>();
+  const [contacts, setContacts] = useState<contacts>();
 
   const getMenu = async () => {
     try {
@@ -39,16 +63,26 @@ export const Layout = () => {
     }
   };
 
+  const getContacts = async () => {
+    try {
+      let result = await GetContacts();
+      setContacts(result);
+    } catch (error) {
+      console.error("Error fetching contacts data:", error);
+      throw error;
+    }
+  };
+
   useEffect(() => {
     getMenu();
+    getContacts();
   }, []);
 
   return (
     <div className="layout">
       <Header logo={menu?.logo || ""} header={menu?.header || []} />
       <Main />
-      <Footer />
+      <Footer contacts={contacts} footer={menu?.footer || []} />
     </div>
   );
 };
-
