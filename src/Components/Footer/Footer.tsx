@@ -1,15 +1,33 @@
 import { contacts, menuFooter } from "../Layout/Layout";
 import "../../styles/common.scss";
 import "./footer.scss";
+import { useRef, useState } from "react";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 interface Footer {
   contacts?: contacts;
   footer: menuFooter[];
 }
 
+type dropdowns = Record<string, number>;
+
 export const Footer = ({ contacts, footer }: Footer) => {
-  // console.log("footer", footer);
-  // console.log("contacts", contacts);
+  const [dropdownsStatus, setDropdownsStatus] = useState<dropdowns>({});
+  const ulRef = useRef<HTMLUListElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  function changeDropdownStatus(index: number): void {
+    console.log("попал");
+    if (dropdownsStatus[index] === undefined || dropdownsStatus[index] === 0) {
+      setDropdownsStatus((prev) => {
+        return { ...prev, [index]: 1 };
+      });
+    } else {
+      setDropdownsStatus((prev) => {
+        return { ...prev, [index]: 0 };
+      });
+    }
+  }
 
   function formatPhoneNumber(phoneNumber: string) {
     let copyStrArray = phoneNumber.split("");
@@ -20,6 +38,11 @@ export const Footer = ({ contacts, footer }: Footer) => {
     const result = `+${firstPatr} ${secontPart} ${thirdPart}-${lastPart}`;
     return result;
   }
+
+  useClickOutside([ulRef, buttonRef], () => {
+    console.log("useClickOutside");
+    setDropdownsStatus({});
+  });
 
   return (
     <footer className="footer">
@@ -103,10 +126,28 @@ export const Footer = ({ contacts, footer }: Footer) => {
             <nav className="footer__nav-block">
               {footer.map((item, index) => (
                 <div key={index} className="footer__nav-list-block">
-                  <button className="btn-reset footer__nav-button">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      changeDropdownStatus(index);
+                    }}
+                    ref={buttonRef}
+                    className={
+                      dropdownsStatus[index]
+                        ? "btn-reset footer__nav-button turn-dropdow-button-arrow"
+                        : "btn-reset footer__nav-button"
+                    }
+                  >
                     {item.label}
                   </button>
-                  <ul className="list-reset footer__nav-list">
+                  <ul
+                    ref={ulRef}
+                    className={
+                      dropdownsStatus[index]
+                        ? "list-reset footer__nav-list show-dropdown"
+                        : "list-reset footer__nav-list"
+                    }
+                  >
                     {item.items.map((navElement, navIndex) => (
                       <li key={navIndex} className="footer__nav-list-item">
                         <a
