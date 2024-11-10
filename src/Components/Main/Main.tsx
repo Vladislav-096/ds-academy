@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { GetSections } from "../../api/GetSections";
-import { GetMenu } from "../../api/GetMenu";
 import { HeroSection } from "../HeroSection/HeroSection";
 import { PopularSection } from "../PopularSection/PopularSection";
 import { WebinarsSection } from "../WebinarsSection/WebinarsSection";
@@ -48,7 +47,7 @@ export interface sectionsConten {
   ticker: sectionTicker;
 }
 
-interface sectionsProposalsItemsAuthor {
+export interface sectionsProposalsItemsAuthor {
   img: string;
   name: string;
   position: string;
@@ -80,7 +79,7 @@ export interface sectionsSubscription {
   ticker: sectionTicker;
 }
 
-interface sections {
+export interface sections {
   main: sectionsMain;
   content: sectionsConten;
   proposals: sectionsProposals;
@@ -92,7 +91,6 @@ export const Main = () => {
   const [sections, setSections] = useState<sections>();
 
   useEffect(() => {
-    GetMenu();
     getSections();
   }, []);
 

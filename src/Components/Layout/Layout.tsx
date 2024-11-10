@@ -21,7 +21,7 @@ export interface menuFooter {
   items: menuFooterItems[];
 }
 
-interface menu {
+export interface menu {
   logo: string;
   header: menuHeader[];
   footer: menuFooter[];
