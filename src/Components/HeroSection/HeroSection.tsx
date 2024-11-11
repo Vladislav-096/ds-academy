@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
 import { sectionsMain } from "../Main/Main";
 import "./heroSection.scss";
 import { useFormatDate } from "../../hooks/useFormatDate";
+import { Sticker } from "../Sticker/Sticker";
+import { useCreatePosition } from "../../hooks/useCreatePosition";
 
 interface HeroSection {
   hero?: sectionsMain;
@@ -10,47 +11,9 @@ interface HeroSection {
 export const HeroSection = ({ hero }: HeroSection) => {
   const formattedDate = useFormatDate(hero?.items[0].date || "");
   const duration = `${hero?.items[0].duration} min`;
-
-  // console.log(hero?.items[0].accent);
-  // const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 992);
-  // const [isMediaScreen, setIsMediaScreen] = useState(window.innerWidth > 767);
-  // // const [isMediaScreen, setIsMediaScreen] = useState(window.innerWidth > 767);
-  // const [maskMedia, setMaskMedia] = useState<string>("");
-
-  // useEffect(() => {
-  //   const handleLargeResize = () => {
-  //     setIsLargeScreen(window.innerWidth > 992);
-  //     setMaskMedia("for 992+");
-  //   };
-
-  //   window.addEventListener("resize", handleLargeResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleLargeResize);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   const handleLargeResize = () => {
-  //     setIsMediaScreen(window.innerWidth > 767);
-  //     setMaskMedia(">767");
-  //   };
-
-  //   window.addEventListener("resize", handleLargeResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleLargeResize);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   if (isLargeScreen) {
-  //     console.log("maskMedia", maskMedia);
-  //   }
-
-  //   if (isMediaScreen) {
-  //     console.log("maskMedia", maskMedia);
-  //   }
-  // }, [isLargeScreen, isMediaScreen]);
+  const stickerPosition = useCreatePosition(
+    hero?.items[0].stamp.position || ""
+  );
 
   return (
     <section id="gaming" className="section-hero">
@@ -62,6 +25,12 @@ export const HeroSection = ({ hero }: HeroSection) => {
                 className="hero__gaming-img"
                 src={hero?.items[0].img.url}
                 alt="Gaming Section Cover"
+              />
+            </picture>
+            <picture style={stickerPosition} className="hero__sticker">
+              <Sticker
+                type={hero?.items[0].stamp.type || ""}
+                background={hero?.items[0].accent || ""}
               />
             </picture>
           </div>

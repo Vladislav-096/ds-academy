@@ -1,5 +1,7 @@
+import { useCreatePosition } from "../../hooks/useCreatePosition";
 import { useFormatDate } from "../../hooks/useFormatDate";
 import { sectionsConten } from "../Main/Main";
+import { Sticker } from "../Sticker/Sticker";
 import "./popularSection.scss";
 
 interface PopularSection {
@@ -38,28 +40,35 @@ export const PopularSection = ({ popular }: PopularSection) => {
                     : "popular__picture-wrapper"
                 }
               >
-                <picture
-                  className={
-                    isEachThirdElement(index)
-                      ? `popular__picture ${item.img.shape}`
-                      : `popular__picture ${item.img.shape}`
-                  }
-                >
+                <picture className="popular__picture">
                   <img
                     className="popular__img"
                     src={item.img.url}
                     alt="Design Section Cover"
                   />
                 </picture>
-                {/* <picture className="popular__sticker">
-                  <img
-                    className="popular__sticker-img"
-                    src="./img/design-sticker.svg"
-                    alt="Design-sticker"
-                  />
-                </picture> */}
+                <picture
+                  style={
+                    item.stamp.type === "signboard"
+                      ? {
+                          width: "274px",
+                          height: "206px",
+                          top: "-40px",
+                          left: "-60px",
+                        }
+                      : useCreatePosition(item.stamp.position)
+                  }
+                  className={
+                    item.stamp.type === "signboard"
+                      ? "popular__sticker signboard"
+                      : "popular__sticker"
+                  }
+                >
+                  <Sticker type={item.stamp.type} background={item.accent} />
+                </picture>
               </div>
               <div
+                // style={{position: 'relative', top: '1'}} remove
                 className={
                   isEachThirdElement(index)
                     ? "popular__descr-middle-wrapper"

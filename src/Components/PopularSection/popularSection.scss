@@ -52,7 +52,7 @@
     }
 
     .popular__card .popular__sticker {
-      animation: spin 3s linear infinite;
+      animation: spin 6s linear infinite;
       animation-play-state: paused;
     }
 
@@ -68,8 +68,8 @@
       position: relative;
     }
 
-    .popular__card-middle .popular__design-sticker {
-      animation: spin 3s linear infinite;
+    .popular__card-middle .popular__sticker {
+      animation: spin 6s linear infinite;
       animation-play-state: paused;
     }
 
@@ -98,6 +98,17 @@
       }
     }
 
+    .signboard {
+      @media (max-width: 1366px) {
+        width: 166px !important;
+        height: 126px !important;
+      }
+      @media (max-width: 767px) {
+        width: 183px !important;
+        height: 137px !important;
+      }
+    }
+
     &__picture {
       width: inherit;
       height: inherit;
@@ -114,14 +125,14 @@
     &__sticker {
       position: absolute;
       display: inline-block;
-      top: -49px;
+      // top: -49px;
       width: 180px;
       height: 180px;
 
       @media (max-width: 1366px) {
         width: 104px;
         height: 104px;
-        top: 8px;
+        // top: 8px;
       }
 
       @media (max-width: 767px) {
@@ -182,32 +193,29 @@
     }
 
     // fashion card
-    .semi-squared-rounded {
-      -webkit-mask-image: url("./src/assets/fashion-mask.png");
+    // .semi-squared-rounded {
+    //   -webkit-mask-image: url("./src/assets/fashion-mask.png");
 
-      @media (max-width: 1366px) {
-        -webkit-mask-image: url("./src/assets/fashion-mask-768-resolution.png");
-      }
+    //   // @media (max-width: 1366px) {
+    //   //   -webkit-mask-image: url("./src/assets/fashion-mask-768-resolution.png");
+    //   // }
 
-      @media (max-width: 767px) {
-        -webkit-mask-image: url("./src/assets/fashion-mask-320-resolution.png");
-      }
-    }
+    //   // @media (max-width: 767px) {
+    //   //   -webkit-mask-image: url("./src/assets/fashion-mask-320-resolution.png");
+    //   // }
+    // }
 
-    &__fashion-sticker {
-      left: -40px;
+    // &__fashion-sticker {
+    //   // left: -40px;
 
-      @media (max-width: 1366px) {
-        left: 67%;
-      }
+    //   @media (max-width: 1366px) {
+    //     top: 0 !important;
+    //     left: 67% !important;
+    //   }
 
-      @media (max-width: 767px) {
-        left: 8px;
-      }
-    }
-
-    // &__fashion-list-item {
-    //   color: #22c98b;
+    //   @media (max-width: 767px) {
+    //     left: 8px !important;
+    //   }
     // }
 
     .chosen-fashion-option {
@@ -216,25 +224,26 @@
     }
 
     // design card
-    .semi-squared-cloud {
-      -webkit-mask-image: url("./src/assets/design-mask.png");
+    // .semi-squared-cloud {
+    //   -webkit-mask-image: url("./src/assets/design-mask.png");
 
-      @media (max-width: 1366px) {
-        -webkit-mask-image: url("./src/assets/design-mask-768-resolution.png");
-      }
+    //   // @media (max-width: 1366px) {
+    //   //   -webkit-mask-image: url("./src/assets/design-mask-768-resolution.png");
+    //   // }
 
-      @media (max-width: 767px) {
-        -webkit-mask-image: url("./src/assets/design-mask-320-resolution.png");
-      }
-    }
+    //   // @media (max-width: 767px) {
+    //   //   -webkit-mask-image: url("./src/assets/design-mask-320-resolution.png");
+    //   // }
+    // }
 
-    &__design-sticker {
-      right: -40px;
+    // &__design-sticker {
+    //   // right: -40px;
 
-      @media (max-width: 1366px) {
-        right: 8px;
-      }
-    }
+    //   @media (max-width: 1366px) {
+    //     top: 0 !important;
+    //     right: 8px !important;
+    //   }
+    // }
 
     // &__design-list-item {
     //   color: #ec95b1;
@@ -249,25 +258,25 @@
     &__middle {
       margin-bottom: 120px;
 
-      .popular__design-sticker {
-        @media (max-width: 1366px) {
-          width: 120px;
-          height: 120px;
-        }
+      //   .popular__design-sticker {
+      //     @media (max-width: 1366px) {
+      //       width: 120px;
+      //       height: 120px;
+      //     }
 
-        @media (max-width: 767px) {
-          right: 58%;
-        }
-      }
+      //     @media (max-width: 767px) {
+      //       right: 58%;
+      //     }
+      //   }
 
-      @media (max-width: 1366px) {
-        margin: 0 auto;
-        margin-bottom: 87px;
-      }
+      //   @media (max-width: 1366px) {
+      //     margin: 0 auto;
+      //     margin-bottom: 87px;
+      //   }
 
-      @media (max-width: 767px) {
-        margin-bottom: 104px;
-      }
+      //   @media (max-width: 767px) {
+      //     margin-bottom: 104px;
+      //   }
     }
 
     &__picture-wrapper-middle {
@@ -287,18 +296,18 @@
       }
     }
 
-    .cloud {
-      -webkit-mask-image: url("./src/assets/design-additional-mask.png");
-      // mask-position: center;
+    // .cloud {
+    //   -webkit-mask-image: url("./src/assets/design-additional-mask.png");
+    //   // mask-position: center;
 
-      @media (max-width: 1366px) {
-        -webkit-mask-image: url("./src/assets/design-additional-mask-768-resolution.png");
-      }
+    //   // @media (max-width: 1366px) {
+    //   //   -webkit-mask-image: url("./src/assets/design-additional-mask-768-resolution.png");
+    //   // }
 
-      @media (max-width: 767px) {
-        -webkit-mask-image: url("./src/assets/design-additional-mask-320-resolution.png");
-      }
-    }
+    //   // @media (max-width: 767px) {
+    //   //   -webkit-mask-image: url("./src/assets/design-additional-mask-320-resolution.png");
+    //   // }
+    // }
 
     &__descr-middle-block {
       position: relative;
@@ -494,37 +503,37 @@
     }
 
     // marketing card
-    .corner-squared-cloud {
-      -webkit-mask-image: url("./src/assets/marketing-mask.png");
+    // .corner-squared-cloud {
+    //   -webkit-mask-image: url("./src/assets/marketing-mask.png");
 
-      @media (max-width: 1366px) {
-        -webkit-mask-image: url("./src/assets/marketing-mask-768-resolution.png");
-      }
+    //   // @media (max-width: 1366px) {
+    //   //   -webkit-mask-image: url("./src/assets/marketing-mask-768-resolution.png");
+    //   // }
 
-      @media (max-width: 767px) {
-        -webkit-mask-image: url("./src/assets/marketing-mask-320-resolution.png");
-      }
-    }
+    //   // @media (max-width: 767px) {
+    //   //   -webkit-mask-image: url("./src/assets/marketing-mask-320-resolution.png");
+    //   // }
+    // }
 
-    &__marketing-sticker {
-      width: 274px;
-      height: 206px;
-      left: -57px;
-      top: -76px;
+    // &__marketing-sticker {
+    //   width: 274px;
+    //   height: 206px;
+    //   // left: -57px;
+    //   // top: -76px;
 
-      @media (max-width: 1366px) {
-        width: 166px;
-        height: 126px;
-        left: 52%;
-        top: -11px;
-      }
+    //   @media (max-width: 1366px) {
+    //     width: 166px;
+    //     height: 126px;
+    //     left: 52% !important;
+    //     top: -11px !important;
+    //   }
 
-      @media (max-width: 767px) {
-        width: 183px;
-        height: 137px;
-        left: 41%;
-      }
-    }
+    //   @media (max-width: 767px) {
+    //     width: 183px;
+    //     height: 137px;
+    //     left: 41% !important;
+    //   }
+    // }
 
     // &__marketing-list-item {
     //   color: #ef9700;
@@ -536,29 +545,29 @@
     }
 
     // software card
-    .corner-squared-rounded {
-      -webkit-mask-image: url("./src/assets/software-mask.png");
+    // .corner-squared-rounded {
+    //   -webkit-mask-image: url("./src/assets/software-mask.png");
 
-      @media (max-width: 1366px) {
-        -webkit-mask-image: url("./src/assets/software-mask-768-resolution.png");
-      }
+    //   @media (max-width: 1366px) {
+    //     -webkit-mask-image: url("./src/assets/software-mask-768-resolution.png");
+    //   }
 
-      @media (max-width: 767px) {
-        -webkit-mask-image: url("./src/assets/software-mask-320-resolution.png");
-      }
-    }
+    //   @media (max-width: 767px) {
+    //     -webkit-mask-image: url("./src/assets/software-mask-320-resolution.png");
+    //   }
+    // }
 
-    &__software-sticker {
-      right: -40px;
+    // &__software-sticker {
+    //   // right: -40px;
 
-      @media (max-width: 1366px) {
-        right: 8px;
-      }
+    //   @media (max-width: 1366px) {
+    //     right: 8px !important;
+    //   }
 
-      @media (max-width: 767px) {
-        right: 58%;
-      }
-    }
+    //   @media (max-width: 767px) {
+    //     right: 58% !important;
+    //   }
+    // }
 
     // &__software-list-item {
     //   color: #57acbc;
