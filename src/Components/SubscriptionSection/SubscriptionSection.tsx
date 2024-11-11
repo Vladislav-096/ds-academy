@@ -12,6 +12,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const [isTextValid, setIsTextValid] = useState<boolean>(false);
   const [isMarkChecked, setIsMarkChecked] = useState<boolean>(false);
   const [isDataSubmitted, setIsDataSubmitter] = useState<boolean>(false);
+  const marqueeBackgroundColor = subscription?.ticker.color;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
@@ -55,35 +56,89 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
     );
   }
 
-  // const validation = (event: ChangeEvent<HTMLInputElement>) => {
-  //   if (
-  //     /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(event.target.value) &&
-  //     checkboxRef.current &&
-  //     checkboxRef.current.checked
-  //   ) {
-  //     errorMessageWrapper.textContent = "";
-  //     errorMarker.classList.remove("state-picture-active");
-  //     successMarker.classList.add("state-picture-active");
-  //     emailInput.classList.add("input-success");
-  //     emailInput.classList.remove("input-error");
-  //     submitButton.classList.add("submit-active");
-  //     submitButton.disabled = false;
-  //   } else {
-  //     if (errorMessageWrapper.textContent === "") {
-  //       errorMessageWrapper.textContent =
-  //         "Formato de email inválido, verifique a ortografia";
-  //     }
-  //     errorMarker.classList.add("state-picture-active");
-  //     successMarker.classList.remove("state-picture-active");
-  //     emailInput.classList.remove("input-success");
-  //     emailInput.classList.add("input-error");
-  //     submitButton.classList.remove("submit-active");
-  //     submitButton.disabled = true;
-  //   }
-  // };
-
   return (
     <section className="section-subscription">
+      <div className="discount-marquee">
+        <div
+          style={{ backgroundColor: marqueeBackgroundColor }}
+          className="marquee"
+        >
+          <div className="marquee__content">
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">
+                  {subscription?.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-white.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {subscription?.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-white.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">
+                  {subscription?.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-white.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {subscription?.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-white.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">
+                  {subscription?.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-white.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {subscription?.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-white.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <div className="subscription">
           <picture className="line-bg-picture line-bg-seventh-picture">
@@ -109,10 +164,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
               <h3 className="subscription__heading">{subscription?.title}</h3>
               <p className="subscription__descr">{subscription?.text}</p>
               {isDataSubmitted ? (
-                <div
-                  // id="subscription-success-notification"
-                  className="subscription__success-notification"
-                >
+                <div className="subscription__success-notification">
                   <p>Fantástico! Espera La primera carta</p>
                   <picture className="subscription__success-notification-picture">
                     <img

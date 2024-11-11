@@ -56,12 +56,12 @@
   }
 }
 
-@mixin marquee($background-color, $deg, $color, $font-size) {
+@mixin marquee($width, $deg, $color, $font-size) {
   .marquee {
     margin: 0 auto;
-    width: calc(100vw + 20px);
+    width: calc($width + 20px);
     height: 120px;
-    background-color: $background-color;
+    // background-color: $background-color;
     white-space: nowrap;
     overflow: hidden;
     transform: rotate($deg) translateX(-10px);

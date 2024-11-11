@@ -7,8 +7,106 @@ interface WebinarsSection {
 }
 
 export const WebinarsSection = ({ webinars }: WebinarsSection) => {
+  const marqueeBackgroundColor = webinars?.ticker.color;
+
   return (
     <section className="section-webinars">
+      <div className="subscription-marquee">
+        <div
+          style={{ backgroundColor: marqueeBackgroundColor }}
+          className="marquee"
+        >
+          <div className="marquee__content">
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{webinars?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <picture className="line-bg-picture line-bg-third-picture">
         <source
           media="(max-width: 992px)"

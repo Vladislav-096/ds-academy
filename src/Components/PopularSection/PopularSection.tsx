@@ -12,6 +12,7 @@ interface PopularSection {
 export const PopularSection = ({ popular }: PopularSection) => {
   const formattedDate = formatDate(popular?.items[0].date || "");
   const duration = `${popular?.items[0].duration} min`;
+  const marqueeBackgroundColor = popular?.ticker.color;
 
   function isEachThirdElement(index: number) {
     if ((index + 1) % 3 === 0) {
@@ -23,6 +24,102 @@ export const PopularSection = ({ popular }: PopularSection) => {
 
   return (
     <section className="section-popular">
+      <div className="webinars-marquee">
+        <div
+          style={{ backgroundColor: marqueeBackgroundColor }}
+          className="marquee"
+        >
+          <div className="marquee__content">
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <ul className="list-reset popular">
           {popular?.items.map((item, index) => (

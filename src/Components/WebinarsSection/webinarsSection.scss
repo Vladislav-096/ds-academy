@@ -4,6 +4,7 @@
 .section-webinars {
   position: relative;
   overflow: hidden;
+  clip-path: polygon(0% 0%, 100% 0%, 110% 100%, 0% 100%);
 
   @include scheduleBlock(
     $calendar-image-white,
