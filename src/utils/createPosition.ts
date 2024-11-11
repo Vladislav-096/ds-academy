@@ -1,4 +1,4 @@
-export const useCreatePosition = (position: string) => {
+export const createPosition = (position: string) => {
   switch (position) {
     case "top-right":
       return { top: "0", right: "0" };

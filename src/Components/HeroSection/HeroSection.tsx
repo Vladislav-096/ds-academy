@@ -1,26 +1,28 @@
 import { sectionsMain } from "../Main/Main";
 import "./heroSection.scss";
-import { useFormatDate } from "../../hooks/useFormatDate";
+import { formatDate } from "../../utils/formatDate";
 import { Sticker } from "../Sticker/Sticker";
-import { useCreatePosition } from "../../hooks/useCreatePosition";
+import { createPosition } from "../../utils/createPosition";
+import { createMask } from "../../utils/createMask";
 
 interface HeroSection {
   hero?: sectionsMain;
 }
 
 export const HeroSection = ({ hero }: HeroSection) => {
-  const formattedDate = useFormatDate(hero?.items[0].date || "");
+  const formattedDate = formatDate(hero?.items[0].date || "");
   const duration = `${hero?.items[0].duration} min`;
-  const stickerPosition = useCreatePosition(
+  const stickerPosition = createPosition(
     hero?.items[0].stamp.position || ""
   );
+  const mask = createMask(hero?.items[0].img.shape || "");
 
   return (
     <section id="gaming" className="section-hero">
       <div className="container">
         <div className="hero">
           <div className="hero__picture-wrapper">
-            <picture className="hero__gaming-picture">
+            <picture style={mask} className="hero__gaming-picture">
               <img
                 className="hero__gaming-img"
                 src={hero?.items[0].img.url}

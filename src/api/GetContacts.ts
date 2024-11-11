@@ -1,5 +1,6 @@
 import { contacts } from "../Components/Layout/Layout";
 import { API_URL } from "../Constants/Constants";
+import { validateResponse } from "./validationResponse";
 
 export const validateContactsData = (data: any): contacts => {
   if (typeof data !== "object" || data === null) {
@@ -58,6 +59,7 @@ export const validateContactsData = (data: any): contacts => {
 
 export const GetContacts = async () => {
   return fetch(`${API_URL}/contacts`)
+    .then(validateResponse)
     .then((res) => res.json())
     .then(validateContactsData)
     .catch((err) => {

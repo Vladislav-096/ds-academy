@@ -14,6 +14,11 @@
       $date-text-color
     );
 
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -48,6 +53,10 @@
         .schedule-date {
           width: 200px;
         }
+      }
+
+      @media (max-width: 767px) {
+        width: 304px !important;
       }
     }
 
@@ -93,17 +102,25 @@
       }
 
       @media (max-width: 767px) {
-        height: 352px;
+        height: 250px;
         margin-bottom: 18px;
       }
     }
 
     .signboard {
       @media (max-width: 1366px) {
+        transform: rotate(16deg) !important;
         width: 166px !important;
         height: 126px !important;
+        left: 18px !important;
       }
+
+      @media (max-width: 1140px) {
+        left: -18px !important;
+      }
+
       @media (max-width: 767px) {
+        top: -16px;
         width: 183px !important;
         height: 137px !important;
       }
@@ -114,6 +131,10 @@
       height: inherit;
       mask-repeat: no-repeat;
       mask-position: center;
+
+      @media (max-width: 1366px) {
+        -webkit-mask-size: contain;
+      }
     }
 
     &__img {
@@ -138,6 +159,24 @@
       @media (max-width: 767px) {
         width: 120px;
         height: 120px;
+      }
+    }
+
+    .third-card-picture {
+      @media (max-width: 1366px) {
+        right: 130px !important;
+      }
+
+      @media (max-width: 1140px) {
+        right: 70px !important;
+      }
+
+      @media (max-width: 992px) {
+        right: 15px !important;
+      }
+
+      @media (max-width: 767px) {
+        right: -6px !important;
       }
     }
 
@@ -291,7 +330,7 @@
       }
 
       @media (max-width: 767px) {
-        height: 352px;
+        height: 250px;
         margin-bottom: 19px;
       }
     }

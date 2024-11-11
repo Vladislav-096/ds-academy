@@ -1,5 +1,6 @@
-import { useCreatePosition } from "../../hooks/useCreatePosition";
-import { useFormatDate } from "../../hooks/useFormatDate";
+import { createMask } from "../../utils/createMask";
+import { createPosition } from "../../utils/createPosition";
+import { formatDate } from "../../utils/formatDate";
 import { sectionsConten } from "../Main/Main";
 import { Sticker } from "../Sticker/Sticker";
 import "./popularSection.scss";
@@ -9,7 +10,7 @@ interface PopularSection {
 }
 
 export const PopularSection = ({ popular }: PopularSection) => {
-  const formattedDate = useFormatDate(popular?.items[0].date || "");
+  const formattedDate = formatDate(popular?.items[0].date || "");
   const duration = `${popular?.items[0].duration} min`;
 
   function isEachThirdElement(index: number) {
@@ -40,11 +41,14 @@ export const PopularSection = ({ popular }: PopularSection) => {
                     : "popular__picture-wrapper"
                 }
               >
-                <picture className="popular__picture">
+                <picture
+                  style={createMask(item.img.shape)}
+                  className="popular__picture"
+                >
                   <img
                     className="popular__img"
                     src={item.img.url}
-                    alt="Design Section Cover"
+                    alt="Section Cover"
                   />
                 </picture>
                 <picture
@@ -56,11 +60,13 @@ export const PopularSection = ({ popular }: PopularSection) => {
                           top: "-40px",
                           left: "-60px",
                         }
-                      : useCreatePosition(item.stamp.position)
+                      : createPosition(item.stamp.position)
                   }
                   className={
                     item.stamp.type === "signboard"
                       ? "popular__sticker signboard"
+                      : isEachThirdElement(index)
+                      ? "popular__sticker third-card-picture"
                       : "popular__sticker"
                   }
                 >

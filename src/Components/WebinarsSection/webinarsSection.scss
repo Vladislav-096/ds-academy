@@ -105,21 +105,22 @@
       padding: 32px;
       border-radius: 32px;
       overflow: hidden;
+      background-repeat: no-repeat;
 
       &:not(:nth-child(3n)) {
         margin-right: 40px;
       }
 
       &:nth-child(3n + 1) {
-        background-color: #57acbc;
+        background-image: url("./src/assets/line-bg-4.svg");
       }
 
       &:nth-child(3n + 2) {
-        background-color: #fe6d44;
+        background-image: url("./src/assets/line-bg-5.svg");
       }
 
       &:nth-child(3n + 3) {
-        background-color: #ef9700;
+        background-image: url("./src/assets/line-bg-6.svg");
         min-height: 272px;
       }
 
@@ -139,12 +140,13 @@
         }
 
         &:nth-child(3n + 2) {
+          background-image: url("./src/assets/line-bg-5.1.svg");
           width: 48.5%;
         }
 
         &:nth-child(3n + 3) {
           width: 100%;
-
+          background-image: url("./src/assets/line-bg-6.1.svg");
           .schedule-date {
             width: 200px;
           }

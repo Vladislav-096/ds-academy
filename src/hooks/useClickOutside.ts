@@ -16,7 +16,6 @@ export const useClickOutside = (
 
   useEffect(() => {
     document.addEventListener("mouseup", handleClick);
-    // document.addEventListener("scroll", handleClick);
     return () => {
       document.removeEventListener("mouseup", handleClick);
     };

@@ -39,10 +39,10 @@ export const Footer = ({ contacts, footer }: Footer) => {
     return result;
   }
 
-  useClickOutside([ulRef, buttonRef], () => {
-    console.log("useClickOutside");
-    setDropdownsStatus({});
-  });
+  // useClickOutside([ulRef, buttonRef], () => {
+  //   console.log("useClickOutside");
+  //   setDropdownsStatus({});
+  // });
 
   return (
     <footer className="footer">

@@ -1,5 +1,6 @@
 import { sections } from "../Components/Main/Main";
 import { API_URL } from "../Constants/Constants";
+import { validateResponse } from "./validationResponse";
 
 const validateSectionsData = (data: any): sections => {
   if (!data || typeof data !== "object") {
@@ -172,6 +173,7 @@ const validateSectionsData = (data: any): sections => {
 
 export const GetSections = async () => {
   return fetch(`${API_URL}/sections`)
+    .then(validateResponse)
     .then((res) => res.json())
     .then(validateSectionsData)
     .catch((err) => {

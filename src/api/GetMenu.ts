@@ -1,5 +1,6 @@
 import { menu } from "../Components/Layout/Layout";
 import { API_URL } from "../Constants/Constants";
+import { validateResponse } from "./validationResponse";
 
 export const validateMenuData = (data: any): menu => {
   if (typeof data !== "object" || data === null) {
@@ -54,6 +55,7 @@ export const validateMenuData = (data: any): menu => {
 
 export const GetMenu = async () => {
   return fetch(`${API_URL}/menu`)
+    .then(validateResponse)
     .then((res) => res.json())
     .then(validateMenuData)
     .catch((err) => {

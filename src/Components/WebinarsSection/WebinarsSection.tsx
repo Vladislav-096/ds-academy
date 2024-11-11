@@ -1,4 +1,4 @@
-import { useFormatDate } from "../../hooks/useFormatDate";
+import { formatDate } from "../../utils/formatDate";
 import { sectionsProposals } from "../Main/Main";
 import "./webinarsSection.scss";
 
@@ -28,7 +28,11 @@ export const WebinarsSection = ({ webinars }: WebinarsSection) => {
           </button>
           <ul className="list-reset webinars__cards-list">
             {webinars?.items.map((item, index) => (
-              <li key={index} className="webinars__card-list-item">
+              <li
+                style={{ backgroundColor: item.background }}
+                key={index}
+                className="webinars__card-list-item"
+              >
                 <div className="webinars__card-bio">
                   <picture className="webinars__card-picture">
                     <img
@@ -55,7 +59,7 @@ export const WebinarsSection = ({ webinars }: WebinarsSection) => {
                   </p>
                   <div className="webinars__date-duration">
                     <span className="schedule-date">
-                      {`${useFormatDate(item.date_from)}, ${useFormatDate(
+                      {`${formatDate(item.date_from)}, ${formatDate(
                         item.date_to
                       )}`}
                     </span>
