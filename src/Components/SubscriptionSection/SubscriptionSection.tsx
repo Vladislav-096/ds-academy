@@ -1,6 +1,7 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { sectionsSubscription } from "../Main/Main";
 import "./subscriptionSection.scss";
+import { postData } from "../../api/PostData";
 
 interface SubscriptionSection {
   subscription?: sectionsSubscription;
@@ -12,10 +13,11 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const [isTextValid, setIsTextValid] = useState<boolean>(false);
   const [isMarkChecked, setIsMarkChecked] = useState<boolean>(false);
   const [isDataSubmitted, setIsDataSubmitter] = useState<boolean>(false);
+  // const [formData, setFormData] = useState<Record<string, string>>({});
   const marqueeBackgroundColor = subscription?.ticker.color;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value;
+    const { name, value } = e.target;
     setInputText(value);
 
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(value)) {
@@ -31,8 +33,17 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
     setIsMarkChecked((prev) => !prev);
   };
 
-  const handleSubmit = () => {
-    setIsDataSubmitter(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const res = await postData({ mail: inputText });
+      console.log("Form submitted successfully:", res);
+      setIsDataSubmitter(true);
+    } catch (error) {
+      setErrorMessage(`Failed to submit form. Please try again. ${error}`);
+      console.error("Error submitting form:", error);
+    }
   };
 
   function agreementText(text?: string) {
@@ -175,7 +186,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
                   </picture>
                 </div>
               ) : (
-                <form id="subscription-form" className="subscription__form">
+                <form onSubmit={handleSubmit} className="subscription__form">
                   <div className="subscription__form-input-submin-wrapper">
                     <div className="subscription__email-input-wrapper">
                       <div className="subscription__input-wrapper">
@@ -232,9 +243,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
                       <p className="error-message">{errorMessage}</p>
                     </div>
                     <button
-                      // id="btn-submit"
-                      onClick={handleSubmit}
-                      type="button"
+                      type="submit"
                       className={
                         isTextValid && isMarkChecked
                           ? "btn-reset subscription__form-submit submit-active"

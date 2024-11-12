@@ -66,17 +66,17 @@
     overflow: hidden;
     transform: rotate($deg) translateX(-10px);
 
-    @media (max-width: 1366px) {
-      width: 1440px;
-    }
+    // @media (max-width: 1366px) {
+    //   width: 1440px;
+    // }
 
     @media (max-width: 992px) {
       height: 80px;
-      width: 999px;
+      // width: 999px;
     }
 
     @media (max-width: 767px) {
-      width: 795px;
+      // width: 795px;
     }
 
     &__content {

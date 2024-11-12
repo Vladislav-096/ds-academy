@@ -261,14 +261,24 @@ p {
 .popular-marquee {
   bottom: -245px;
   @include marquee(100vw, -4deg, $secondary-text-color, 58px);
+
+  @media (max-width: 1366px) {
+    bottom: -170px;
+    @include marquee(100vw, -3deg, $secondary-text-color, 30px);
+  }
+
   @media (max-width: 992px) {
-    bottom: 1px;
+    bottom: -133px;
     @include marquee(100vw, -3deg, $secondary-text-color, 30px);
   }
 
   @media (max-width: 767px) {
-    bottom: 2px;
-    @include marquee(100vw, -4deg, $secondary-text-color, 30px);
+    bottom: -158px;
+    @include marquee(135vw, -4deg, $secondary-text-color, 30px);
+  }
+
+  @media (max-width: 577px) {
+    @include marquee(240vw, -4deg, $secondary-text-color, 30px);
   }
 }
 
@@ -280,26 +290,31 @@ p {
     @include marquee(100vw, -3deg, $secondary-text-color, 58px);
   }
 
+  @media (max-width: 1366px) {
+    bottom: -118px;
+  }
+
   @media (max-width: 1140px) {
-    bottom: 0;
+    bottom: -140px;
   }
 
   @media (max-width: 992px) {
     @include marquee(100vw, -3deg, $secondary-text-color, 30px);
-    bottom: 0;
+    bottom: -126px;
   }
 
   @media (max-width: 767px) {
-    bottom: 0;
+    bottom: -70px;
     @include marquee(100vw, -4deg, $secondary-text-color, 30px);
   }
 
   @media (max-width: 577px) {
-    bottom: 0;
+    @include marquee(210vw, -4deg, $secondary-text-color, 30px);
+    bottom: -60px;
   }
 
   @media (max-width: 320px) {
-    bottom: 0;
+    bottom: -40px;
   }
 }
 
@@ -312,25 +327,30 @@ p {
   }
 
   @media (max-width: 1366px) {
-    bottom: 0;
+    bottom: 1673px;
+  }
+
+  @media (max-width: 1140px) {
+    @include marquee(125vw, 2deg, $secondary-text-color, 58px);
   }
 
   @media (max-width: 992px) {
     @include marquee(100vw, 3deg, $secondary-text-color, 30px);
-    bottom: 0;
+    bottom: 1691px;
   }
 
   @media (max-width: 767px) {
     @include marquee(100vw, 4deg, $secondary-text-color, 30px);
-    bottom: 0;
+    bottom: 2224px;
   }
 
   @media (max-width: 577px) {
-    bottom: 0;
+    @include marquee(240vw, 4deg, $secondary-text-color, 30px);
+    bottom: 2468px;
   }
 
   @media (max-width: 320px) {
-    bottom: 0;
+    bottom: 2452px;
   }
 }
 
@@ -339,20 +359,22 @@ p {
   @include marquee(135vw, 0deg, #f2f2f2, 58px);
 
   @media (max-width: 1366px) {
-    bottom: 0;
+    @include marquee(180vw, 0deg, #f2f2f2, 58px);
+  }
+
+  @media (max-width: 1140px) {
+    @include marquee(200vw, 0deg, #f2f2f2, 58px);
   }
 
   @media (max-width: 992px) {
-    @include marquee(130vw, 0deg, #f2f2f2, 44px);
-    bottom: 0;
+    @include marquee(220vw, 0deg, #f2f2f2, 44px);
   }
 
   @media (max-width: 767px) {
-    @include marquee(130vw, 0deg, #f2f2f2, 30px);
-    bottom: 0;
+    @include marquee(190vw, 0deg, #f2f2f2, 30px);
   }
 
   @media (max-width: 577px) {
-    bottom: 0;
+    @include marquee(340vw, 0deg, #f2f2f2, 30px);
   }
 }
