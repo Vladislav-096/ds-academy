@@ -188,6 +188,7 @@
     &__card-img {
       min-width: 64px;
       height: inherit;
+      object-fit: cover;
     }
 
     &__card-bio-info-block {

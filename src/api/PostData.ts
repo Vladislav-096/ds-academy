@@ -13,7 +13,6 @@ export const postData = async (data: formData) => {
     },
   })
     .then(validateResponse)
-    .then(() => undefined)
     .catch((error) => {
       console.log("postData error: ", error);
       throw error;
