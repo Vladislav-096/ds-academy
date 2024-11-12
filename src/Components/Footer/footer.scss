@@ -1,7 +1,7 @@
 @use "../../styles/_variables.scss" as *;
 
 .footer {
-  padding-top: 184px;
+  padding-top: 66px;
   padding-bottom: 80px;
   background-color: $secondary-text-color;
 
@@ -442,7 +442,7 @@
 
   &__terms-block {
     position: relative;
-    padding-top: 73px;
+    padding-top: 70px;
     flex-basis: 100%;
     display: flex;
 

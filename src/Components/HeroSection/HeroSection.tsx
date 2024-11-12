@@ -12,7 +12,10 @@ interface HeroSection {
 export const HeroSection = ({ hero }: HeroSection) => {
   const formattedDate = formatDate(hero?.items[0].date || "");
   const duration = `${hero?.items[0].duration} min`;
-  const stickerPosition = createPosition(hero?.items[0].stamp.position || "");
+  const stickerPosition = createPosition(
+    hero?.items[0].stamp.position || "",
+    "hero"
+  );
   const mask = createMask(hero?.items[0].img.shape || "");
   const marqueeBackgroundColor = hero?.ticker.color;
 
@@ -20,8 +23,9 @@ export const HeroSection = ({ hero }: HeroSection) => {
     <section id="gaming" className="section-hero">
       <div className="popular-marquee">
         <div
-        style={{backgroundColor: marqueeBackgroundColor}}
-        className="marquee">
+          style={{ backgroundColor: marqueeBackgroundColor }}
+          className="marquee"
+        >
           <div className="marquee__content">
             <ul className="list-reset marquee__list">
               <li>

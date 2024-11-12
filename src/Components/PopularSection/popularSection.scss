@@ -4,8 +4,10 @@
 @include spin();
 
 .section-popular {
-  margin-bottom: 215px;
   position: relative;
+  margin-bottom: 79px;
+  // background-color: $tertiary-text-color;
+  // z-index: 444;
 
   .popular {
     display: flex;

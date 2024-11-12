@@ -154,8 +154,8 @@ export const PopularSection = ({ popular }: PopularSection) => {
                       ? {
                           width: "274px",
                           height: "206px",
-                          top: "-40px",
-                          left: "-60px",
+                          top: "-77px",
+                          left: "-58px",
                         }
                       : createPosition(item.stamp.position)
                   }

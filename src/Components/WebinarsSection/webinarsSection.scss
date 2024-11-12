@@ -3,8 +3,11 @@
 
 .section-webinars {
   position: relative;
+  padding-top: 145px;
+  padding-bottom: 130px;
   overflow: hidden;
-  clip-path: polygon(0% 0%, 100% 0%, 110% 100%, 0% 100%);
+  // clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 94.84%);
+  // z-index: 333;
 
   @include scheduleBlock(
     $calendar-image-white,
@@ -12,9 +15,6 @@
     500,
     $tertiary-text-color
   );
-
-  padding-top: 145px;
-  padding-bottom: 130px;
 
   background-color: $secondary-text-color;
 
@@ -114,14 +114,20 @@
 
       &:nth-child(3n + 1) {
         background-image: url("./src/assets/line-bg-4.svg");
+        background-position-y: 108px;
+        background-position-x: 99px;
       }
 
       &:nth-child(3n + 2) {
         background-image: url("./src/assets/line-bg-5.svg");
+        background-position-y: -47px;
+        background-position-x: 46px;
       }
 
       &:nth-child(3n + 3) {
         background-image: url("./src/assets/line-bg-6.svg");
+        background-position-y: 9px;
+        background-position-x: -84px;
         min-height: 272px;
       }
 

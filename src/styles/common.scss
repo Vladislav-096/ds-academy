@@ -259,7 +259,7 @@ p {
 }
 
 .popular-marquee {
-  bottom: 0;
+  bottom: -245px;
   @include marquee(100vw, -4deg, $secondary-text-color, 58px);
   @media (max-width: 992px) {
     bottom: 1px;
@@ -273,7 +273,7 @@ p {
 }
 
 .webinars-marquee {
-  bottom: 0;
+  bottom: -138px;
   @include marquee(100vw, -1deg, $secondary-text-color, 58px);
 
   @media (max-width: 1920px) {
@@ -304,7 +304,7 @@ p {
 }
 
 .subscription-marquee {
-  bottom: 0;
+  bottom: 1553px;
   @include marquee(100vw, 0deg, $secondary-text-color, 58px);
 
   @media (max-width: 1920px) {
@@ -336,7 +336,7 @@ p {
 
 .discount-marquee {
   bottom: 0;
-  @include marquee(130vw, 0deg, #f2f2f2, 58px);
+  @include marquee(135vw, 0deg, #f2f2f2, 58px);
 
   @media (max-width: 1366px) {
     bottom: 0;

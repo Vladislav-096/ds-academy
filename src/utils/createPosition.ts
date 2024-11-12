@@ -1,8 +1,11 @@
-export const createPosition = (position: string) => {
+export const createPosition = (position: string, section?: string) => {
   switch (position) {
     case "top-right":
-      return { top: "0", right: "0" };
+      if (section === "hero") {
+        return { top: "0px", right: "0px" };
+      }
+      return { top: "-48px", right: "-42px" };
     case "top-left":
-      return { top: "0", left: "0" };
+      return { top: "-48px", left: "-42px" };
   }
 };

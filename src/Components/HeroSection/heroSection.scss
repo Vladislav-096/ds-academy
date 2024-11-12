@@ -5,7 +5,9 @@
 
 .section-hero {
   position: relative;
+  // z-index: 555;
   margin-bottom: 449px;
+  // background-color: $tertiary-text-color;
 
   .hero {
     @include scheduleBlock(

@@ -4,6 +4,7 @@ import { HeroSection } from "../HeroSection/HeroSection";
 import { PopularSection } from "../PopularSection/PopularSection";
 import { WebinarsSection } from "../WebinarsSection/WebinarsSection";
 import { SubscriptionSection } from "../SubscriptionSection/SubscriptionSection";
+import "./Main.scss";
 
 interface sectionItemsImg {
   url: string;
@@ -106,6 +107,120 @@ export const Main = () => {
 
   return (
     <main className="main">
+      <div className="subscription-marquee">
+        <div
+          style={{ backgroundColor: sections?.proposals.ticker.color }}
+          className="marquee"
+        >
+          <div className="marquee__content">
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+            <ul className="list-reset marquee__list">
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+              <li>
+                <h2 className="marquee__list-text">
+                  {sections?.proposals.ticker.text}
+                </h2>
+              </li>
+              <li className="marquee__list-separator">
+                <img
+                  src="./src/assets/star-black.svg"
+                  alt="Star Sign Separator"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <picture className="line-bg-picture line-bg-first-picture">
         <source
           media="(max-width: 577px)"
