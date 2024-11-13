@@ -11,47 +11,53 @@ interface SubscriptionSection {
 export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const [inputText, setInputText] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [isTextValid, setIsTextValid] = useState<boolean>(false);
-  const [isMarkChecked, setIsMarkChecked] = useState<boolean>(false);
-  const [isDataSubmitted, setIsDataSubmitter] = useState<boolean>(false);
+  const [isTextValid, setIsTextValid] = useState<string>("default");
+  const [isMarkChecked, setIsMarkChecked] = useState<string>("default");
+  const [isDataSubmitted, setIsDataSubmitted] = useState<boolean>(false);
   const marqueeBackgroundColor = subscription?.ticker.color;
   const RunningLineText = subscription?.ticker.text;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setInputText(value);
 
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(value)) {
       setErrorMessage("");
-      setIsTextValid(true);
+      setIsTextValid("valid");
     } else {
       setErrorMessage("Formato de email inválido, verifique a ortografia");
-      setIsTextValid(false);
+      setIsTextValid("invalid");
+      setIsMarkChecked("invalid");
     }
   };
 
   const handleClick = () => {
-    setIsMarkChecked((prev) => !prev);
+    if (isMarkChecked === "default" || isMarkChecked === "invalid") {
+      setIsMarkChecked("valid");
+    } else {
+      setIsMarkChecked("invalid");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsDataSubmitted(true);
 
     try {
       const res = await postData({ mail: inputText });
       console.log("Form submitted successfully:", res);
-      setIsDataSubmitter(true);
     } catch (error) {
       setErrorMessage(`Failed to submit form. Please try again. ${error}`);
       console.error("Error submitting form:", error);
     }
   };
 
-  function agreementText(text?: string) {
+  function agreementText(text?: string): JSX.Element {
     const textArray = text?.split(" ");
-    const firstPart = textArray?.splice(0, 8).join(" ");
-    const secondPart = textArray?.splice(0, 3).join(" ");
-    const thirdPart = textArray?.splice(0, 3).join(" ");
+    const firstPart = textArray?.splice(0, 8).join(" ") + " ";
+    const secondPart = textArray?.splice(0, 3).join(" ") + " ";
+    const thirdPart = textArray?.splice(0, 3).join(" ") + " ";
     const fourthPart = textArray?.splice(0).join(" ");
 
     return (
@@ -120,63 +126,58 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
                         <input
                           onChange={handleChange}
                           value={inputText}
-                          // id="email-input"
                           name="email"
                           required
-                          className={
-                            isTextValid && isMarkChecked
-                              ? "subscription__input input-success"
-                              : "subscription__input input-error"
-                          }
+                          className={`subscription__input ${
+                            isTextValid === "valid" && isMarkChecked === "valid"
+                              ? "input-success"
+                              : isTextValid === "default"
+                              ? ""
+                              : "input-error"
+                          }`}
                         />
                         {!inputText && (
-                          <span
-                            // id="subscription-input-placeholder"
-                            className="subscription__input-placeholder"
-                          >
+                          <span className="subscription__input-placeholder">
                             {subscription?.["email-placeholder"]}
                           </span>
                         )}
 
-                        <picture
-                          // id="subscription-state-picture-error"
-                          className={
-                            isTextValid && isMarkChecked
-                              ? "subscription__state-picture"
-                              : "subscription__state-picture state-picture-active"
-                          }
-                        >
-                          <img
-                            src="./src/assets/error.svg"
-                            alt="Error marker image"
-                            className="subscription__state-img"
-                          />
-                        </picture>
-                        <picture
-                          // id="subscription-state-picture-success"
-                          className={
-                            isTextValid && isMarkChecked
-                              ? "subscription__state-picture state-picture-active"
-                              : "subscription__state-picture"
-                          }
-                        >
-                          <img
-                            src="./src/assets/correct.svg"
-                            alt="Success marker image"
-                            className="subscription__state-img"
-                          />
-                        </picture>
+                        {isTextValid === "valid" &&
+                          isMarkChecked === "valid" && (
+                            <picture className="subscription__state-picture">
+                              <img
+                                src="./src/assets/correct.svg"
+                                alt="Success marker image"
+                                className="subscription__state-img"
+                              />
+                            </picture>
+                          )}
+
+                        {(isTextValid === "invalid" ||
+                          isMarkChecked === "invalid") && (
+                          <picture className="subscription__state-picture">
+                            <img
+                              src="./src/assets/error.svg"
+                              alt="Error marker image"
+                              className="subscription__state-img"
+                            />
+                          </picture>
+                        )}
                       </div>
                       <p className="error-message">{errorMessage}</p>
                     </div>
                     <button
                       type="submit"
-                      className={
-                        isTextValid && isMarkChecked
-                          ? "btn-reset subscription__form-submit submit-active"
-                          : "btn-reset subscription__form-submit"
+                      className={`btn-reset subscription__form-submit ${
+                        isTextValid === "valid" && isMarkChecked === "valid"
+                          ? "submit-active"
+                          : ""
+                      }`}
+                      disabled={
+                        isTextValid === "valid" && isMarkChecked === "valid"
+                          ? false
+                          : true
                       }
-                      disabled={isTextValid && isMarkChecked ? false : true}
                     >
                       {subscription?.["submit-text"]}
                     </button>
