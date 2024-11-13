@@ -2,6 +2,7 @@ import { ChangeEvent, useRef, useState } from "react";
 import { sectionsSubscription } from "../Main/Main";
 import "./subscriptionSection.scss";
 import { postData } from "../../api/PostData";
+import { RunningLine } from "../RunningLine/RunningLine";
 
 interface SubscriptionSection {
   subscription?: sectionsSubscription;
@@ -13,8 +14,8 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const [isTextValid, setIsTextValid] = useState<boolean>(false);
   const [isMarkChecked, setIsMarkChecked] = useState<boolean>(false);
   const [isDataSubmitted, setIsDataSubmitter] = useState<boolean>(false);
-  // const [formData, setFormData] = useState<Record<string, string>>({});
   const marqueeBackgroundColor = subscription?.ticker.color;
+  const RunningLineText = subscription?.ticker.text;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -69,87 +70,13 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
 
   return (
     <section className="section-subscription">
-      <div className="discount-marquee">
-        <div
-          style={{ backgroundColor: marqueeBackgroundColor }}
-          className="marquee"
-        >
-          <div className="marquee__content">
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">
-                  {subscription?.ticker.text}
-                </h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-white.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">
-                  {subscription?.ticker.text}
-                </h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-white.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">
-                  {subscription?.ticker.text}
-                </h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-white.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">
-                  {subscription?.ticker.text}
-                </h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-white.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">
-                  {subscription?.ticker.text}
-                </h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-white.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">
-                  {subscription?.ticker.text}
-                </h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-white.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <RunningLine
+        amountOfwords={2}
+        backgroundColor={marqueeBackgroundColor || ""}
+        text={RunningLineText || ""}
+        elementClass={"discount-marquee"}
+        separatorColor={"white"}
+      />
       <div className="container">
         <div className="subscription">
           <picture className="line-bg-picture line-bg-seventh-picture">

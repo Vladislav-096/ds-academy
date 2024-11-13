@@ -2,6 +2,7 @@ import { createMask } from "../../utils/createMask";
 import { createPosition } from "../../utils/createPosition";
 import { formatDate } from "../../utils/formatDate";
 import { sectionsConten } from "../Main/Main";
+import { RunningLine } from "../RunningLine/RunningLine";
 import { Sticker } from "../Sticker/Sticker";
 import "./popularSection.scss";
 
@@ -13,6 +14,7 @@ export const PopularSection = ({ popular }: PopularSection) => {
   const formattedDate = formatDate(popular?.items[0].date || "");
   const duration = `${popular?.items[0].duration} min`;
   const marqueeBackgroundColor = popular?.ticker.color;
+  const RunningLineText = popular?.ticker.text;
 
   function isEachThirdElement(index: number) {
     if ((index + 1) % 3 === 0) {
@@ -24,102 +26,12 @@ export const PopularSection = ({ popular }: PopularSection) => {
 
   return (
     <section className="section-popular">
-      <div className="webinars-marquee">
-        <div
-          style={{ backgroundColor: marqueeBackgroundColor }}
-          className="marquee"
-        >
-          <div className="marquee__content">
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{popular?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <RunningLine
+        amountOfwords={3}
+        backgroundColor={marqueeBackgroundColor || ""}
+        text={RunningLineText || ""}
+        elementClass={"webinars-marquee"}
+      />
       <div className="container">
         <ul className="list-reset popular">
           {popular?.items.map((item, index) => (

@@ -4,6 +4,7 @@ import { formatDate } from "../../utils/formatDate";
 import { Sticker } from "../Sticker/Sticker";
 import { createPosition } from "../../utils/createPosition";
 import { createMask } from "../../utils/createMask";
+import { RunningLine } from "../RunningLine/RunningLine";
 
 interface HeroSection {
   hero?: sectionsMain;
@@ -18,78 +19,16 @@ export const HeroSection = ({ hero }: HeroSection) => {
   );
   const mask = createMask(hero?.items[0].img.shape || "");
   const marqueeBackgroundColor = hero?.ticker.color;
+  const RunningLineText = hero?.ticker.text;
 
   return (
     <section id="gaming" className="section-hero">
-      <div className="popular-marquee">
-        <div
-          style={{ backgroundColor: marqueeBackgroundColor }}
-          className="marquee"
-        >
-          <div className="marquee__content">
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">{hero?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{hero?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">{hero?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{hero?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-            <ul className="list-reset marquee__list">
-              <li>
-                <h2 className="marquee__list-text">{hero?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-              <li>
-                <h2 className="marquee__list-text">{hero?.ticker.text}</h2>
-              </li>
-              <li className="marquee__list-separator">
-                <img
-                  src="./src/assets/star-black.svg"
-                  alt="Star Sign Separator"
-                />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <RunningLine
+        amountOfwords={2}
+        backgroundColor={marqueeBackgroundColor || ""}
+        text={RunningLineText || ""}
+        elementClass={"popular-marquee"}
+      />
       <div className="container">
         <div className="hero">
           <div className="hero__picture-wrapper">
