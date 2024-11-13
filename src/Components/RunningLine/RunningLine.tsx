@@ -1,3 +1,5 @@
+import React from "react";
+
 interface RunningLine {
   amountOfwords: number;
   backgroundColor: string;
@@ -18,11 +20,11 @@ export const RunningLine = ({
 
     for (let i = 0; i < amountOfwords; i++) {
       blockOftext.push(
-        <>
-          <li>
+        <React.Fragment key={i}>
+          <div>
             <h2 className="marquee__list-text">{text}</h2>
-          </li>
-          <li className="marquee__list-separator">
+          </div>
+          <div className="marquee__list-separator">
             <img
               src={
                 separatorColor // сделать по вариантам если потребуется
@@ -31,8 +33,8 @@ export const RunningLine = ({
               }
               alt="Star Sign Separator"
             />
-          </li>
-        </>
+          </div>
+        </React.Fragment>
       );
     }
 
@@ -44,7 +46,9 @@ export const RunningLine = ({
 
     for (let i = 0; i < 3; i++) {
       listOfText.push(
-        <ul className="list-reset marquee__list">{textBlock()}</ul>
+        <div key={i} className="marquee__list">
+          {textBlock()}
+        </div>
       );
     }
 
