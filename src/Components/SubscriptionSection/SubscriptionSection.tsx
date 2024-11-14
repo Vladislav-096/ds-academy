@@ -20,7 +20,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const { theme } = useContext(ThemeContext);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
 
     setInputText(value);
 

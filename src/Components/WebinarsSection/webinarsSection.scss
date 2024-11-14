@@ -9,6 +9,19 @@
   // clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 94.84%);
   // z-index: 333;
 
+  @media (max-width: 1366px) {
+    padding-top: 127px;
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 81px;
+    padding-bottom: 74px;
+  }
+
+  @media (max-width: 320px) {
+    padding-bottom: 113px;
+  }
+
   @include scheduleBlock(
     $calendar-image-white,
     $watch-image-white,
@@ -272,14 +285,5 @@
       display: flex;
       justify-content: space-between;
     }
-  }
-
-  @media (max-width: 1366px) {
-    padding-top: 127px;
-  }
-
-  @media (max-width: 767px) {
-    padding-top: 81px;
-    padding-bottom: 74px;
   }
 }

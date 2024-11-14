@@ -283,17 +283,20 @@ p {
   }
 
   @media (max-width: 992px) {
-    bottom: -133px;
+    bottom: -114px;
     @include marquee(100vw, -3deg, $secondary-text-color, 30px);
   }
 
   @media (max-width: 767px) {
-    bottom: -158px;
     @include marquee(135vw, -4deg, $secondary-text-color, 30px);
   }
 
   @media (max-width: 577px) {
     @include marquee(240vw, -4deg, $secondary-text-color, 30px);
+  }
+
+  @media (max-width: 320px) {
+    bottom: -83px;
   }
 }
 
@@ -315,7 +318,7 @@ p {
 
   @media (max-width: 992px) {
     @include marquee(100vw, -3deg, $secondary-text-color, 30px);
-    bottom: -126px;
+    bottom: -192px;
   }
 
   @media (max-width: 767px) {
@@ -329,15 +332,15 @@ p {
   }
 
   @media (max-width: 320px) {
-    bottom: -40px;
+    bottom: -197px;
   }
 }
 
 .subscription-marquee {
-  bottom: 1553px;
   @include marquee(100vw, 0deg, $secondary-text-color, 58px);
 
   @media (max-width: 1920px) {
+    bottom: 1554px;
     @include marquee(100vw, 2deg, $secondary-text-color, 58px);
   }
 
@@ -351,7 +354,7 @@ p {
 
   @media (max-width: 992px) {
     @include marquee(100vw, 3deg, $secondary-text-color, 30px);
-    bottom: 1691px;
+    bottom: 1625px;
   }
 
   @media (max-width: 767px) {
@@ -365,7 +368,7 @@ p {
   }
 
   @media (max-width: 320px) {
-    bottom: 2452px;
+    bottom: 2670px;
   }
 }
 

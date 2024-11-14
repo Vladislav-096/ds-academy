@@ -6,15 +6,17 @@
 .section-popular {
   position: relative;
   margin-bottom: 79px;
-  // background-color: $tertiary-text-color;
-  // z-index: 444;
 
-  // @media (max-width: 1366px) {
-  //   margin-bottom: 255px;
-  // }
+  @media (max-width: 992px) {
+    margin-bottom: 150px;
+  }
 
   @media (max-width: 767px) {
     margin-bottom: 30px;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 187px;
   }
 
   .popular {
@@ -49,6 +51,14 @@
 
     .content-card {
       margin-bottom: 136px;
+
+      @media (max-width: 992px) {
+        margin-bottom: 104px;
+      }
+
+      @media (max-width: 320px) {
+        margin-bottom: 150px;
+      }
 
       &:nth-child(3n + 1) {
         width: 48.5%;
@@ -510,11 +520,19 @@
           order: 4;
         }
       }
+
+      @media (max-width: 320px) {
+        &:nth-child(3n + 1) {
+          margin-bottom: 17px;
+        }
+      }
     }
 
-    // &__descr-middle {
-    //   margin-bottom: 17px;
-    // }
+    &__descr-middle {
+      @media (max-width: 320px) {
+        margin-bottom: 17px;
+      }
+    }
 
     &__design-middle-list-item {
       font-size: 15px;

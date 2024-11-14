@@ -9,6 +9,22 @@
   margin-bottom: 449px;
   // background-color: $tertiary-text-color;
 
+  @media (max-width: 1366px) {
+    margin-bottom: 298px;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 265px;
+  }
+
+  @media (max-width: 767px) {
+    margin-bottom: 225px;
+  }
+
+  @media (max-width: 320px) {
+    margin-bottom: 367px;
+  }
+
   .hero {
     @include scheduleBlock(
       $calendar-image-grey,
@@ -36,7 +52,7 @@
       @media (max-width: 992px) {
         margin: 0 auto;
         // width: 100%;
-        // height: 320px;
+        height: 320px;
         // -webkit-mask-image: url("./src/assets/gaming-mask-768-resolution.png");
       }
 
@@ -331,13 +347,5 @@
     @media (max-width: 992px) {
       flex-direction: column;
     }
-  }
-
-  @media (max-width: 1366px) {
-    margin-bottom: 298px;
-  }
-
-  @media (max-width: 767px) {
-    margin-bottom: 265px;
   }
 }

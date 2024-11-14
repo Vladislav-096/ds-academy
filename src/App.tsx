@@ -43,7 +43,7 @@ export function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme: updateTheme }}>
-      <Layout />;
+      <Layout />
     </ThemeContext.Provider>
   );
 }

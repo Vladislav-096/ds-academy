@@ -3,9 +3,13 @@
 .section-subscription {
   position: relative;
   padding-top: 189px;
-  padding-bottom: 254px;
+  padding-bottom: 255px;
   background-color: #f2f2f2;
   overflow: hidden;
+
+  @media(max-width: 992px) {
+    padding-bottom: 187px;
+  }
 
   &.dark {
     background-color: $secondary-text-color;
