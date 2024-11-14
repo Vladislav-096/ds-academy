@@ -2,7 +2,7 @@ import { menu } from "../Components/Layout/Layout";
 import { API_URL } from "../Constants/Constants";
 import { validateResponse } from "./validationResponse";
 
-export const validateMenuData = (data: any): menu => {
+export const validateMenuData = (data: menu): menu => {
   if (typeof data !== "object" || data === null) {
     throw new Error("Menu data should be an object");
   }
@@ -13,7 +13,7 @@ export const validateMenuData = (data: any): menu => {
 
   if (
     !Array.isArray(data.header) ||
-    data.header.some((item: any) => {
+    data.header.some((item) => {
       return (
         typeof item.label !== "string" ||
         !item.label.trim() ||
@@ -29,12 +29,12 @@ export const validateMenuData = (data: any): menu => {
 
   if (
     !Array.isArray(data.footer) ||
-    data.footer.some((footerItem: any) => {
+    data.footer.some((footerItem) => {
       return (
         typeof footerItem.label !== "string" ||
         !footerItem.label.trim() ||
         !Array.isArray(footerItem.items) ||
-        footerItem.items.some((item: any) => {
+        footerItem.items.some((item) => {
           return (
             typeof item.label !== "string" ||
             !item.label.trim() ||

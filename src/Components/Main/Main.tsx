@@ -19,7 +19,7 @@ interface sectionItemsStamp {
   position: string;
 }
 
-interface sectionMainItems extends sectionsContenItems {
+export interface sectionMainItems extends sectionsContenItems {
   "browse-text": string;
 }
 
@@ -33,7 +33,7 @@ export interface sectionsMain {
   ticker: sectionTicker;
 }
 
-interface sectionsContenItems {
+export interface sectionsContenItems {
   title: string;
   text: string;
   accent: string;
@@ -56,7 +56,7 @@ export interface sectionsProposalsItemsAuthor {
   position: string;
 }
 
-interface sectionsProposalsItems {
+export interface sectionsProposalsItems {
   background: string;
   author: sectionsProposalsItemsAuthor;
   text: string;
@@ -87,7 +87,6 @@ export interface sections {
   content: sectionsConten;
   proposals: sectionsProposals;
   subscription: sectionsSubscription;
-  ticker: sectionTicker;
 }
 
 export const Main = () => {

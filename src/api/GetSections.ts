@@ -1,13 +1,30 @@
-import { sections } from "../Components/Main/Main";
+import {
+  sectionMainItems,
+  sections,
+  sectionsConten,
+  sectionsContenItems,
+  sectionsMain,
+  sectionsProposals,
+  sectionsProposalsItems,
+  sectionsSubscription,
+} from "../Components/Main/Main";
 import { API_URL } from "../Constants/Constants";
 import { validateResponse } from "./validationResponse";
 
-const validateSectionsData = (data: any): sections => {
+type Section =
+  | sectionsMain
+  | sectionsConten
+  | sectionsProposals
+  | sectionsSubscription;
+
+type Item = sectionsContenItems | sectionMainItems;
+
+const validateSectionsData = (data: sections): sections => {
   if (!data || typeof data !== "object") {
     throw new Error("Invalid data format");
   }
 
-  const validateSection = (section: any, requiredItems: string[]) => {
+  const validateSection = (section: Section, requiredItems: string[]) => {
     if (!section || typeof section !== "object") {
       throw new Error("Section data is missing or malformed");
     }
@@ -21,7 +38,7 @@ const validateSectionsData = (data: any): sections => {
     return section;
   };
 
-  const validateItem = (item: any, id: string) => {
+  const validateItem = (item: Item, id: string) => {
     if (!item.title || typeof item.title !== "string") {
       throw new Error("Item title is invalid");
     }
@@ -81,10 +98,12 @@ const validateSectionsData = (data: any): sections => {
   };
 
   const main = validateSection(data.main, ["items", "ticker"]);
-  main.items.forEach((item: any) => validateItem(item, "main"));
+  main.items.forEach((item: sectionMainItems) => validateItem(item, "main"));
 
   const content = validateSection(data.content, ["items", "ticker"]);
-  content.items.forEach((item: any) => validateItem(item, "content"));
+  content.items.forEach((item: sectionsContenItems) =>
+    validateItem(item, "content")
+  );
 
   if (data.proposals) {
     if (!data.proposals.title || typeof data.proposals.title !== "string") {
@@ -100,7 +119,7 @@ const validateSectionsData = (data: any): sections => {
       throw new Error("Proposals items are invalid");
     }
 
-    data.proposals.items.forEach((item: any) => {
+    data.proposals.items.forEach((item: sectionsProposalsItems) => {
       if (!item.background || typeof item.background !== "string") {
         throw new Error("Proposal background is invalid");
       }

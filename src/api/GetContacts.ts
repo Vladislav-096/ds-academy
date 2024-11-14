@@ -2,7 +2,7 @@ import { contacts } from "../Components/Layout/Layout";
 import { API_URL } from "../Constants/Constants";
 import { validateResponse } from "./validationResponse";
 
-export const validateContactsData = (data: any): contacts => {
+export const validateContactsData = (data: contacts): contacts => {
   if (typeof data !== "object" || data === null) {
     throw new Error("Contacts data should be an object");
   }
@@ -17,14 +17,16 @@ export const validateContactsData = (data: any): contacts => {
     "linkedin",
   ];
   requiredFields.forEach((field) => {
-    if (typeof data[field] !== "string" || !data[field].trim()) {
+    const fieldValue = data[field as keyof contacts];
+    if (typeof fieldValue !== "string" || !fieldValue.trim()) {
       throw new Error(`${field} must be a non-empty string`);
     }
   });
 
+  // Validate 'links' field
   if (
     !Array.isArray(data.links) ||
-    data.links.some((item: any) => {
+    data.links.some((item) => {
       return (
         typeof item.label !== "string" ||
         !item.label.trim() ||
@@ -38,6 +40,7 @@ export const validateContactsData = (data: any): contacts => {
     );
   }
 
+  // Validate 'subscription' field
   if (typeof data.subscription !== "object" || data.subscription === null) {
     throw new Error("Subscription must be an object");
   }

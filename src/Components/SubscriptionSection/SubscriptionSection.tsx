@@ -26,7 +26,6 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
     } else {
       setErrorMessage("Formato de email inválido, verifique a ortografia");
       setIsTextValid("invalid");
-      // setIsMarkChecked("invalid");
     }
   }
 
@@ -90,9 +89,6 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
       </span>
     );
   }
-
-  // console.log("isTextValid", isTextValid);
-  // console.log("isMarkChecked", isMarkChecked);
 
   return (
     <section className={`section-subscription ${theme}`}>
@@ -203,7 +199,6 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
                       className="subscription__checkbox"
                       type="checkbox"
                       name="terms"
-                      required
                     />
                     {agreementText(subscription?.["agreement-text"])}
                   </label>
