@@ -180,6 +180,10 @@
       line-height: 43.2px;
       @include heading();
 
+      &.dark {
+        color: $tertiary-text-color;
+      }
+
       @media (max-width: 992px) {
         max-width: 461px;
         margin-bottom: 0;
@@ -300,6 +304,13 @@
       &:hover {
         background-color: $secondary-text-color !important;
         color: $tertiary-text-color;
+      }
+
+      &.dark {
+        &:hover {
+          background-color: rgb(172, 214, 222) !important;
+          color: $secondary-text-color;
+        }
       }
 
       &:focus {

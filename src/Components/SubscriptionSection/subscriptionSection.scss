@@ -6,6 +6,10 @@
   padding-bottom: 254px;
   background-color: #f2f2f2;
   overflow: hidden;
+
+  &.dark {
+    background-color: $secondary-text-color;
+  }
   // z-index: 222;
   // clip-path: polygon(0% 0%, 100% 5.16%, 100% 100%, 0% 100%);
 

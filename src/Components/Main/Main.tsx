@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GetSections } from "../../api/GetSections";
 import { HeroSection } from "../HeroSection/HeroSection";
 import { PopularSection } from "../PopularSection/PopularSection";
@@ -6,6 +6,7 @@ import { WebinarsSection } from "../WebinarsSection/WebinarsSection";
 import { SubscriptionSection } from "../SubscriptionSection/SubscriptionSection";
 import "./Main.scss";
 import { RunningLine } from "../RunningLine/RunningLine";
+import { ThemeContext } from "../../context/ThemeContext";
 
 interface sectionItemsImg {
   url: string;
@@ -93,6 +94,7 @@ export const Main = () => {
   const [sections, setSections] = useState<sections>();
   const marqueeBackgroundColor = sections?.proposals.ticker.color;
   const runningLineText = sections?.proposals.ticker.text;
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     getSections();
@@ -116,7 +118,7 @@ export const Main = () => {
         text={runningLineText || ""}
         elementClass={"subscription-marquee"}
       />
-      <picture className="line-bg-picture line-bg-first-picture">
+      <picture className={`line-bg-picture line-bg-first-picture ${theme}`}>
         <source
           media="(max-width: 577px)"
           srcSet="./src/assets/line-bg-1.2.svg"
@@ -127,7 +129,7 @@ export const Main = () => {
           alt=""
         />
       </picture>
-      <picture className="line-bg-picture line-bg-second-picture">
+      <picture className={`line-bg-picture line-bg-second-picture ${theme}`}>
         <source
           media="(max-width: 992px)"
           srcSet="./src/assets/line-bg-2.1.svg"

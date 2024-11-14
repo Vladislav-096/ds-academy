@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 import { createMask } from "../../utils/createMask";
 import { createPosition } from "../../utils/createPosition";
 import { formatDate } from "../../utils/formatDate";
@@ -15,6 +17,7 @@ export const PopularSection = ({ popular }: PopularSection) => {
   const duration = `${popular?.items[0].duration} min`;
   const marqueeBackgroundColor = popular?.ticker.color;
   const RunningLineText = popular?.ticker.text;
+  const { theme } = useContext(ThemeContext);
 
   function isEachThirdElement(index: number) {
     if ((index + 1) % 3 === 0) {
@@ -132,8 +135,8 @@ export const PopularSection = ({ popular }: PopularSection) => {
                 <h3
                   className={
                     isEachThirdElement(index)
-                      ? "popular__heading popular__descr-middle-element popular__heading-middle"
-                      : "popular__heading"
+                      ? `popular__heading popular__descr-middle-element popular__heading-middle ${theme}`
+                      : `popular__heading ${theme}`
                   }
                 >
                   {item.title}

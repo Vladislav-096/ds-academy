@@ -1,8 +1,9 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useContext, useRef, useState } from "react";
 import { sectionsSubscription } from "../Main/Main";
 import "./subscriptionSection.scss";
 import { postData } from "../../api/PostData";
 import { RunningLine } from "../RunningLine/RunningLine";
+import { ThemeContext } from "../../context/ThemeContext";
 
 interface SubscriptionSection {
   subscription?: sectionsSubscription;
@@ -16,6 +17,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const [isDataSubmitted, setIsDataSubmitted] = useState<boolean>(false);
   const marqueeBackgroundColor = subscription?.ticker.color;
   const RunningLineText = subscription?.ticker.text;
+  const { theme } = useContext(ThemeContext);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -75,7 +77,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   }
 
   return (
-    <section className="section-subscription">
+    <section className={`section-subscription ${theme}`}>
       <RunningLine
         amountOfwords={2}
         backgroundColor={marqueeBackgroundColor || ""}

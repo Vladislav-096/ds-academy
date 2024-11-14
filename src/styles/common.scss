@@ -28,7 +28,14 @@ body {
   min-width: 320px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
-  background-color: $tertiary-text-color;
+
+  &.light {
+    background-color: $tertiary-text-color;
+  }
+
+  &.dark {
+    background-color: $secondary-text-color;
+  }
 }
 
 .layout {
@@ -120,6 +127,10 @@ p {
   left: -85px;
   z-index: -1;
 
+  &.dark {
+    opacity: 0.03;
+  }
+
   @media (max-width: 992px) {
     width: 1797.35px;
     height: 1149.49px;
@@ -142,6 +153,10 @@ p {
   top: 999px;
   left: -904px;
   z-index: -1;
+
+  &.dark {
+    opacity: 0.03;
+  }
 
   @media (max-width: 992px) {
     width: 2726.53px;

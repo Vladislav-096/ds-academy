@@ -5,6 +5,8 @@ import { Sticker } from "../Sticker/Sticker";
 import { createPosition } from "../../utils/createPosition";
 import { createMask } from "../../utils/createMask";
 import { RunningLine } from "../RunningLine/RunningLine";
+import { ThemeContext } from "../../context/ThemeContext";
+import { useContext } from "react";
 
 interface HeroSection {
   hero?: sectionsMain;
@@ -20,6 +22,7 @@ export const HeroSection = ({ hero }: HeroSection) => {
   const mask = createMask(hero?.items[0].img.shape || "");
   const marqueeBackgroundColor = hero?.ticker.color;
   const RunningLineText = hero?.ticker.text;
+  const { theme } = useContext(ThemeContext);
 
   return (
     <section id="gaming" className="section-hero">
@@ -65,7 +68,7 @@ export const HeroSection = ({ hero }: HeroSection) => {
                 )
               )}
             </ul>
-            <h1 className="hero__heading">{hero?.items[0].title}</h1>
+            <h1 className={`hero__heading ${theme}`}>{hero?.items[0].title}</h1>
             <p className="hero__descr">{hero?.items[0].text}</p>
             <div className="date-hero">
               <span className="schedule-date">{formattedDate}</span>
@@ -73,7 +76,7 @@ export const HeroSection = ({ hero }: HeroSection) => {
             </div>
             <button
               style={{ backgroundColor: `${hero?.items[0].accent}` }}
-              className="btn-reset hero__button"
+              className={`btn-reset hero__button ${theme}`}
             >
               {hero?.items[0]["browse-text"]}
             </button>
