@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useRef, useState } from "react";
+import { ChangeEvent, FocusEvent, useContext, useRef, useState } from "react";
 import { sectionsSubscription } from "../Main/Main";
 import "./subscriptionSection.scss";
 import { postData } from "../../api/PostData";
@@ -19,23 +19,28 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const RunningLineText = subscription?.ticker.text;
   const { theme } = useContext(ThemeContext);
 
-  function validation() {
-
-  }
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-
-    setInputText(value);
-
+  function inputValidation(value: string) {
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(value)) {
       setErrorMessage("");
       setIsTextValid("valid");
     } else {
       setErrorMessage("Formato de email inválido, verifique a ortografia");
       setIsTextValid("invalid");
-      setIsMarkChecked("invalid");
+      // setIsMarkChecked("invalid");
     }
+  }
+
+  function handleBlur(e: FocusEvent<HTMLInputElement>) {
+    console.log("clicked onBlur");
+    const { value } = e.target;
+
+    inputValidation(value);
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    setInputText(value);
   };
 
   const handleClick = () => {
@@ -48,14 +53,20 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsDataSubmitted(true);
+    console.log("click");
 
-    try {
-      const res = await postData({ mail: inputText });
-      console.log("Form submitted successfully:", res);
-    } catch (error) {
-      setErrorMessage(`Failed to submit form. Please try again. ${error}`);
-      console.error("Error submitting form:", error);
+    if (isTextValid === "valid" && isMarkChecked === "valid") {
+      setErrorMessage("");
+      try {
+        const res = await postData({ mail: inputText });
+        console.log("Form submitted successfully:", res);
+        setIsDataSubmitted(true);
+      } catch (error) {
+        setErrorMessage(`Failed to submit form. Please try again. ${error}`);
+        console.error("Error submitting form:", error);
+      }
+    } else {
+      setErrorMessage("Invalid input value or checkbox field is empty");
     }
   };
 
@@ -79,6 +90,9 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
       </span>
     );
   }
+
+  // console.log("isTextValid", isTextValid);
+  // console.log("isMarkChecked", isMarkChecked);
 
   return (
     <section className={`section-subscription ${theme}`}>
@@ -131,6 +145,7 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
                       <div className="subscription__input-wrapper">
                         <input
                           onChange={handleChange}
+                          onBlurCapture={handleBlur}
                           value={inputText}
                           name="email"
                           required
@@ -175,15 +190,9 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
                     <button
                       type="submit"
                       className={`btn-reset subscription__form-submit ${
-                        isTextValid === "valid" && isMarkChecked === "valid"
-                          ? "submit-active"
-                          : ""
+                        inputText ? "submit-active" : ""
                       }`}
-                      disabled={
-                        isTextValid === "valid" && isMarkChecked === "valid"
-                          ? false
-                          : true
-                      }
+                      disabled={inputText ? false : true}
                     >
                       {subscription?.["submit-text"]}
                     </button>
