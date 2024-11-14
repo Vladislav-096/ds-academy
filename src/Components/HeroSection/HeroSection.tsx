@@ -7,6 +7,7 @@ import { createMask } from "../../utils/createMask";
 import { RunningLine } from "../RunningLine/RunningLine";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useContext } from "react";
+import { CreateMaskComponent } from "../CreateMask/CreateMaskComponent";
 
 interface HeroSection {
   hero?: sectionsMain;
@@ -35,13 +36,13 @@ export const HeroSection = ({ hero }: HeroSection) => {
       <div className="container">
         <div className="hero">
           <div className="hero__picture-wrapper">
-            <picture style={mask} className="hero__gaming-picture">
-              <img
-                className="hero__gaming-img"
-                src={hero?.items[0].img.url}
-                alt="Gaming Section Cover"
-              />
-            </picture>
+            <CreateMaskComponent
+              mask={mask}
+              pictureClass={"hero__gaming-picture"}
+              imgClass={"hero__gaming-img"}
+              src={hero?.items[0].img.url || ""}
+              alt={"Gaming Section Cover"}
+            />
             <picture style={stickerPosition} className="hero__sticker">
               <Sticker
                 type={hero?.items[0].stamp.type || ""}

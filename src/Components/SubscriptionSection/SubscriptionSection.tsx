@@ -19,6 +19,10 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   const RunningLineText = subscription?.ticker.text;
   const { theme } = useContext(ThemeContext);
 
+  function validation() {
+
+  }
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 

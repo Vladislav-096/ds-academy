@@ -7,6 +7,7 @@ import { sectionsConten } from "../Main/Main";
 import { RunningLine } from "../RunningLine/RunningLine";
 import { Sticker } from "../Sticker/Sticker";
 import "./popularSection.scss";
+import { CreateMaskComponent } from "../CreateMask/CreateMaskComponent";
 
 interface PopularSection {
   popular?: sectionsConten;
@@ -53,16 +54,13 @@ export const PopularSection = ({ popular }: PopularSection) => {
                     : "popular__picture-wrapper"
                 }
               >
-                <picture
-                  style={createMask(item.img.shape)}
-                  className="popular__picture"
-                >
-                  <img
-                    className="popular__img"
-                    src={item.img.url}
-                    alt="Section Cover"
-                  />
-                </picture>
+                <CreateMaskComponent
+                  mask={createMask(item.img.shape)}
+                  pictureClass={"popular__picture"}
+                  imgClass={"popular__img"}
+                  src={item.img.url}
+                  alt={"Section Cover"}
+                />
                 <picture
                   style={
                     item.stamp.type === "signboard"
