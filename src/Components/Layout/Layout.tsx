@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { GetMenu } from "../../api/GetMenu";
 import { GetContacts } from "../../api/GetContacts";
 
-// menu
 export interface menuHeader {
   label: string;
   url: string;

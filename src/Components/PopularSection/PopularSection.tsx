@@ -84,7 +84,6 @@ export const PopularSection = ({ popular }: PopularSection) => {
                 </picture>
               </div>
               <div
-                // style={{position: 'relative', top: '1'}} remove
                 className={
                   isEachThirdElement(index)
                     ? "popular__descr-middle-wrapper"

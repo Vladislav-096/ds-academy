@@ -27,7 +27,7 @@ export const RunningLine = ({
           <div className="marquee__list-separator">
             <img
               src={
-                separatorColor // сделать по вариантам если потребуется
+                separatorColor
                   ? "./src/assets/star-white.svg"
                   : "./src/assets/star-black.svg"
               }

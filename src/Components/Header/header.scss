@@ -62,18 +62,6 @@
   &__logo-picture {
     width: 108px;
     height: 40px;
-    // background-image: url("./src/assets/logo-ebac-header.svg");
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    // transition: background-image 0.2s;
-
-    // &:hover {
-    //   background-image: url("./src/assets/logo-hovered.svg");
-    // }
-
-    // &:active {
-    //   background-image: url("./src/assets/logo-hovered.svg");
-    // }
 
     @media (max-width: 577px) {
       width: 130px;

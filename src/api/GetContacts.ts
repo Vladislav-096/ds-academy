@@ -23,7 +23,6 @@ export const validateContactsData = (data: contacts): contacts => {
     }
   });
 
-  // Validate 'links' field
   if (
     !Array.isArray(data.links) ||
     data.links.some((item) => {
@@ -40,7 +39,7 @@ export const validateContactsData = (data: contacts): contacts => {
     );
   }
 
-  // Validate 'subscription' field
+
   if (typeof data.subscription !== "object" || data.subscription === null) {
     throw new Error("Subscription must be an object");
   }

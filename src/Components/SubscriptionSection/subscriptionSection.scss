@@ -14,8 +14,6 @@
   &.dark {
     background-color: $secondary-text-color;
   }
-  // z-index: 222;
-  // clip-path: polygon(0% 0%, 100% 5.16%, 100% 100%, 0% 100%);
 
   .subscription {
     position: relative;
@@ -173,7 +171,6 @@
       color: #e8e8e8;
 
       &:focus {
-        // outline: none;
         outline: 2px solid $secondary-text-color;
       }
 
@@ -326,8 +323,6 @@
     }
 
     &__state-picture {
-      // visibility: hidden;
-      // opacity: 0;
       position: absolute;
       top: 50%;
       right: 13px;
@@ -366,11 +361,6 @@
       visibility: hidden;
       opacity: 0;
     }
-
-    // .state-picture-active {
-    //   visibility: visible;
-    //   opacity: 1;
-    // }
 
     &__state-img {
       width: inherit;
@@ -433,7 +423,6 @@
         margin: 0 auto;
         max-width: 256px;
         padding: 26px 70px 26px 17px;
-        // padding: 28px 16px;
       }
     }
 
@@ -461,10 +450,6 @@
       width: inherit;
       height: inherit;
     }
-
-    // .success-notification-show {
-    //   display: block;
-    // }
 
     @media (max-width: 1366px) {
       padding: 0;

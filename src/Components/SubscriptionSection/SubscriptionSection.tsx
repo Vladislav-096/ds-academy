@@ -30,7 +30,6 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
   }
 
   function handleBlur(e: FocusEvent<HTMLInputElement>) {
-    console.log("clicked onBlur");
     const { value } = e.target;
 
     inputValidation(value);
@@ -52,7 +51,6 @@ export const SubscriptionSection = ({ subscription }: SubscriptionSection) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("click");
 
     if (isTextValid === "valid" && isMarkChecked === "valid") {
       setErrorMessage("");

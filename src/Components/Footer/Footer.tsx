@@ -2,7 +2,6 @@ import { contacts, menuFooter } from "../Layout/Layout";
 import "../../styles/common.scss";
 import "./footer.scss";
 import { useRef, useState } from "react";
-import { useClickOutside } from "../../hooks/useClickOutside";
 
 interface Footer {
   contacts?: contacts;
@@ -17,7 +16,6 @@ export const Footer = ({ contacts, footer }: Footer) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   function changeDropdownStatus(index: number): void {
-    console.log("попал");
     if (dropdownsStatus[index] === undefined || dropdownsStatus[index] === 0) {
       setDropdownsStatus((prev) => {
         return { ...prev, [index]: 1 };
@@ -38,11 +36,6 @@ export const Footer = ({ contacts, footer }: Footer) => {
     const result = `+${firstPatr} ${secontPart} ${thirdPart}-${lastPart}`;
     return result;
   }
-
-  // useClickOutside([ulRef, buttonRef], () => {
-  //   console.log("useClickOutside");
-  //   setDropdownsStatus({});
-  // });
 
   return (
     <footer className="footer">

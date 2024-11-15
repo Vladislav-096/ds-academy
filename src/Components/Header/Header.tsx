@@ -17,24 +17,24 @@ export const Header = ({ logo, header }: Header) => {
   }
 
   useEffect(() => {
-    let lastScrollY = window.scrollY; // Сохраняем последнюю позицию скролла
+    let lastScrollY = window.scrollY; // Сохраняю последнюю позицию скролла
 
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
-        // Если скроллим вниз, прячем хедер
+        // Если скроллю вниз, прячю хедер
         setIsVisible(false);
       } else {
-        // Если скроллим вверх, показываем хедер
+        // Если скроллю вверх, показываю хедер
         setIsVisible(true);
       }
 
-      lastScrollY = window.scrollY; // Обновляем последнюю позицию скролла
+      lastScrollY = window.scrollY; // Обновляю последнюю позицию скролла
     };
 
-    window.addEventListener("scroll", handleScroll); // Добавляем обработчик события скролла
+    window.addEventListener("scroll", handleScroll); // Добавляю обработчик события скролла
 
     return () => {
-      window.removeEventListener("scroll", handleScroll); // Убираем обработчик при размонтировании
+      window.removeEventListener("scroll", handleScroll); // Убираю обработчик при размонтировании
     };
   }, []);
 
