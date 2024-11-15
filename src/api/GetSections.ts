@@ -17,7 +17,7 @@ type Section =
   | sectionsProposals
   | sectionsSubscription;
 
-type Item = sectionsContenItems | sectionMainItems;
+type Items = sectionsContenItems | sectionMainItems;
 
 const validateSectionsData = (data: sections): sections => {
   if (!data || typeof data !== "object") {
@@ -34,11 +34,9 @@ const validateSectionsData = (data: sections): sections => {
         throw new Error(`Missing required item: ${item}`);
       }
     });
-
-    return section;
   };
 
-  const validateItem = (item: Item, id: string) => {
+  const validateItem = (item: Items, id: string) => {
     if (!item.title || typeof item.title !== "string") {
       throw new Error("Item title is invalid");
     }
@@ -54,11 +52,14 @@ const validateSectionsData = (data: sections): sections => {
     if (!item.duration || typeof item.duration !== "number") {
       throw new Error("Item duration is invalid");
     }
-    if (
-      (!item["browse-text"] && id === "main") ||
-      (typeof item["browse-text"] !== "string" && id === "main")
-    ) {
-      throw new Error("Item browse-text is invalid");
+    if (id === "main") {
+      let sectionItem = <sectionMainItems>item;
+      if (
+        !sectionItem["browse-text"] ||
+        typeof sectionItem["browse-text"] !== "string"
+      ) {
+        throw new Error("Item browse-text is invalid");
+      }
     }
     if (
       !item.size ||
@@ -97,11 +98,13 @@ const validateSectionsData = (data: sections): sections => {
     }
   };
 
-  const main = validateSection(data.main, ["items", "ticker"]);
-  main.items.forEach((item: sectionMainItems) => validateItem(item, "main"));
+  validateSection(data.main, ["items", "ticker"]);
+  data.main.items.forEach((item: sectionMainItems) =>
+    validateItem(item, "main")
+  );
 
-  const content = validateSection(data.content, ["items", "ticker"]);
-  content.items.forEach((item: sectionsContenItems) =>
+  validateSection(data.content, ["items", "ticker"]);
+  data.content.items.forEach((item: sectionsContenItems) =>
     validateItem(item, "content")
   );
 
@@ -154,7 +157,7 @@ const validateSectionsData = (data: sections): sections => {
     validateSection(data.proposals, ["ticker"]);
   }
 
-  const subscription = validateSection(data.subscription, [
+  validateSection(data.subscription, [
     "title",
     "text",
     "email-placeholder",
@@ -162,27 +165,27 @@ const validateSectionsData = (data: sections): sections => {
     "agreement-text",
     "ticker",
   ]);
-  if (!subscription.title || typeof subscription.title !== "string") {
+  if (!data.subscription.title || typeof data.subscription.title !== "string") {
     throw new Error("Subscription title is invalid");
   }
-  if (!subscription.text || typeof subscription.text !== "string") {
+  if (!data.subscription.text || typeof data.subscription.text !== "string") {
     throw new Error("Subscription text is invalid");
   }
   if (
-    !subscription["email-placeholder"] ||
-    typeof subscription["email-placeholder"] !== "string"
+    !data.subscription["email-placeholder"] ||
+    typeof data.subscription["email-placeholder"] !== "string"
   ) {
     throw new Error("Subscription email-placeholder is invalid");
   }
   if (
-    !subscription["submit-text"] ||
-    typeof subscription["submit-text"] !== "string"
+    !data.subscription["submit-text"] ||
+    typeof data.subscription["submit-text"] !== "string"
   ) {
     throw new Error("Subscription submit-text is invalid");
   }
   if (
-    !subscription["agreement-text"] ||
-    typeof subscription["agreement-text"] !== "string"
+    !data.subscription["agreement-text"] ||
+    typeof data.subscription["agreement-text"] !== "string"
   ) {
     throw new Error("Subscription agreement-text is invalid");
   }
