@@ -1,0 +1,26 @@
+@use "./src/styles/_variables.scss" as *;
+
+.header {
+  display: flex;
+  padding: 15px 0 15px 0;
+  border-bottom: 1px solid #3d444db3;
+  .nav {
+    display: flex;
+    max-width: 444px;
+    overflow-x: auto;
+
+    .link {
+      padding: 5px;
+      border-radius: 6px;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: $buttonBackgroundColorHover;
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+}
