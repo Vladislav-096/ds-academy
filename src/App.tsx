@@ -2,23 +2,31 @@ import { Layout } from "./components/Layout/Layout";
 import "./styles/fonts.scss";
 import "./styles/_variables.scss";
 import "./styles/common.scss";
-import { useState } from "react";
-import { card, CardsContext } from "./context/CarsdContext";
+import { useEffect, useState } from "react";
+import { Result, ResultContext } from "./context/ResultsContext";
 
 export function App() {
-  const [cards, setCards] = useState<card[]>([]);
+  const [games, setGames] = useState<Result | null>(null);
 
-  const updateCards = (card: card[]) => {
-    if (card.length === 0) {
-      setCards([]);
+  useEffect(() => {
+    const gamesResultData = localStorage.getItem("games");
+    if (gamesResultData) {
+      setGames(JSON.parse(gamesResultData));
+    }
+  }, []);
+
+  const updateGamesResult = (newGameData: Result | null) => {
+    setGames(newGameData);
+    if (newGameData) {
+      localStorage.setItem("games", JSON.stringify(newGameData));
     } else {
-      setCards((prev) => [...prev, ...card]);
+      console.log("Ошибка при получении результатов");
     }
   };
 
   return (
-    <CardsContext.Provider value={{ cards, setCards: updateCards }}>
+    <ResultContext.Provider value={{ games, setGames: updateGamesResult }}>
       <Layout />;
-    </CardsContext.Provider>
+    </ResultContext.Provider>
   );
 }
