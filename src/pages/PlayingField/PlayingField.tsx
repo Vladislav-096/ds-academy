@@ -1,4 +1,4 @@
-import { Game } from "../../Components/Game/Game";
+import { Game } from "../../components/Game/Game";
 
 export const PlayingField = () => {
   return (

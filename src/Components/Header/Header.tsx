@@ -6,7 +6,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className="container">
         <nav className={styles.nav}>
-          <Link to={"/game"} className={styles.link}>
+          <Link to={"/"} className={styles.link}>
             Game
           </Link>
           <Link to={"/settings"} className={styles.link}>
