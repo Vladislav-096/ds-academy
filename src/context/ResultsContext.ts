@@ -2,18 +2,18 @@ import { createContext } from "react";
 
 export interface Result {
   date: Date;
-  duration: string;
+  duration: number;
   mistakesCount: string;
   difficulty: string;
-  score: string;
+  score: number;
 }
 
 export interface ResultContext {
-  games: Result | null;
-  setGames: (games: Result | null) => void;
+  games: Result[];
+  setGames: (games: Result) => void;
 }
 
 export const ResultContext = createContext<ResultContext>({
-  games: null,
+  games: [],
   setGames: () => {},
 });

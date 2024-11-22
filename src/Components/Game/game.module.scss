@@ -1,4 +1,5 @@
 @use "./src/styles/_variables.scss" as *;
+@use "./src/styles/_mixin.scss" as *;
 
 .game {
   display: flex;
@@ -7,17 +8,19 @@
   align-items: center;
 
   .cards-container {
+    margin-bottom: 15px;
     padding: 7px;
     display: flex;
     flex-wrap: wrap;
     width: 370px;
-    outline: 1px solid white;
+    border-radius: 5px;
+    // outline: 1px solid white;
     background-color: $secondaryBackground;
 
     .card {
       position: relative;
       margin: 7px;
-      outline: 1px solid white;
+      // outline: 1px solid white;
       width: 75px;
       height: 100px;
       border-radius: 5px;
@@ -54,9 +57,9 @@
 
       .back {
         transform: rotateY(180deg);
-        background-color: $terteryBackground;
+        background-color: $tertaryBackground;
         border-radius: 5px;
-        transition: opacity .5s;
+        transition: opacity 0.5s;
 
         &.guessed {
           opacity: 0.3;
@@ -71,6 +74,12 @@
         pointer-events: none;
         transform: rotateY(180deg);
       }
+    }
+  }
+
+  .button {
+    .start {
+      @include button(155px);
     }
   }
 }
