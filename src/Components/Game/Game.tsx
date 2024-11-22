@@ -3,6 +3,8 @@ import { GetAvatar } from "../../api/getAvatar";
 import { ResultContext } from "../../context/ResultsContext";
 import styles from "./game.module.scss";
 import back from "../../assets/back.png";
+import { PopUp } from "../PopUp/PopUp";
+import { Result } from "../Result/Result";
 
 export interface card {
   id: number;
@@ -39,7 +41,8 @@ export const Game = () => {
   const [cards, setCards] = useState<card[]>([]);
   const [openedCards, setOpenedCards] = useState<number[]>([]);
   const [clearedCards, setClearedCards] = useState<number[]>([]);
-  const [currentScore, setCurrentScore] = useState<number | null>(null);
+  const [currentScore, setCurrentScore] = useState<number>(0);
+  const [isPopUp, setIsPopUp] = useState<boolean>(false);
   const { setGames } = useContext(ResultContext);
   const timeout = useRef<number | null>(null);
   console.log(openedCards);
@@ -98,7 +101,6 @@ export const Game = () => {
 
   const checkCompletion = () => {
     if (clearedCards.length === cards.length) {
-      alert("Победа");
       setCurrentScore(111);
       setGames({
         date: new Date(),
@@ -106,6 +108,9 @@ export const Game = () => {
         mistakesCount: "null",
         difficulty: "null",
         score: "111",
+      });
+      new Promise((res) => {
+        setTimeout(() => res(setIsPopUp(true)), 500);
       });
     }
   };
@@ -136,9 +141,11 @@ export const Game = () => {
     };
   }, [openedCards]);
 
-  // ${checkPair ? styles.inactive : ""}
   return (
     <div className={styles.game}>
+      <PopUp active={isPopUp} setActive={setIsPopUp}>
+        <Result active={isPopUp} finalScore={currentScore} />
+      </PopUp>
       <button onClick={createGaymBoard}>knopochka</button>
 
       <div className={styles["cards-container"]}>
@@ -166,7 +173,11 @@ export const Game = () => {
               </div>
               <img className={styles["img-back"]} src={back} alt="Card image" />
             </picture>
-            <picture className={`${styles.back} ${checkPair(index) ? styles.guessed : ""}`}>
+            <picture
+              className={`${styles.back} ${
+                checkPair(index) ? styles.guessed : ""
+              }`}
+            >
               <img
                 className={styles["img-front"]}
                 src={card.url}
