@@ -287,7 +287,9 @@ export const Game = () => {
 
       <div className={styles.button}>
         {isLoader ? (
-          <Loader />
+          <div className={styles.loader}>
+            <Loader />
+          </div>
         ) : (
           <>
             <button className={styles.start} onClick={createGaymBoard}>

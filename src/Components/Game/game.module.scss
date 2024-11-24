@@ -90,6 +90,13 @@
     justify-content: space-between;
     width: 370px;
 
+    .loader {
+      width: inherit;
+      display: flex;
+      justify-content: center;
+      // background-color: #fff;
+    }
+
     .start {
       @include button(155px);
     }
