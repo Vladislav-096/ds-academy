@@ -7,6 +7,7 @@ import { PopUp } from "../PopUp/PopUp";
 import { Result } from "../Result/Result";
 import { Loader } from "../Loader/Loader";
 import { SessionResultContext } from "../../context/SessionResultContext";
+import { SettingsContext } from "../../context/SettingsContext";
 
 export interface card {
   id: number;
@@ -41,8 +42,10 @@ const createCard = async (seed: string, id: number) => {
 };
 
 export const Game = () => {
-  const mistakesLimit = 2;
-  const cardsCount = 8;
+  const { settings, setSettings } =
+    useContext<SettingsContext>(SettingsContext);
+  // const mistakesLimit = 2;
+  // const cardsCount = 8;
   const duration = 180000;
   const [cards, setCards] = useState<card[]>([]);
   const [openedCards, setOpenedCards] = useState<number[]>([]);
@@ -56,15 +59,18 @@ export const Game = () => {
     useContext<SessionResultContext>(SessionResultContext);
   // const cardsTimeout = useRef<number | null>(null);
   const gameTimer = useRef<number | null>(null);
-  const [timeRemaining, setTimeRemaining] = useState(duration);
+  const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [mistake, setMistake] = useState<number>(0);
   const [madeTooManyMistakes, setMadeTooManyMistakes] = useState(false);
+
   // const [isMenuDisabled, setIsMenuDisabled] = useState<boolean>(false);
 
   const stopTheGame = () => {
     dataArray = [];
     setCards([]);
-    setTimeRemaining(duration);
+    if (settings) {
+      setTimeRemaining(settings?.duration);
+    }
     // setIsMenuDisabled(false);
     setClearedCards([]);
     setOpenedCards([]);
@@ -80,8 +86,10 @@ export const Game = () => {
     setClearedCards([]);
     dataArray = [];
 
-    for (let i = 0; i < cardsCount; i++) {
-      await createCard(generateRandomString(), i);
+    if (settings) {
+      for (let i = 0; i < settings?.fieldSize; i++) {
+        await createCard(generateRandomString(), i);
+      }
     }
 
     shuffleCards(dataArray.concat(dataArray));
@@ -97,7 +105,9 @@ export const Game = () => {
 
     setCards(arr);
     setIsLoader(false);
-    setTimeRemaining(duration);
+    if (settings) {
+      setTimeRemaining(settings?.duration);
+    }
   };
 
   const handleClick = (index: number) => {
@@ -174,13 +184,15 @@ export const Game = () => {
           maxScore: result?.maxScore || score,
         });
       }
-      setGames({
-        date: new Date(),
-        duration: (duration - timeRemaining) / 1000,
-        mistakesCount: 0,
-        difficulty: "null",
-        score: score,
-      });
+      if (settings && timeRemaining) {
+        setGames({
+          date: new Date(),
+          duration: (settings?.duration - timeRemaining) / 1000,
+          mistakesCount: 0,
+          difficulty: "null",
+          score: score,
+        });
+      }
       new Promise((res) => {
         setTimeout(() => res(setIsPopUp(true)), 1000);
       });
@@ -212,7 +224,7 @@ export const Game = () => {
 
   useEffect(() => {
     // Time is over
-    if (timeRemaining <= 0) {
+    if (timeRemaining && timeRemaining <= 0) {
       setIsTimeOver(true);
       setCurrentScore(0);
       setIsPopUp(true);
@@ -246,7 +258,8 @@ export const Game = () => {
     }
 
     // Made max amount of mistakes
-    if (mistake >= mistakesLimit) {
+
+    if (settings && mistake >= settings?.mistakesLimit) {
       if (gameTimer.current) {
         clearTimeout(gameTimer.current);
       }

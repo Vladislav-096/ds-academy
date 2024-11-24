@@ -69,7 +69,7 @@ export function App() {
         <SessionResultContext.Provider
           value={{ result, setResult: updateCurrentSessionResult }}
         >
-          <Layout />;
+          <Layout />
         </SessionResultContext.Provider>
       </ResultContext.Provider>
     </SettingsContext.Provider>

@@ -1,0 +1,64 @@
+@use "./src/styles/_variables.scss" as *;
+@use "./src/styles/_mixin.scss" as *;
+
+.settings {
+  display: flex;
+  justify-content: center;
+
+  .dropdown-difficulty {
+    margin-right: 15px;
+    width: 200px;
+
+    .difficulty-button {
+      margin-bottom: 7px;
+      @include button(inherit);
+    }
+
+    .difficulty-options {
+      width: inherit;
+      border-radius: 5px;
+      background-color: $secondaryBackground;
+      overflow: hidden;
+      height: 0;
+      transition: height 0.2s ease-in-out;
+
+      .option {
+        display: flex;
+        justify-content: space-between;
+        margin: 7px;
+        padding: 3px;
+        border-radius: 5px;
+        color: $primaryColor;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $buttonBackgroundColorHover;
+        }
+      }
+    }
+
+    .show-dropdown {
+      height: 103px;
+    }
+  }
+
+  .difficulty-info {
+    color: $secondaryColor;
+
+    .heading {
+      margin-bottom: 11px;
+      font-size: 33px;
+    }
+
+    .difficulty-list {
+      padding-left: 20px;
+      margin: 0;
+
+      .info {
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
