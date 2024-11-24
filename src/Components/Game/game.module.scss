@@ -12,7 +12,7 @@
     padding: 7px;
     display: flex;
     flex-wrap: wrap;
-    width: 370px;
+    // width: 370px;
     border-radius: 5px;
     // outline: 1px solid white;
     background-color: $secondaryBackground;
@@ -21,8 +21,8 @@
       position: relative;
       margin: 7px;
       outline: 4px solid $primaryBackground;
-      width: 75px;
-      height: 100px;
+      // width: 75px;
+      // height: 100px;
       border-radius: 5px;
       cursor: pointer;
       transform-style: preserve-3d;

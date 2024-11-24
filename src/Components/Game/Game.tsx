@@ -42,10 +42,7 @@ const createCard = async (seed: string, id: number) => {
 };
 
 export const Game = () => {
-  const { settings, setSettings } =
-    useContext<SettingsContext>(SettingsContext);
-  // const mistakesLimit = 2;
-  // const cardsCount = 8;
+  const { settings } = useContext<SettingsContext>(SettingsContext);
   const duration = 180000;
   const [cards, setCards] = useState<card[]>([]);
   const [openedCards, setOpenedCards] = useState<number[]>([]);
@@ -57,13 +54,10 @@ export const Game = () => {
   const [currentScore, setCurrentScore] = useState<number>(0);
   const { result, setResult } =
     useContext<SessionResultContext>(SessionResultContext);
-  // const cardsTimeout = useRef<number | null>(null);
   const gameTimer = useRef<number | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [mistake, setMistake] = useState<number>(0);
   const [madeTooManyMistakes, setMadeTooManyMistakes] = useState(false);
-
-  // const [isMenuDisabled, setIsMenuDisabled] = useState<boolean>(false);
 
   const stopTheGame = () => {
     dataArray = [];
@@ -164,14 +158,14 @@ export const Game = () => {
   };
 
   const checkCompletion = () => {
-    if (clearedCards.length === cards.length) {
+    if (clearedCards.length === cards.length && settings && gameTimer.current) {
       // setIsMenuDisabled(false);
-      if (gameTimer.current) {
-        clearTimeout(gameTimer.current);
-      }
-      // const score = (timeRemaining / 1000) * clearedCards.length - mistake * 5;
+
+      clearTimeout(gameTimer.current);
+
       const score =
-        (clearedCards.length * 5 - mistake) / (duration / 1000 / 60);
+        (clearedCards.length * 5 - mistake) / (settings.duration / 1000 / 60);
+
       setCurrentScore(score);
       if (result && result?.maxScore < score) {
         setResult({
@@ -184,7 +178,8 @@ export const Game = () => {
           maxScore: result?.maxScore || score,
         });
       }
-      if (settings && timeRemaining) {
+
+      if (timeRemaining) {
         setGames({
           date: new Date(),
           duration: (settings?.duration - timeRemaining) / 1000,
@@ -193,6 +188,7 @@ export const Game = () => {
           score: score,
         });
       }
+
       new Promise((res) => {
         setTimeout(() => res(setIsPopUp(true)), 1000);
       });
@@ -220,6 +216,27 @@ export const Game = () => {
     const seconds = String(totalSeconds % 60).padStart(2, "0");
 
     return `${hours}:${minutes}:${seconds}`;
+  };
+
+  const cardsContainerWidth = () => {
+    if (settings) {
+      switch (settings.fieldSize) {
+        case 8:
+          return { width: "370px" };
+        case 18:
+          return { width: "548px" };
+        case 32:
+          return { width: "526px" };
+      }
+    }
+  };
+
+  const cardsWidth = () => {
+    if (settings && settings.fieldSize === 32) {
+      return { width: "50px", height: "67px" };
+    } else {
+      return { width: "75px", height: "100px" };
+    }
   };
 
   useEffect(() => {
@@ -288,10 +305,11 @@ export const Game = () => {
 
       <div>{formatTime(timeRemaining)}</div>
 
-      <div className={styles["cards-container"]}>
+      <div style={cardsContainerWidth()} className={styles["cards-container"]}>
         {cards.map((card, index) => (
           <div
             onClick={() => handleClick(index)}
+            style={cardsWidth()}
             key={index}
             className={`${styles.card} ${
               checkIsFlipped(index) ? styles.flipped : ""
