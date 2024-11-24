@@ -3,7 +3,7 @@ import { createContext } from "react";
 export interface Result {
   date: Date;
   duration: number;
-  mistakesCount: string;
+  mistakesCount: number;
   difficulty: string;
   score: number;
 }
