@@ -12,14 +12,9 @@ export const Result = ({ finalScore, active, isTimeOver }: Result) => {
       onClick={(e) => e.stopPropagation()}
       className={`${styles.content} ${active ? styles.active : ""}`}
     >
-      {isTimeOver ? (
-        <h2>Time is over</h2>
-      ) : (
-        <div>
-          <h2>Score</h2>
-          <p>{finalScore}</p>
-        </div>
-      )}
+      <h2 className={styles.heading}>Your result</h2>
+      <p className={styles.result}>{finalScore}</p>
+      {isTimeOver && <p className={styles.loss}>Time is over</p>}
     </div>
   );
 };
