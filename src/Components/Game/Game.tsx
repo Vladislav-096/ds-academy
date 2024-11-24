@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { GetAvatar } from "../../api/getAvatar";
 import { ResultContext } from "../../context/ResultsContext";
 import styles from "./game.module.scss";
-import back from "../../assets/back.png";
+// import back from "../../assets/back.png";
 import { PopUp } from "../PopUp/PopUp";
 import { Result } from "../Result/Result";
 import { Loader } from "../Loader/Loader";
@@ -15,6 +15,7 @@ export interface card {
 }
 
 let dataArray: card[] = [];
+let clickedCardsStorage: { [key: string]: number } = {};
 
 const generateRandomString = () => {
   let length = 10;
@@ -40,6 +41,8 @@ const createCard = async (seed: string, id: number) => {
 };
 
 export const Game = () => {
+  const cardsCount = 6;
+  const duration = 60000;
   const [cards, setCards] = useState<card[]>([]);
   const [openedCards, setOpenedCards] = useState<number[]>([]);
   const [clearedCards, setClearedCards] = useState<number[]>([]);
@@ -52,18 +55,25 @@ export const Game = () => {
     useContext<SessionResultContext>(SessionResultContext);
   // const cardsTimeout = useRef<number | null>(null);
   const gameTimer = useRef<number | null>(null);
-  // just test
-  const cardsCount = 4;
-  const duration = 60000;
-  // console.log("cards", cards);
-  // console.log("openedCards", openedCards);
-  console.log("clearedCards", clearedCards);
-  //
   const [timeRemaining, setTimeRemaining] = useState(duration);
-  // console.log("timeRemaining", timeRemaining);
+  const [mistake, setMistake] = useState<number>(0);
+  const [isMenuDisabled, setIsMenuDisabled] = useState<boolean>(false);
+
+  const stopTheGame = () => {
+    dataArray = [];
+    setCards([]);
+    setTimeRemaining(duration);
+    setIsMenuDisabled(false);
+    setClearedCards([]);
+    setOpenedCards([]);
+    setMistake(0);
+  };
 
   const createGaymBoard = async () => {
     setIsLoader(true);
+    setIsMenuDisabled(true);
+    setClearedCards([]);
+    dataArray = [];
 
     for (let i = 0; i < cardsCount; i++) {
       await createCard(generateRandomString(), i);
@@ -82,14 +92,23 @@ export const Game = () => {
 
     setCards(arr);
     setIsLoader(false);
+    setTimeRemaining(duration);
   };
 
   const handleClick = (index: number) => {
     setIsTimeOver(false);
-    console.log("click");
     if (checkIsFlipped(index) || openedCards.length === 2) {
       return;
     }
+
+    const key = String(index);
+
+    if (clickedCardsStorage[key] === undefined) {
+      clickedCardsStorage[key] = 1;
+    } else {
+      clickedCardsStorage[key]++;
+    }
+    // console.log("clickedCardsStorage", clickedCardsStorage);
 
     handleFindDuplicates(index);
   };
@@ -114,6 +133,14 @@ export const Game = () => {
 
     if (cards[first].id === cards[second].id) {
       setClearedCards((prev) => [...prev, first, second]);
+    } else {
+      if (clickedCardsStorage[first] >= 2) {
+        setMistake((prev) => prev + 1);
+      }
+
+      if (clickedCardsStorage[second] >= 2) {
+        setMistake((prev) => prev + 1);
+      }
     }
 
     // cardsTimeout.current = setTimeout(() => {
@@ -123,10 +150,11 @@ export const Game = () => {
 
   const checkCompletion = () => {
     if (clearedCards.length === cards.length) {
+      setIsMenuDisabled(false);
       if (gameTimer.current) {
         clearTimeout(gameTimer.current);
       }
-      const score = (timeRemaining / 1000) * clearedCards.length;
+      const score = (timeRemaining / 1000) * clearedCards.length - mistake * 5;
       setCurrentScore(score);
       if (result && result?.maxScore < score) {
         setResult({
@@ -175,10 +203,11 @@ export const Game = () => {
   };
 
   useEffect(() => {
-    console.log("попал");
-
     if (timeRemaining <= 0) {
       setIsTimeOver(true);
+      setCurrentScore(0);
+      setIsPopUp(true);
+      setIsMenuDisabled(false);
       return;
     }
 
@@ -206,6 +235,8 @@ export const Game = () => {
     if (openedCards.length === 2) {
       timeout = setTimeout(evaluate, 500);
     }
+
+    console.log("mistake", mistake);
 
     return () => {
       if (timeout) clearTimeout(timeout);
@@ -235,22 +266,12 @@ export const Game = () => {
             ${checkPair(index) ? styles.inactive : ""}
             `}
           >
-            <picture className={styles.front}>
-              <div
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "10px",
-                  height: "10px",
-                }}
-              >
-                {card.id}
-              </div>
-              <img className={styles["img-back"]} src={back} alt="Card image" />
+            <picture className={styles.back}>
+              <div>{card.id}</div>
+              {/* <img className={styles["img-back"]} src={back} alt="Card image" /> */}
             </picture>
             <picture
-              className={`${styles.back} ${
+              className={`${styles.front} ${
                 checkPair(index) ? styles.guessed : ""
               }`}
             >
@@ -268,9 +289,14 @@ export const Game = () => {
         {isLoader ? (
           <Loader />
         ) : (
-          <button className={styles.start} onClick={createGaymBoard}>
-            Start
-          </button>
+          <>
+            <button className={styles.start} onClick={createGaymBoard}>
+              {dataArray.length === 0 ? "Start" : "Restart"}
+            </button>
+            <button onClick={stopTheGame} className={styles.stop}>
+              Stop
+            </button>
+          </>
         )}
       </div>
     </div>
