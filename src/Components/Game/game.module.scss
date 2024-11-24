@@ -20,7 +20,7 @@
     .card {
       position: relative;
       margin: 7px;
-      // outline: 1px solid white;
+      outline: 4px solid $primaryBackground;
       width: 75px;
       height: 100px;
       border-radius: 5px;
@@ -47,15 +47,15 @@
           border-radius: 5px;
         }
 
-        .img-back {
-          width: inherit;
-          height: inherit;
-          border-radius: 5px;
-          object-fit: cover;
-        }
+        // .img-back {
+        //   width: inherit;
+        //   height: inherit;
+        //   border-radius: 5px;
+        //   object-fit: cover;
+        // }
       }
 
-      .back {
+      .front {
         transform: rotateY(180deg);
         background-color: $tertaryBackground;
         border-radius: 5px;
@@ -64,6 +64,14 @@
         &.guessed {
           opacity: 0.3;
         }
+      }
+
+      .back {
+        border-radius: 5px;
+        background-color: $tertaryBackground;
+        background-image: url("../../assets/bells.png");
+        background-repeat: no-repeat;
+        background-size: cover;
       }
 
       &.flipped {
@@ -78,7 +86,15 @@
   }
 
   .button {
+    display: flex;
+    justify-content: space-between;
+    width: 370px;
+
     .start {
+      @include button(155px);
+    }
+
+    .stop {
       @include button(155px);
     }
   }
