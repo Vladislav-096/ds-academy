@@ -8,14 +8,17 @@ import {
   currentSessionResult,
   SessionResultContext,
 } from "./context/SessionResultContext";
+import { Settings, SettingsContext } from "./context/SettingsContext";
 
 export function App() {
   const [games, setGames] = useState<Result[]>([]);
   const [result, setResult] = useState<currentSessionResult | null>(null);
+  const [settings, setSettings] = useState<Settings | null>(null);
 
   useEffect(() => {
     const gamesResultData = localStorage.getItem("games");
     const currentResults = sessionStorage.getItem("result");
+    const gameSettings = localStorage.getItem("settings");
 
     if (gamesResultData) {
       setGames(JSON.parse(gamesResultData));
@@ -23,6 +26,10 @@ export function App() {
 
     if (currentResults) {
       setResult(JSON.parse(currentResults));
+    }
+
+    if (gameSettings) {
+      setSettings(JSON.parse(gameSettings));
     }
   }, []);
 
@@ -47,13 +54,24 @@ export function App() {
     }
   };
 
+  const updateSettings = (newSettings: Settings | null) => {
+    setSettings(newSettings);
+    if (newSettings) {
+      localStorage.setItem("settings", JSON.stringify(newSettings));
+    } else {
+      console.log("Ошибка при получении объекта настроек");
+    }
+  };
+
   return (
-    <ResultContext.Provider value={{ games, setGames: updateGamesResult }}>
-      <SessionResultContext.Provider
-        value={{ result, setResult: updateCurrentSessionResult }}
-      >
-        <Layout />;
-      </SessionResultContext.Provider>
-    </ResultContext.Provider>
+    <SettingsContext.Provider value={{ settings, setSettings: updateSettings }}>
+      <ResultContext.Provider value={{ games, setGames: updateGamesResult }}>
+        <SessionResultContext.Provider
+          value={{ result, setResult: updateCurrentSessionResult }}
+        >
+          <Layout />;
+        </SessionResultContext.Provider>
+      </ResultContext.Provider>
+    </SettingsContext.Provider>
   );
 }

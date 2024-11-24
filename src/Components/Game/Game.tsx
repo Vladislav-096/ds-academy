@@ -41,8 +41,9 @@ const createCard = async (seed: string, id: number) => {
 };
 
 export const Game = () => {
-  const cardsCount = 6;
-  const duration = 60000;
+  const mistakesLimit = 2;
+  const cardsCount = 8;
+  const duration = 180000;
   const [cards, setCards] = useState<card[]>([]);
   const [openedCards, setOpenedCards] = useState<number[]>([]);
   const [clearedCards, setClearedCards] = useState<number[]>([]);
@@ -57,21 +58,25 @@ export const Game = () => {
   const gameTimer = useRef<number | null>(null);
   const [timeRemaining, setTimeRemaining] = useState(duration);
   const [mistake, setMistake] = useState<number>(0);
-  const [isMenuDisabled, setIsMenuDisabled] = useState<boolean>(false);
+  const [madeTooManyMistakes, setMadeTooManyMistakes] = useState(false);
+  // const [isMenuDisabled, setIsMenuDisabled] = useState<boolean>(false);
 
   const stopTheGame = () => {
     dataArray = [];
     setCards([]);
     setTimeRemaining(duration);
-    setIsMenuDisabled(false);
+    // setIsMenuDisabled(false);
     setClearedCards([]);
     setOpenedCards([]);
+    setMadeTooManyMistakes(false);
     setMistake(0);
   };
 
   const createGaymBoard = async () => {
     setIsLoader(true);
-    setIsMenuDisabled(true);
+    // setIsMenuDisabled(true);
+    setMistake(0);
+    setMadeTooManyMistakes(false);
     setClearedCards([]);
     dataArray = [];
 
@@ -150,11 +155,13 @@ export const Game = () => {
 
   const checkCompletion = () => {
     if (clearedCards.length === cards.length) {
-      setIsMenuDisabled(false);
+      // setIsMenuDisabled(false);
       if (gameTimer.current) {
         clearTimeout(gameTimer.current);
       }
-      const score = (timeRemaining / 1000) * clearedCards.length - mistake * 5;
+      // const score = (timeRemaining / 1000) * clearedCards.length - mistake * 5;
+      const score =
+        (clearedCards.length * 5 - mistake) / (duration / 1000 / 60);
       setCurrentScore(score);
       if (result && result?.maxScore < score) {
         setResult({
@@ -175,16 +182,17 @@ export const Game = () => {
         score: score,
       });
       new Promise((res) => {
-        setTimeout(() => res(setIsPopUp(true)), 500);
+        setTimeout(() => res(setIsPopUp(true)), 1000);
       });
     }
   };
 
   const checkPair = (index: number) => {
     if (clearedCards.includes(index)) {
-      return new Promise((res) => {
-        setTimeout(() => res(true), 500);
-      });
+      return true;
+      // return new Promise((res) => {
+      //   setTimeout(() => res(true), 500);
+      // });
     }
 
     return false;
@@ -203,11 +211,12 @@ export const Game = () => {
   };
 
   useEffect(() => {
+    // Time is over
     if (timeRemaining <= 0) {
       setIsTimeOver(true);
       setCurrentScore(0);
       setIsPopUp(true);
-      setIsMenuDisabled(false);
+      // setIsMenuDisabled(false);
       return;
     }
 
@@ -233,7 +242,17 @@ export const Game = () => {
   useEffect(() => {
     let timeout = null;
     if (openedCards.length === 2) {
-      timeout = setTimeout(evaluate, 500);
+      timeout = setTimeout(evaluate, 777);
+    }
+
+    // Made max amount of mistakes
+    if (mistake >= mistakesLimit) {
+      if (gameTimer.current) {
+        clearTimeout(gameTimer.current);
+      }
+      setCurrentScore(0);
+      setIsPopUp(true);
+      setMadeTooManyMistakes(true);
     }
 
     console.log("mistake", mistake);
@@ -250,6 +269,7 @@ export const Game = () => {
           active={isPopUp}
           finalScore={currentScore}
           isTimeOver={isTimeOver}
+          madeTooManyMistakes={madeTooManyMistakes}
         />
       </PopUp>
 
@@ -267,7 +287,7 @@ export const Game = () => {
             `}
           >
             <picture className={styles.back}>
-              <div>{card.id}</div>
+              {/* <div>{card.id}</div> */}
               {/* <img className={styles["img-back"]} src={back} alt="Card image" /> */}
             </picture>
             <picture
