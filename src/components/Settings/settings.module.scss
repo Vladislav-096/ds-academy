@@ -1,0 +1,117 @@
+@use "./src/styles/_variables.scss" as *;
+@use "./src/styles/_mixin.scss" as *;
+
+.settings {
+  display: flex;
+  justify-content: center;
+
+  .dropdown-difficulty {
+    margin-right: 15px;
+    width: 200px;
+
+    .difficulty-button {
+      @include button(inherit);
+      position: relative;
+      margin-bottom: 7px;
+      padding-right: 15px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 6px;
+        right: 6px;
+        background-image: url("../../assets/dropdown-arrow.svg");
+        background-repeat: no-repeat;
+      }
+    }
+
+    .difficulty-options {
+      @include options();
+    }
+
+    .show-dropdown {
+      height: 132px;
+    }
+  }
+
+  .difficulty-info {
+    width: 300px;
+    color: $secondaryColor;
+
+    .heading {
+      margin-bottom: 11px;
+      font-size: 33px;
+    }
+
+    .difficulty-list {
+      margin: 0;
+      margin-bottom: 15px;
+      padding-left: 20px;
+
+      .info {
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    .custom-settings {
+
+      .heading {
+        margin-bottom: 11px;
+        font-size: 33px;
+      }
+
+      .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        .label {
+          margin-bottom: 2px;
+        }
+
+        .input {
+          padding: 5px;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          background-color: $tertaryBackground;
+          color: $primaryColor;
+        }
+      }
+
+      .field-size-options {
+        @include options();
+      }
+
+      .dropdown-field-size {
+        width: 200px;
+      }
+
+      .show-dropdown {
+        height: 100px;
+      }
+
+      .button {
+        @include button(inherit);
+        margin-bottom: 7px;
+        position: relative;
+        padding-right: 20px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          top: 6px;
+          right: 6px;
+          background-image: url("../../assets/dropdown-arrow.svg");
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}

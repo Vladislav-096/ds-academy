@@ -1,0 +1,39 @@
+@use "./src/styles/_variables.scss" as *;
+
+.content {
+  position: relative;
+  padding: 15px 15px;
+  width: 300px;
+  height: 200px;
+  border-radius: 24px;
+  transform: scale(0.5);
+  transition: transform 0.2s;
+  background-color: $secondaryBackground;
+  color: #f0f6fc;
+  text-align: center;
+  font-weight: 700;
+
+  &.active {
+    transform: scale(1);
+  }
+
+  .heading {
+    margin-bottom: 25px;
+    font-size: 33px;
+  }
+
+  .result {
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  .loss {
+    font-size: 23px;
+    color: $shh;
+  }
+
+  .victory {
+    color: $buttonGreen;
+    font-size: 23px;
+  }
+}

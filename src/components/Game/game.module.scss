@@ -1,0 +1,120 @@
+@use "./src/styles/_variables.scss" as *;
+@use "./src/styles/_mixin.scss" as *;
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .info {
+    margin: 0 0 15px 0;
+    padding-left: 25px;
+
+    .info-item {
+      color: $secondaryColor;
+
+      &:nth-child(3) {
+        margin-bottom: 15px;
+      }
+
+      .descr {
+        margin-right: 5px;
+        display: inline-block;
+      }
+
+      .value {
+        color: $primaryColor;
+      }
+    }
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    background-color: $secondaryBackground;
+
+    .card {
+      position: relative;
+      margin: 7px;
+      outline: 4px solid $primaryBackground;
+      border-radius: 5px;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transform-origin: center;
+      transition: transform 0.5s, visibility 0.5s, opacity 0.5s,
+        background-color 0.5s, box-shadow 0.2s;
+
+      &:hover {
+        box-shadow: 0px 0px 15px 0px white;
+      }
+
+      .front,
+      .back {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        backface-visibility: hidden;
+
+        .img-front {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: inherit;
+          height: inherit;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+
+      .front {
+        transform: rotateY(180deg);
+        background-color: $tertaryBackground;
+        border-radius: 5px;
+        transition: opacity 0.5s;
+
+        &.guessed {
+          opacity: 0.3;
+        }
+      }
+
+      .back {
+        border-radius: 5px;
+        background-color: $tertaryBackground;
+        background-image: url("../../assets/bells.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      &.flipped {
+        transform: rotateY(180deg);
+      }
+
+      &.inactive {
+        pointer-events: none;
+        transform: rotateY(180deg);
+      }
+    }
+  }
+
+  .button {
+    display: flex;
+    justify-content: space-between;
+    width: 370px;
+
+    .loader {
+      width: inherit;
+      display: flex;
+      justify-content: center;
+    }
+
+    .start {
+      @include button(155px);
+    }
+
+    .stop {
+      @include button(155px);
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@use "./_variables.scss" as *;
+
+@mixin button($width) {
+  display: block;
+  padding: 7px;
+  width: $width;
+  border: 1px solid $borderColor;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: $shh;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $tertaryBackground;
+  }
+}
+
+@mixin options {
+  width: inherit;
+  border-radius: 5px;
+  background-color: $secondaryBackground;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.2s ease-in-out;
+
+  .option {
+    display: flex;
+    justify-content: space-between;
+    margin: 7px;
+    padding: 3px;
+    border-radius: 5px;
+    color: $primaryColor;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $buttonBackgroundColorHover;
+    }
+  }
+}
