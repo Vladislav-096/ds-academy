@@ -14,6 +14,7 @@ export function App() {
   const [games, setGames] = useState<Result[]>([]);
   const [result, setResult] = useState<currentSessionResult | null>(null);
   const [settings, setSettings] = useState<Settings | null>({
+    difficulty: "Easy",
     duration: 300000,
     mistakesLimit: 30,
     fieldSize: 8,

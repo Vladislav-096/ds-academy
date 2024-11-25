@@ -1,6 +1,8 @@
 import { createContext } from "react";
 
 export interface Result {
+  result: boolean;
+  reason: string;
   date: Date;
   duration: number;
   mistakesCount: number;

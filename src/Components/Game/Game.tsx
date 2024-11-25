@@ -155,6 +155,20 @@ export const Game = () => {
     // }, 500);
   };
 
+  const addResult = (result: boolean, reason: string, score: number) => {
+    if (settings) {
+      setGames({
+        result: result,
+        reason: reason,
+        date: new Date(),
+        duration: (settings?.duration - timeRemaining) / 1000,
+        mistakesCount: mistake,
+        difficulty: settings.difficulty,
+        score: score,
+      });
+    }
+  };
+
   const checkCompletion = () => {
     if (clearedCards.length === cards.length && settings && gameTimer.current) {
       // setIsMenuDisabled(false);
@@ -177,15 +191,7 @@ export const Game = () => {
         });
       }
 
-      if (timeRemaining) {
-        setGames({
-          date: new Date(),
-          duration: (settings?.duration - timeRemaining) / 1000,
-          mistakesCount: 0,
-          difficulty: "null",
-          score: score,
-        });
-      }
+      addResult(true, "", score);
 
       new Promise((res) => {
         setTimeout(() => res(setIsPopUp(true)), 1000);
@@ -264,6 +270,9 @@ export const Game = () => {
         amountOfGames: (result?.amountOfGames || 0) + 1,
         maxScore: result?.maxScore || 0,
       });
+
+      addResult(false, "Time is over", 0);
+
       setIsPopUp(true);
       // setIsMenuDisabled(false);
       return;
@@ -295,12 +304,12 @@ export const Game = () => {
     }
 
     // Made max amount of mistakes
-
     if (settings && mistake >= settings?.mistakesLimit) {
       if (gameTimer.current) {
         clearTimeout(gameTimer.current);
       }
       setCurrentScore(0);
+      addResult(false, "Made max amount of mistakes", 0);
       setIsPopUp(true);
       setMadeTooManyMistakes(true);
     }

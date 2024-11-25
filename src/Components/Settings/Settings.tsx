@@ -4,13 +4,10 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import { SettingsContext } from "../../context/SettingsContext";
 
 interface Settings {
+  difficulty: string;
   duration: number;
   mistakesLimit: number;
   fieldSize: number;
-}
-
-interface Difficulties extends Settings {
-  name: string;
 }
 
 interface FieldSize {
@@ -18,10 +15,10 @@ interface FieldSize {
   fieldSize: number;
 }
 
-const difficulties: Difficulties[] = [
-  { name: "Easy", duration: 300000, mistakesLimit: 30, fieldSize: 8 },
-  { name: "Normal", duration: 240000, mistakesLimit: 30, fieldSize: 18 },
-  { name: "Hard", duration: 180000, mistakesLimit: 30, fieldSize: 32 },
+const difficulties: Settings[] = [
+  { difficulty: "Easy", duration: 300000, mistakesLimit: 30, fieldSize: 8 },
+  { difficulty: "Normal", duration: 240000, mistakesLimit: 30, fieldSize: 18 },
+  { difficulty: "Hard", duration: 180000, mistakesLimit: 30, fieldSize: 32 },
 ];
 
 const fieldSize: FieldSize[] = [
@@ -74,7 +71,7 @@ export const Settings = () => {
 
       timeoutDurationRef.current = setTimeout(() => {
         if (settings) {
-          const newSettings = { ...settings, duration: Number(value) };
+          const newSettings = { ...settings, duration: Number(value) * 1000 * 60 };
           setSettings(newSettings);
         }
       }, 500);
@@ -114,7 +111,8 @@ export const Settings = () => {
   };
 
   const modifiedTime = (timeInMiliseconds: number) => {
-    return timeInMiliseconds / 1000 / 60;
+    let result = timeInMiliseconds / 1000 / 60;
+    return result.toFixed(0);
   };
 
   useClickOutside(
@@ -154,6 +152,7 @@ export const Settings = () => {
             <li
               onClick={() => {
                 handleChooseDifficulty({
+                  difficulty: item.difficulty,
                   duration: item.duration,
                   mistakesLimit: item.mistakesLimit,
                   fieldSize: item.fieldSize,
@@ -164,11 +163,17 @@ export const Settings = () => {
               key={index}
               className={styles.option}
             >
-              {item.name}
+              {item.difficulty}
             </li>
           ))}
           <li
             onClick={() => {
+              handleChooseDifficulty({
+                difficulty: "Custom",
+                duration: settings?.duration || 0,
+                mistakesLimit: settings?.mistakesLimit || 0,
+                fieldSize: settings?.fieldSize || 0,
+              });
               handleDifficultyDropdown();
               handleCustomDifficulty();
             }}
@@ -198,7 +203,7 @@ export const Settings = () => {
               <form>
                 <div className={styles["input-wrapper"]}>
                   <label className={styles.label}>
-                    Indicate game duration (in milliseconds)
+                    Indicate game duration
                   </label>
                   <input
                     onChange={handleDurationChange}

@@ -10,8 +10,21 @@
     width: 200px;
 
     .difficulty-button {
-      margin-bottom: 7px;
       @include button(inherit);
+      position: relative;
+      margin-bottom: 7px;
+      padding-right: 15px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 6px;
+        right: 6px;
+        background-image: url("../../assets/dropdown-arrow.svg");
+        background-repeat: no-repeat;
+      }
     }
 
     .difficulty-options {
@@ -79,7 +92,7 @@
       }
 
       .dropdown-field-size {
-        width: 177px;
+        width: 200px;
       }
 
       .show-dropdown {
@@ -87,8 +100,21 @@
       }
 
       .button {
+        @include button(inherit);
         margin-bottom: 7px;
-        @include button(177px);
+        position: relative;
+        padding-right: 20px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          top: 6px;
+          right: 6px;
+          background-image: url("../../assets/dropdown-arrow.svg");
+          background-repeat: no-repeat;
+        }
       }
     }
   }
