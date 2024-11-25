@@ -366,7 +366,6 @@ export const Game = () => {
             `}
           >
             <picture className={styles.back}>
-              <div>{card.id}</div>
             </picture>
             <picture
               className={`${styles.front} ${
