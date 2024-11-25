@@ -10,8 +10,34 @@
 
     .head {
       text-align: start;
+      position: relative;
       padding: 11px;
+      padding-right: 30px;
       border: 1px solid $borderColor;
+      background-color: $secondaryBackground;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: $buttonBackgroundColorHover;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 20;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        background-image: url("../../assets/dropdown-arrow.svg");
+        background-repeat: no-repeat;
+      }
+    }
+
+    .row-up {
+      &:before {
+        transform: rotate(180deg);
+      }
     }
 
     .data {
