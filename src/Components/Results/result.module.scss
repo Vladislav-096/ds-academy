@@ -1,0 +1,22 @@
+@use "./src/styles/_variables.scss" as *;
+
+.result {
+  overflow-x: auto;
+
+  .table {
+    border-collapse: collapse;
+    width: 900px;
+    margin: 0 auto;
+
+    .head {
+      text-align: start;
+      padding: 11px;
+      border: 1px solid $borderColor;
+    }
+
+    .data {
+      padding: 11px;
+      border: 1px solid $borderColor;
+    }
+  }
+}

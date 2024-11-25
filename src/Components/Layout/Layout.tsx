@@ -5,10 +5,10 @@ import { Header } from "../Header/Header";
 export const Layout = () => {
   return (
     <BrowserRouter>
-      <div className="page">
+      {/* <div className="page"> */}
         <Header />
         <Main />
-      </div>
+      {/* </div> */}
     </BrowserRouter>
   );
 };

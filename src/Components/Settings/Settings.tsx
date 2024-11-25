@@ -41,8 +41,6 @@ export const Settings = () => {
   const timeoutMistakesRef = useRef<number | null>(null);
   const { settings, setSettings } =
     useContext<SettingsContext>(SettingsContext);
-  // console.log("durationInput", durationInput);
-  console.log("settings", settings);
 
   const handleDifficultyDropdown = () => {
     setDropdownDifficulty((prev) => !prev);
@@ -71,7 +69,10 @@ export const Settings = () => {
 
       timeoutDurationRef.current = setTimeout(() => {
         if (settings) {
-          const newSettings = { ...settings, duration: Number(value) * 1000 * 60 };
+          const newSettings = {
+            ...settings,
+            duration: Number(value) * 1000 * 60,
+          };
           setSettings(newSettings);
         }
       }, 500);
@@ -202,9 +203,7 @@ export const Settings = () => {
               <h2 className={styles.heading}>Custom settings</h2>
               <form>
                 <div className={styles["input-wrapper"]}>
-                  <label className={styles.label}>
-                    Indicate game duration
-                  </label>
+                  <label className={styles.label}>Indicate game duration</label>
                   <input
                     onChange={handleDurationChange}
                     value={durationInput}

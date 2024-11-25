@@ -309,7 +309,7 @@ export const Game = () => {
         clearTimeout(gameTimer.current);
       }
       setCurrentScore(0);
-      addResult(false, "Made max amount of mistakes", 0);
+      addResult(false, "Made maximum amount of mistakes", 0);
       setIsPopUp(true);
       setMadeTooManyMistakes(true);
     }
