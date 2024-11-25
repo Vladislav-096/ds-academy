@@ -1,4 +1,3 @@
-import { Layout } from "./components/Layout/Layout";
 import "./styles/fonts.scss";
 import "./styles/_variables.scss";
 import "./styles/common.scss";
@@ -9,6 +8,7 @@ import {
   SessionResultContext,
 } from "./context/SessionResultContext";
 import { Settings, SettingsContext } from "./context/SettingsContext";
+import { Layout } from "./components/Layout/Layout";
 
 export function App() {
   const [games, setGames] = useState<Result[]>([]);

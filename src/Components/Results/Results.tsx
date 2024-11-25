@@ -4,7 +4,7 @@ import styles from "./result.module.scss";
 
 export const Results = () => {
   const { games } = useContext<ResultContext>(ResultContext);
-  const [tableData, setTableData] = useState<Result[]>([]);
+  const [tableData, setTableData] = useState<Result[]>(games);
   const [sortDirection, setSortDirection] = useState<string>("");
   const [sortType, setSortType] = useState<string>("");
 

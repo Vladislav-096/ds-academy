@@ -124,7 +124,6 @@ export const Settings = () => {
       suggestFieldSizeRef,
     ],
     () => {
-      console.log("useClickOutside");
       setDropdownDifficulty(false);
       setDropdownFieldSize(false);
     }

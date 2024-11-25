@@ -115,7 +115,6 @@ export const Game = () => {
     } else {
       clickedCardsStorage[key]++;
     }
-    // console.log("clickedCardsStorage", clickedCardsStorage);
 
     handleFindDuplicates(index);
   };
@@ -124,9 +123,6 @@ export const Game = () => {
     if (openedCards.length === 1) {
       setOpenedCards((prev) => [...prev, index]);
     } else {
-      // if (cardsTimeout.current) {
-      //   clearTimeout(cardsTimeout.current);
-      // }
       setOpenedCards([index]);
     }
   };
@@ -150,9 +146,7 @@ export const Game = () => {
       }
     }
 
-    // cardsTimeout.current = setTimeout(() => {
     setOpenedCards([]);
-    // }, 500);
   };
 
   const addResult = (result: boolean, reason: string, score: number) => {
@@ -171,7 +165,6 @@ export const Game = () => {
 
   const checkCompletion = () => {
     if (clearedCards.length === cards.length && settings && gameTimer.current) {
-      // setIsMenuDisabled(false);
 
       clearTimeout(gameTimer.current);
 
@@ -202,9 +195,6 @@ export const Game = () => {
   const checkPair = (index: number) => {
     if (clearedCards.includes(index)) {
       return true;
-      // return new Promise((res) => {
-      //   setTimeout(() => res(true), 500);
-      // });
     }
 
     return false;
@@ -274,7 +264,6 @@ export const Game = () => {
       addResult(false, "Time is over", 0);
 
       setIsPopUp(true);
-      // setIsMenuDisabled(false);
       return;
     }
 
@@ -313,8 +302,6 @@ export const Game = () => {
       setIsPopUp(true);
       setMadeTooManyMistakes(true);
     }
-
-    // console.log("mistake", mistake);
 
     return () => {
       if (timeout) clearTimeout(timeout);
