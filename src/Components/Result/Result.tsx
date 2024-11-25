@@ -20,9 +20,12 @@ export const Result = ({
     >
       <h2 className={styles.heading}>Your result</h2>
       <p className={styles.result}>{finalScore}</p>
+      {!isTimeOver && !madeTooManyMistakes && (
+        <p className={styles.victory}>You won!</p>
+      )}
       {isTimeOver && <p className={styles.loss}>Time is over</p>}
       {madeTooManyMistakes && (
-        <p className={styles.loss}>You made too many mistakes</p>
+        <p className={styles.loss}>You've made too many mistakes</p>
       )}
     </div>
   );

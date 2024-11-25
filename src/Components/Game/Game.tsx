@@ -1,13 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { GetAvatar } from "../../api/getAvatar";
 import { ResultContext } from "../../context/ResultsContext";
-import styles from "./game.module.scss";
-// import back from "../../assets/back.png";
 import { PopUp } from "../PopUp/PopUp";
 import { Result } from "../Result/Result";
 import { Loader } from "../Loader/Loader";
 import { SessionResultContext } from "../../context/SessionResultContext";
 import { SettingsContext } from "../../context/SettingsContext";
+import styles from "./game.module.scss";
 
 export interface card {
   id: number;
@@ -74,7 +73,6 @@ export const Game = () => {
 
   const createGaymBoard = async () => {
     setIsLoader(true);
-    // setIsMenuDisabled(true);
     setMistake(0);
     setMadeTooManyMistakes(false);
     setClearedCards([]);
@@ -253,7 +251,7 @@ export const Game = () => {
 
   const progress = () => {
     let progress = (clearedCards.length * 100) / cards.length || 0;
-    return progress.toFixed(1);
+    return `${progress.toFixed(1)} %`;
   };
 
   useEffect(() => {
@@ -307,7 +305,7 @@ export const Game = () => {
       setMadeTooManyMistakes(true);
     }
 
-    console.log("mistake", mistake);
+    // console.log("mistake", mistake);
 
     return () => {
       if (timeout) clearTimeout(timeout);
@@ -326,23 +324,40 @@ export const Game = () => {
       </PopUp>
 
       <ul className={styles.info}>
-        <li>{`Amount of games it the current session: ${
-          result?.amountOfGames || 0
-        }`}</li>
-        <li className={styles["info-item"]}>{`Max score in current session: ${
-          result?.maxScore || 0
-        }`}</li>
-        <li
-          className={styles["info-item"]}
-        >{`Max score for all time: ${calculateMaxScoreAtAll()}`}</li>
-        <li
-          className={styles["info-item"]}
-        >{`Amount of mistakes: ${mistake}`}</li>
-        <li className={styles["info-item"]}>{`Progress: ${progress()} %`}</li>
-        <li className={styles["info-item"]}>{formatTime(timeRemaining)}</li>
+        <li className={styles["info-item"]}>
+          <p className={styles.descr}>
+            Amount of games it the current session:
+          </p>
+          <span className={styles.value}>{result?.amountOfGames || 0}</span>
+        </li>
+        <li className={styles["info-item"]}>
+          <p className={styles.descr}>Max score in current session:</p>
+          <span className={styles.value}>{result?.maxScore || 0}</span>
+        </li>
+        <li className={styles["info-item"]}>
+          <p className={styles.descr}>Max score for all time:</p>
+          <span className={styles.value}>{calculateMaxScoreAtAll()}</span>
+        </li>
+        <li className={styles["info-item"]}>
+          <p className={styles.descr}>Amount of mistakes:</p>
+          <span className={styles.value}>{mistake}</span>
+        </li>
+        <li className={styles["info-item"]}>
+          <p className={styles.descr}>Progress:</p>
+          <span className={styles.value}>{progress()}</span>
+        </li>
+        <li className={styles["info-item"]}>
+          <span className={styles.value}>{formatTime(timeRemaining)}</span>
+        </li>
       </ul>
 
-      <div style={cardsContainerWidth()} className={styles["cards-container"]}>
+      <div
+        style={{
+          ...cardsContainerWidth(),
+          ...(cards.length > 0 ? { padding: "7px", marginBottom: "15px" } : {}),
+        }}
+        className={styles["cards-container"]}
+      >
         {cards.map((card, index) => (
           <div
             onClick={() => handleClick(index)}
