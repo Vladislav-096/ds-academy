@@ -15,34 +15,16 @@
     }
 
     .difficulty-options {
-      width: inherit;
-      border-radius: 5px;
-      background-color: $secondaryBackground;
-      overflow: hidden;
-      height: 0;
-      transition: height 0.2s ease-in-out;
-
-      .option {
-        display: flex;
-        justify-content: space-between;
-        margin: 7px;
-        padding: 3px;
-        border-radius: 5px;
-        color: $primaryColor;
-
-        &:hover {
-          cursor: pointer;
-          background-color: $buttonBackgroundColorHover;
-        }
-      }
+      @include options();
     }
 
     .show-dropdown {
-      height: 103px;
+      height: 132px;
     }
   }
 
   .difficulty-info {
+    width: 300px;
     color: $secondaryColor;
 
     .heading {
@@ -51,13 +33,62 @@
     }
 
     .difficulty-list {
-      padding-left: 20px;
       margin: 0;
+      margin-bottom: 15px;
+      padding-left: 20px;
 
       .info {
         &:not(:last-child) {
           margin-bottom: 5px;
         }
+      }
+    }
+
+    .custom-settings {
+      // padding: 10px;
+      // min-height: 111px;
+      // border-radius: 5px;
+      // background-color: $secondaryBackground;
+
+      .heading {
+        margin-bottom: 11px;
+        font-size: 33px;
+      }
+
+      .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        .label {
+          margin-bottom: 2px;
+        }
+
+        .input {
+          padding: 5px;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          background-color: $tertaryBackground;
+          color: $primaryColor;
+        }
+      }
+
+      .field-size-options {
+        @include options();
+      }
+
+      .dropdown-field-size {
+        width: 177px;
+      }
+
+      .show-dropdown {
+        height: 100px;
+      }
+
+      .button {
+        margin-bottom: 7px;
+        @include button(177px);
       }
     }
   }

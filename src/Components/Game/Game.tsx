@@ -71,7 +71,7 @@ export const Game = () => {
     setMistake(0);
   };
 
-  const createGaymBoard = async () => {
+  const createGameBoard = async () => {
     setIsLoader(true);
     setMistake(0);
     setMadeTooManyMistakes(false);
@@ -394,7 +394,7 @@ export const Game = () => {
           </div>
         ) : (
           <>
-            <button className={styles.start} onClick={createGaymBoard}>
+            <button className={styles.start} onClick={createGameBoard}>
               {dataArray.length === 0 ? "Start" : "Restart"}
             </button>
             <button onClick={stopTheGame} className={styles.stop}>
