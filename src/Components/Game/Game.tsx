@@ -42,22 +42,22 @@ const createCard = async (seed: string, id: number) => {
 };
 
 export const Game = () => {
+  const { games, setGames } = useContext<ResultContext>(ResultContext);
+  const { result, setResult } =
+    useContext<SessionResultContext>(SessionResultContext);
   const { settings } = useContext<SettingsContext>(SettingsContext);
-  const duration = 180000;
   const [cards, setCards] = useState<card[]>([]);
   const [openedCards, setOpenedCards] = useState<number[]>([]);
   const [clearedCards, setClearedCards] = useState<number[]>([]);
   const [isPopUp, setIsPopUp] = useState<boolean>(false);
   const [isLoader, setIsLoader] = useState<boolean>(false);
   const [isTimeOver, setIsTimeOver] = useState<boolean>(false);
-  const { setGames } = useContext<ResultContext>(ResultContext);
   const [currentScore, setCurrentScore] = useState<number>(0);
-  const { result, setResult } =
-    useContext<SessionResultContext>(SessionResultContext);
   const gameTimer = useRef<number | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [mistake, setMistake] = useState<number>(0);
-  const [madeTooManyMistakes, setMadeTooManyMistakes] = useState(false);
+  const [madeTooManyMistakes, setMadeTooManyMistakes] =
+    useState<boolean>(false);
 
   const stopTheGame = () => {
     dataArray = [];
@@ -65,7 +65,7 @@ export const Game = () => {
     if (settings) {
       setTimeRemaining(settings?.duration);
     }
-    // setIsMenuDisabled(false);
+
     setClearedCards([]);
     setOpenedCards([]);
     setMadeTooManyMistakes(false);
@@ -174,7 +174,7 @@ export const Game = () => {
         });
       } else {
         setResult({
-          amountOfGames: (result?.amountOfGames || 1) + 1,
+          amountOfGames: (result?.amountOfGames || 0) + 1,
           maxScore: result?.maxScore || score,
         });
       }
@@ -239,11 +239,33 @@ export const Game = () => {
     }
   };
 
+  const calculateMaxScoreAtAll = () => {
+    let result = 0;
+
+    if (games.length !== 0) {
+      result = games.reduce((acc, item) => {
+        return item.score > acc ? item.score : acc;
+      }, 0);
+    }
+
+    return result;
+  };
+
+  const progress = () => {
+    let progress = (clearedCards.length * 100) / cards.length || 0;
+    return progress.toFixed(1);
+  };
+
   useEffect(() => {
     // Time is over
     if (timeRemaining && timeRemaining <= 0) {
       setIsTimeOver(true);
       setCurrentScore(0);
+      // Add one game count when loss
+      setResult({
+        amountOfGames: (result?.amountOfGames || 0) + 1,
+        maxScore: result?.maxScore || 0,
+      });
       setIsPopUp(true);
       // setIsMenuDisabled(false);
       return;
@@ -303,7 +325,22 @@ export const Game = () => {
         />
       </PopUp>
 
-      <div>{formatTime(timeRemaining)}</div>
+      <ul className={styles.info}>
+        <li>{`Amount of games it the current session: ${
+          result?.amountOfGames || 0
+        }`}</li>
+        <li className={styles["info-item"]}>{`Max score in current session: ${
+          result?.maxScore || 0
+        }`}</li>
+        <li
+          className={styles["info-item"]}
+        >{`Max score for all time: ${calculateMaxScoreAtAll()}`}</li>
+        <li
+          className={styles["info-item"]}
+        >{`Amount of mistakes: ${mistake}`}</li>
+        <li className={styles["info-item"]}>{`Progress: ${progress()} %`}</li>
+        <li className={styles["info-item"]}>{formatTime(timeRemaining)}</li>
+      </ul>
 
       <div style={cardsContainerWidth()} className={styles["cards-container"]}>
         {cards.map((card, index) => (
@@ -318,8 +355,7 @@ export const Game = () => {
             `}
           >
             <picture className={styles.back}>
-              {/* <div>{card.id}</div> */}
-              {/* <img className={styles["img-back"]} src={back} alt="Card image" /> */}
+              <div>{card.id}</div>
             </picture>
             <picture
               className={`${styles.front} ${

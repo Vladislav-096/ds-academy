@@ -13,7 +13,11 @@ import { Settings, SettingsContext } from "./context/SettingsContext";
 export function App() {
   const [games, setGames] = useState<Result[]>([]);
   const [result, setResult] = useState<currentSessionResult | null>(null);
-  const [settings, setSettings] = useState<Settings | null>(null);
+  const [settings, setSettings] = useState<Settings | null>({
+    duration: 300000,
+    mistakesLimit: 30,
+    fieldSize: 8,
+  });
 
   useEffect(() => {
     const gamesResultData = localStorage.getItem("games");
